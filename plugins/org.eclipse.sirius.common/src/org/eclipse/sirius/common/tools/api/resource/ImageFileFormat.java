@@ -63,11 +63,16 @@ public final class ImageFileFormat {
      * supported format PNG.
      */
     public static final ImageFileFormat PNG = new ImageFileFormat("PNG"); //$NON-NLS-1$
+	
+    /**
+     * supported format PDF.
+     */
+    public static final ImageFileFormat PDF = new ImageFileFormat("PDF"); //$NON-NLS-1$
 
     /**
      * The list of values for this enumerated type.
      */
-    public static final ImageFileFormat[] VALUES = { GIF, BMP, JPEG, JPG, SVG, SVGZ, PNG };
+    public static final ImageFileFormat[] VALUES = { GIF, BMP, JPEG, JPG, SVG, SVGZ, PNG, PDF };
 
     private String name;
 
