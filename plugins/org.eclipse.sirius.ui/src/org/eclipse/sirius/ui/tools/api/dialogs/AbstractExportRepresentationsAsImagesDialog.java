@@ -64,7 +64,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * The list of values for this enumerated type.
      */
-    protected static final ImageFileFormat[] SAFE_VALUES = { DEFAULT_VALUE, ImageFileFormat.PNG, ImageFileFormat.SVG, ImageFileFormat.BMP, ImageFileFormat.GIF };
+    protected static final ImageFileFormat[] SAFE_VALUES = { DEFAULT_VALUE, ImageFileFormat.PNG, ImageFileFormat.SVG, ImageFileFormat.BMP, ImageFileFormat.GIF, ImageFileFormat.PDF };
 
     /**
      * The empty string.
