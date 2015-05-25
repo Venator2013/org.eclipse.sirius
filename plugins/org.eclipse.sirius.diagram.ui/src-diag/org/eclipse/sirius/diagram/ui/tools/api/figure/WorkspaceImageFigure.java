@@ -231,4 +231,16 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
         String pathToUpperCase = path.toUpperCase();
         return pathToUpperCase.endsWith(ImageFileFormat.SVG.getName()) || pathToUpperCase.endsWith(ImageFileFormat.SVGZ.getName());
     }
+	
+    /**
+     * Check pdf format from the path of an image.
+     * 
+     * @param path
+     *            the path of the image to check
+     * @return true for pdf image format.
+     */
+    public static boolean isPdfImage(String path) {
+        String pathToUpperCase = path.toUpperCase();
+        return pathToUpperCase.endsWith(ImageFileFormat.PDF.getName());
+    }
 }
