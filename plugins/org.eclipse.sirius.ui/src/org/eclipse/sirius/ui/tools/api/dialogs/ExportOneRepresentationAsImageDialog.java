@@ -103,7 +103,7 @@ public class ExportOneRepresentationAsImageDialog extends AbstractExportRepresen
     @Override
     protected void handleBrowseButtonPressed() {
         final FileDialog dialog = new FileDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
-        dialog.setFilterExtensions(new String[] { "*.png;*.jpg;*.svg", "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$       
+        dialog.setFilterExtensions(new String[] { "*.png;*.jpg;*.svg;*.pdf", "*.*" }); //$NON-NLS-1$ //$NON-NLS-2$       
         dialog.setText(EXPORT_TO_IMAGE);
         String currentSourceString = folderText.getText();
         File file = new File(folderText.getText());
