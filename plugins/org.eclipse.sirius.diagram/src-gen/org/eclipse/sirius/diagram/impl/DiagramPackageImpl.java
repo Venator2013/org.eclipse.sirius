@@ -3175,6 +3175,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         addEEnumLiteral(edgeArrowsEEnum, EdgeArrows.FILL_DIAMOND_LITERAL);
         addEEnumLiteral(edgeArrowsEEnum, EdgeArrows.INPUT_ARROW_WITH_DIAMOND_LITERAL);
         addEEnumLiteral(edgeArrowsEEnum, EdgeArrows.INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL);
+        addEEnumLiteral(edgeArrowsEEnum, EdgeArrows.FILL_DOT_LITERAL);
+        addEEnumLiteral(edgeArrowsEEnum, EdgeArrows.INPUT_ARROW_WITH_FILL_DOT_LITERAL);
 
         initEEnum(edgeRoutingEEnum, EdgeRouting.class, "EdgeRouting");
         addEEnumLiteral(edgeRoutingEEnum, EdgeRouting.STRAIGHT_LITERAL);
@@ -3254,6 +3256,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         addAnnotation(edgeArrowsEEnum.getELiterals().get(8), source, new String[] { "imagePath", "icons/full/decorator/fillDiamond.gif" });
         addAnnotation(edgeArrowsEEnum.getELiterals().get(9), source, new String[] { "imagePath", "icons/full/decorator/inputArrowWithDiamond.gif" });
         addAnnotation(edgeArrowsEEnum.getELiterals().get(10), source, new String[] { "imagePath", "icons/full/decorator/inputArrowWithFillDiamond.gif" });
+        addAnnotation(edgeArrowsEEnum.getELiterals().get(11), source, new String[] { "imagePath", "icons/full/decorator/FillDot.gif" });
+        addAnnotation(edgeArrowsEEnum.getELiterals().get(12), source, new String[] { "imagePath", "icons/full/decorator/inputArrowWithFillDot.gif" });
     }
 
 } // DiagramPackageImpl
