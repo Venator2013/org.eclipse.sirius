@@ -27,6 +27,7 @@ import org.eclipse.draw2d.Polyline;
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RelativeBendpoint;
 import org.eclipse.draw2d.RotatableDecoration;
+import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -63,6 +64,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.EllipseAndPolylineDecoraction;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.EllipseDecoration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -305,6 +308,12 @@ public final class DiagramEdgeEditPartOperation {
         case INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL:
             result = DiagramEdgeEditPartOperation.createArrowInWithFillDiamond(self);
             break;
+		case FILL_DOT_LITERAL:
+			result = DiagramEdgeEditPartOperation.createFillDotDecoration(self);
+			break;
+		case INPUT_ARROW_WITH_FILL_DOT_LITERAL:
+			result = DiagramEdgeEditPartOperation.createArrowInWithFillDot(self);
+			break;
         default:
             assert false;
             result = null;
@@ -494,6 +503,19 @@ public final class DiagramEdgeEditPartOperation {
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
     }
+	
+    /**
+     * Creates a fill diamond decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    public static EllipseDecoration createFillDotDecoration(final IDiagramEdgeEditPart self) {
+        final EllipseDecoration decoration = new EllipseDecoration();
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
 
     /**
      * Creates a diamond decoration.
@@ -561,6 +583,23 @@ public final class DiagramEdgeEditPartOperation {
         return decoration;
     }
 
+//    /**
+//     * Apply the line width of the editPart to the decoration.
+//     * 
+//     * @param decoration
+//     *            the decoration
+//     * @param self
+//     *            the edge edit part.
+//     * @return the created decoration.
+//     */
+//    private static void applyLineWidth(final Polyline decoration, final IDiagramEdgeEditPart self) {
+//        final DEdge edge = (DEdge) self.resolveSemanticElement();
+//        int size = DiagramEdgeEditPartOperation.getLineWidth(edge);
+//        if (size != 0) {
+//            decoration.setLineWidth(size);
+//        }
+//    }
+    
     /**
      * Apply the line width of the editPart to the decoration.
      * 
@@ -570,7 +609,7 @@ public final class DiagramEdgeEditPartOperation {
      *            the edge edit part.
      * @return the created decoration.
      */
-    private static void applyLineWidth(final Polyline decoration, final IDiagramEdgeEditPart self) {
+    private static void applyLineWidth(final Shape decoration, final IDiagramEdgeEditPart self) {
         final DEdge edge = (DEdge) self.resolveSemanticElement();
         int size = DiagramEdgeEditPartOperation.getLineWidth(edge);
         if (size != 0) {
@@ -634,6 +673,19 @@ public final class DiagramEdgeEditPartOperation {
         decorationPointList.addPoint(-1, -1);
         decoration.setTemplate(decorationPointList);
         decoration.setScale(6, 3);
+        DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
+        return decoration;
+    }
+	
+    /**
+     * Creates an input arrow with fill dot decoration.
+     * 
+     * @param self
+     *            the edge edit part
+     * @return the new decoration
+     */
+    private static RotatableDecoration createArrowInWithFillDot(IDiagramEdgeEditPart self) {
+        final EllipseAndPolylineDecoraction decoration = new EllipseAndPolylineDecoraction();
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
     }

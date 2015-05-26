@@ -107,6 +107,12 @@ public class EdgeStyleDescriptionTargetArrowPropertySection extends AbstractTabl
             if (edgeArrows.equals(EdgeArrows.INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL)) {
                 result.add(new ImageItem(edgeArrows, "icons/full/decorator/inputArrowWithFillDiamond.gif"));
             }
+            if (edgeArrows.equals(EdgeArrows.FILL_DOT_LITERAL)) {
+                result.add(new ImageItem(edgeArrows, "icons/full/decorator/fillDot.gif"));
+            }
+            if (edgeArrows.equals(EdgeArrows.INPUT_ARROW_WITH_FILL_DOT_LITERAL)) {
+                result.add(new ImageItem(edgeArrows, "icons/full/decorator/inputArrowWithFillDot.gif"));
+            }
         }
         return result;
     }
