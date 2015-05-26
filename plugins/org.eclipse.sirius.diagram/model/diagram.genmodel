@@ -55,6 +55,8 @@
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeArrows/FillDiamond"/>
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeArrows/InputArrowWithDiamond"/>
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeArrows/InputArrowWithFillDiamond"/>
+      <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeArrows/FillDot"/>
+      <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeArrows/InputArrowWithFillDot"/>
     </genEnums>
     <genEnums ecoreEnum="diagram.ecore#//EdgeRouting">
       <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//EdgeRouting/straight"/>
