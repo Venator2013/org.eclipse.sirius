@@ -1170,11 +1170,11 @@
         <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>
       </propertySection>
       <propertySection
-            afterSection="style.section.basicLabelStyleDescription.LabelColor"
+            afterSection="style.section.borderedStyleDescription.BorderSizeComputationExpression"
             class="org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription.BorderedStyleDescriptionBorderLineStylePropertySection"
             filter="org.eclipse.sirius.diagram.editor.properties.filters.style.borderedstyledescription.BorderedStyleDescriptionBorderLineStyleFilter"
             id="style.section.borderedStyleDescription.BorderLineStyle"
-            tab="viewpoint.tab.color">
+            tab="viewpoint.tab.border">
          <input
                type="org.eclipse.sirius.diagram.description.style.BorderedStyleDescription">
          </input>
