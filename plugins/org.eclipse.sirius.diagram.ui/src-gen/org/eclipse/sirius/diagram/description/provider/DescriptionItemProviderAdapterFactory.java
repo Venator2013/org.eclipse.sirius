@@ -761,8 +761,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
              */
             @Override
             public Object caseDecorationDescriptionsSet(DecorationDescriptionsSet object) {
-                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS,
-                        DescriptionFactory.eINSTANCE.createMappingBasedDecoration()));
+                newChildDescriptors
+                        .add(createChildParameter(DescriptionPackage.Literals.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS, DescriptionFactory.eINSTANCE.createMappingBasedDecoration()));
 
                 return null;
             }

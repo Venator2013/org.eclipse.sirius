@@ -66,10 +66,10 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_shape_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"),
-                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BundledImageDescription_shape_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"),
+                        StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -80,8 +80,8 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_color_feature"), getString("_UI_BundledImageDescription_color_description"), StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true,
-                false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_BundledImageDescription_color_feature"), getString("_UI_BundledImageDescription_color_description"), StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true, false,
+                false, null, getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**

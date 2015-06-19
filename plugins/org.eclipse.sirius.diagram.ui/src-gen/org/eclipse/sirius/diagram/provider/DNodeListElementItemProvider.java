@@ -105,10 +105,10 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeListElement_candidatesMapping_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_candidatesMapping_feature", "_UI_DNodeListElement_type"),
-                DiagramPackage.Literals.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DNodeListElement_candidatesMapping_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_candidatesMapping_feature", "_UI_DNodeListElement_type"),
+                        DiagramPackage.Literals.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING, true, false, true, null, null, null));
     }
 
     /**

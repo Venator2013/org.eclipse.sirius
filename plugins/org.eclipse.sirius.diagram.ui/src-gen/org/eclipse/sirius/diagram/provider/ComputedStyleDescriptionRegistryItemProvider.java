@@ -38,8 +38,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * 
  * @generated
  */
-public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-IItemLabelProvider, IItemPropertySource {
+public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -152,7 +152,7 @@ IItemLabelProvider, IItemPropertySource {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors
-        .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createBorderedStyleDescription()));
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createBorderedStyleDescription()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createCustomStyleDescription()));
 
@@ -168,22 +168,22 @@ IItemLabelProvider, IItemPropertySource {
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createDotDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createFlatContainerStyleDescription()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createShapeContainerStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
         newChildDescriptors
-        .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createFlatContainerStyleDescription()));
+
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createShapeContainerStyleDescription()));
+
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createEdgeStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS,
-                StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, StyleFactory.eINSTANCE.createBracketEdgeStyleDescription()));
     }
 
     /**

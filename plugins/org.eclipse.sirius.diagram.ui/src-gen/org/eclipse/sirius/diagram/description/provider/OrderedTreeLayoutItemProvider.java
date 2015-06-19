@@ -81,8 +81,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      */
     protected void addNodeMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedTreeLayout_nodeMapping_feature"), getString("_UI_OrderedTreeLayout_nodeMapping_description"), DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING,
-                true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_OrderedTreeLayout_nodeMapping_feature"), getString("_UI_OrderedTreeLayout_nodeMapping_description"), DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING, true,
+                false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**

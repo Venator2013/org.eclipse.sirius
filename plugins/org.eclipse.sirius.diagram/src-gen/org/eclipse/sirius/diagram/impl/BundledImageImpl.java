@@ -26,13 +26,13 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>Bundled Image</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getShape <em>
- * Shape</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getColor <em>
- * Color</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getShape
+ * <em>Shape</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getColor
+ * <em>Color</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -40,7 +40,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The default value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -50,7 +50,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The cached value of the '{@link #getShape() <em>Shape</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getShape()
      * @generated
      * @ordered
@@ -60,7 +60,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getColor()
      * @generated
      * @ordered
@@ -79,7 +79,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BundledImageImpl() {
@@ -88,7 +88,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -98,7 +98,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -108,7 +108,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -132,7 +132,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -146,7 +146,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -162,7 +162,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -180,7 +180,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -198,7 +198,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +214,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

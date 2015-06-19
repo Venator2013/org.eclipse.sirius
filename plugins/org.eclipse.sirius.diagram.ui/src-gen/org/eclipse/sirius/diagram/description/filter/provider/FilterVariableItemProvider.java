@@ -39,8 +39,8 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * 
  * @generated
  */
-public class FilterVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class FilterVariableItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -131,12 +131,11 @@ IItemPropertySource {
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_SelectionDescription_childrenExpression_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_childrenExpression_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                null));
     }
 
     /**

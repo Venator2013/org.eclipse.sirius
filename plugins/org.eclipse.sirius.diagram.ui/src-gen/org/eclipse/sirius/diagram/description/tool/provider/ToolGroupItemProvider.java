@@ -248,8 +248,8 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createSelectionWizardDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPaneBasedSelectionWizardDescription()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPaneBasedSelectionWizardDescription()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createOperationAction()));
 

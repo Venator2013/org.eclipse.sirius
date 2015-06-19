@@ -73,9 +73,9 @@ public class FilterItemProvider extends ItemProviderAdapter implements IEditingD
      * @generated
      */
     protected void addFilterKindPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Filter_filterKind_feature"), getString("_UI_Filter_filterKind_description"), FilterPackage.Literals.FILTER__FILTER_KIND, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Filter_filterKind_feature"),
+                getString("_UI_Filter_filterKind_description"), FilterPackage.Literals.FILTER__FILTER_KIND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**

@@ -71,8 +71,8 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
      */
     protected void addActiveByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AdditionalLayer_activeByDefault_feature"), getString("_UI_AdditionalLayer_activeByDefault_description"),
-                DescriptionPackage.Literals.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AdditionalLayer_activeByDefault_feature"), getString("_UI_AdditionalLayer_activeByDefault_description"), DescriptionPackage.Literals.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT,
+                true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**

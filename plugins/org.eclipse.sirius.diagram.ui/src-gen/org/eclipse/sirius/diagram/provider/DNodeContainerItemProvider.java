@@ -66,10 +66,10 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
      * @generated
      */
     protected void addChildrenPresentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeContainer_childrenPresentation_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"),
-                DiagramPackage.Literals.DNODE_CONTAINER__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DNodeContainer_childrenPresentation_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"),
+                        DiagramPackage.Literals.DNODE_CONTAINER__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**

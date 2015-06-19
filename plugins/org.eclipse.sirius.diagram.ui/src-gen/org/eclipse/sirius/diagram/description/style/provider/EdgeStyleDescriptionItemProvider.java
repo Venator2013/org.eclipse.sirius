@@ -41,8 +41,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * 
  * @generated
  */
-public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -85,10 +85,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addStrokeColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_strokeColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_strokeColor_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyleDescription_strokeColor_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_strokeColor_feature", "_UI_EdgeStyleDescription_type"),
+                        StylePackage.Literals.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**
@@ -99,8 +99,7 @@ IItemPropertySource {
      */
     protected void addLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_lineStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_lineStyle_feature", "_UI_EdgeStyleDescription_type"),
+                getString("_UI_EdgeStyleDescription_lineStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_lineStyle_feature", "_UI_EdgeStyleDescription_type"),
                 StylePackage.Literals.EDGE_STYLE_DESCRIPTION__LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
@@ -111,10 +110,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addSourceArrowPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_sourceArrow_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sourceArrow_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyleDescription_sourceArrow_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sourceArrow_feature", "_UI_EdgeStyleDescription_type"),
+                        StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
     }
 
     /**
@@ -124,10 +123,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addTargetArrowPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_targetArrow_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_targetArrow_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyleDescription_targetArrow_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_targetArrow_feature", "_UI_EdgeStyleDescription_type"),
+                        StylePackage.Literals.EDGE_STYLE_DESCRIPTION__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
     }
 
     /**
@@ -151,10 +150,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_routingStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_routingStyle_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyleDescription_routingStyle_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_routingStyle_feature", "_UI_EdgeStyleDescription_type"),
+                        StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -164,10 +163,10 @@ IItemPropertySource {
      * @generated
      */
     protected void addFoldingStylePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_foldingStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_foldingStyle_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyleDescription_foldingStyle_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_foldingStyle_feature", "_UI_EdgeStyleDescription_type"),
+                        StylePackage.Literals.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**

@@ -70,10 +70,10 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      * @generated
      */
     protected void addMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DoubleClickDescription_mappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"),
-                ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, true, false, true, null, null, null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DoubleClickDescription_mappings_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"),
+                        ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, true, false, true, null, null, null));
     }
 
     /**
@@ -171,8 +171,8 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW, ToolFactory.eINSTANCE.createElementDoubleClickVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__INITIAL_OPERATION, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
     }
 
     /**

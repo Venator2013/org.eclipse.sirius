@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutAnimator;
 import org.eclipse.draw2d.LayoutManager;
@@ -170,7 +171,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (borderSize == 0) {
                     borderSize = 1;
                 }
-
+                
+                
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
                     configureBorder(rcf);
@@ -186,6 +188,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                             int margin = borderSize + DEFAULT_MARGIN;
                             border = new MarginBorder(margin, margin, margin, margin);
                         }
+                        
                         rcf.getScrollPane().setBorder(border);
                     }
                 }

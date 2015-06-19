@@ -187,7 +187,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
             UIJob job = new UIJob("InitSynchronizedCommand") {
                 @Override
                 public IStatus runInUIThread(IProgressMonitor monitor) {
-                    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
+                    ICommandService commandService = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
                     Command command = commandService.getCommand("org.eclipse.sirius.diagram.ui.command.synchronizedDiagram");
                     command.isEnabled();
                     return new Status(IStatus.OK, DiagramUIPlugin.ID, "Init synchronized command performed succesfully");

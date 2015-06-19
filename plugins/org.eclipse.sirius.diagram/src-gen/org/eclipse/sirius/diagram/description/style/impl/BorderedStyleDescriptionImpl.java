@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em><b>Bordered Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl#getBorderSizeComputationExpression
@@ -32,8 +34,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl#getBorderColor
  * <em>Border Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -63,7 +67,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderColor()
      * @generated
      * @ordered
@@ -71,8 +75,30 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     protected ColorDescription borderColor;
 
     /**
+     * The default value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
+
+    /**
+     * The cached value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected LineStyle borderLineStyle = BorderedStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected BorderedStyleDescriptionImpl() {
@@ -81,7 +107,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -91,7 +117,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +127,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -116,7 +142,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -135,7 +161,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ColorDescription basicGetBorderColor() {
@@ -144,7 +170,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -158,7 +184,31 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @generated
+     */
+    @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? BorderedStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -171,13 +221,15 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
                 return getBorderColor();
             }
             return basicGetBorderColor();
+        case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            return getBorderLineStyle();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -189,13 +241,16 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) newValue);
             return;
+        case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            setBorderLineStyle((LineStyle) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,13 +262,16 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
+        case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            setBorderLineStyle(BorderedStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,13 +282,15 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
                     : !BorderedStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
+        case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            return borderLineStyle != BorderedStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,6 +302,8 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");
         result.append(borderSizeComputationExpression);
+        result.append(", borderLineStyle: ");
+        result.append(borderLineStyle);
         result.append(')');
         return result.toString();
     }

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
@@ -172,10 +173,11 @@ public final class DiagramContainerEditPartOperation {
         if (borderSize == 0) {
             borderSize = 1;
         }
-
+        
         if (borderSize > 0) {
             if (primaryShape instanceof Shape) {
                 ((Shape) primaryShape).setLineWidth(borderSize);
+                
             } else if (primaryShape instanceof NodeFigure) {
                 ((NodeFigure) primaryShape).setLineWidth(borderSize);
             }
@@ -214,6 +216,17 @@ public final class DiagramContainerEditPartOperation {
                 primaryShape.setBorder(margin);
             }
         }
+        
+        //linestyle
+        int borderlinestyle = LineStyleHelper.getLineStyle(style.getBorderLineStyle());
+        
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(borderlinestyle);
+            
+        } else if (primaryShape instanceof NodeFigure) {
+            ((NodeFigure) primaryShape).setLineStyle(borderlinestyle);
+        }
+        
         return primaryShape;
     }
 

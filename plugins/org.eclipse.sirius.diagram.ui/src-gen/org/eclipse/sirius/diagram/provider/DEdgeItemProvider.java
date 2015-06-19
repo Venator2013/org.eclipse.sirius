@@ -401,29 +401,13 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     }
 
     private boolean hasRelevantLabelItem(Object object) {
-        return DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object); /*
-         * ||
-         * DEdgeBeginLabelItemProvider
-         * .
-         * hasRelevantLabelItem
-         * (
-         * (
-         * DEdge
-         * )
-         * object
-         * )
-         * ||
-         * DEdgeEndLabelItemProvider
-         * .
-         * hasRelevantLabelItem
-         * (
-         * (
-         * DEdge
-         * )
-         * object
-         * )
-         * ;
-         */
+        return DEdgeLabelItemProvider.hasRelevantLabelItem(
+                (DEdge) object); /*
+                                  * || DEdgeBeginLabelItemProvider .
+                                  * hasRelevantLabelItem ( ( DEdge ) object ) ||
+                                  * DEdgeEndLabelItemProvider .
+                                  * hasRelevantLabelItem ( ( DEdge ) object ) ;
+                                  */
     }
 
     /**

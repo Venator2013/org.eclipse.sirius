@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG;
 import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.util.GraphicsUtilities;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -43,10 +44,11 @@ public final class GradientHelper {
 
         final Rectangle zoomedBounds = GraphicsUtilities.zoomFillRectangle(graphics, figure.getBounds());
         if (zoomedBounds != null) {
+            
             final Pattern pattern = GradientHelper.getGradientPattern(figure.getBackgroundStyle().getValue(), zoomedBounds, figure.getBackgroundColor(), figure.getGradientColor());
-            SWTGraphics swtGraphics = GraphicsUtilities.getSWTGraphics(graphics);
+            Graphics swtGraphics = GraphicsUtilities.getSWTGraphics(graphics);
             if (swtGraphics != null) {
-                swtGraphics.setBackgroundPattern(pattern);
+               swtGraphics.setBackgroundPattern(pattern);
             }
         }
 

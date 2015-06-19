@@ -109,10 +109,10 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      * @generated
      */
     protected void addDiagramElementMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElement_diagramElementMapping_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_diagramElementMapping_feature", "_UI_DDiagramElement_type"),
-                DiagramPackage.Literals.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING, false, false, false, null, null, null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DDiagramElement_diagramElementMapping_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_diagramElementMapping_feature", "_UI_DDiagramElement_type"),
+                        DiagramPackage.Literals.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
     /**

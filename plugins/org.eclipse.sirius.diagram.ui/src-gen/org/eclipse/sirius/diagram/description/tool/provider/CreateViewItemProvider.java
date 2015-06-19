@@ -70,9 +70,9 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      * @generated
      */
     protected void addMappingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateView_mapping_feature"), getString("_UI_CreateView_mapping_description"), ToolPackage.Literals.CREATE_VIEW__MAPPING, true, false, true, null,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CreateView_mapping_feature"),
+                        getString("_UI_CreateView_mapping_description"), ToolPackage.Literals.CREATE_VIEW__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -154,14 +154,14 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createCreateView()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createCreateEdgeView()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                ToolFactory.eINSTANCE.createNavigation()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**

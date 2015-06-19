@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getOwnedVariables
@@ -34,7 +35,6 @@ import org.eclipse.emf.common.util.EList;
  * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression
  * <em>Semantic Condition Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getVariableFilter()
  * @model
@@ -51,7 +51,7 @@ public interface VariableFilter extends Filter {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Variables</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getVariableFilter_OwnedVariables()
@@ -83,7 +83,7 @@ public interface VariableFilter extends Filter {
      * {@link org.eclipse.sirius.diagram.description.filter.VariableFilter#getSemanticConditionExpression
      * <em>Semantic Condition Expression</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Semantic Condition Expression</em>'
      *            attribute.

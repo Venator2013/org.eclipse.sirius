@@ -31,7 +31,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>No Decoration</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #NO_DECORATION
      * @generated
      * @ordered
@@ -41,7 +41,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Output Arrow</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_ARROW
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Input Arrow</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW
      * @generated
      * @ordered
@@ -101,7 +101,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Diamond</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DIAMOND
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Fill Diamond</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #FILL_DIAMOND
      * @generated
      * @ordered
@@ -141,7 +141,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * The '<em><b>Fill Dot</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FILL_DOT
      * @generated
      * @ordered
@@ -166,10 +166,10 @@ public enum EdgeArrows implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NO_DECORATION_LITERAL
-     * @model name="NoDecoration"
-     *        annotation="Sirius imagePath='icons/full/decorator/noDecoration.gif'"
+     * @model name="NoDecoration" annotation=
+     *        "Sirius imagePath='icons/full/decorator/noDecoration.gif'"
      * @generated
      * @ordered
      */
@@ -182,10 +182,10 @@ public enum EdgeArrows implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #OUTPUT_ARROW_LITERAL
-     * @model name="OutputArrow"
-     *        annotation="Sirius imagePath='icons/full/decorator/outputArrow.gif'"
+     * @model name="OutputArrow" annotation=
+     *        "Sirius imagePath='icons/full/decorator/outputArrow.gif'"
      * @generated
      * @ordered
      */
@@ -198,10 +198,10 @@ public enum EdgeArrows implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #INPUT_ARROW_LITERAL
-     * @model name="InputArrow"
-     *        annotation="Sirius imagePath='icons/full/decorator/inputArrow.gif'"
+     * @model name="InputArrow" annotation=
+     *        "Sirius imagePath='icons/full/decorator/inputArrow.gif'"
      * @generated
      * @ordered
      */
@@ -282,10 +282,10 @@ public enum EdgeArrows implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DIAMOND_LITERAL
-     * @model name="Diamond"
-     *        annotation="Sirius imagePath='icons/full/decorator/diamond.gif'"
+     * @model name="Diamond" annotation=
+     *        "Sirius imagePath='icons/full/decorator/diamond.gif'"
      * @generated
      * @ordered
      */
@@ -298,10 +298,10 @@ public enum EdgeArrows implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FILL_DIAMOND_LITERAL
-     * @model name="FillDiamond"
-     *        annotation="Sirius imagePath='icons/full/decorator/fillDiamond.gif'"
+     * @model name="FillDiamond" annotation=
+     *        "Sirius imagePath='icons/full/decorator/fillDiamond.gif'"
      * @generated
      * @ordered
      */
@@ -348,10 +348,10 @@ public enum EdgeArrows implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FILL_DOT_LITERAL
-     * @model name="FillDot"
-     *        annotation="Sirius imagePath='icons/full/decorator/FillDot.gif'"
+     * @model name="FillDot" annotation=
+     *        "Sirius imagePath='icons/full/decorator/FillDot.gif'"
      * @generated
      * @ordered
      */
@@ -381,13 +381,13 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      */
     private static final EdgeArrows[] VALUES_ARRAY = new EdgeArrows[] { NO_DECORATION_LITERAL, OUTPUT_ARROW_LITERAL, INPUT_ARROW_LITERAL, OUTPUT_CLOSED_ARROW_LITERAL, INPUT_CLOSED_ARROW_LITERAL,
-        OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL,
-        FILL_DOT_LITERAL, INPUT_ARROW_WITH_FILL_DOT_LITERAL, };
+            OUTPUT_FILL_CLOSED_ARROW_LITERAL, INPUT_FILL_CLOSED_ARROW_LITERAL, DIAMOND_LITERAL, FILL_DIAMOND_LITERAL, INPUT_ARROW_WITH_DIAMOND_LITERAL, INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL,
+            FILL_DOT_LITERAL, INPUT_ARROW_WITH_FILL_DOT_LITERAL, };
 
     /**
      * A public read-only list of all the '<em><b>Edge Arrows</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<EdgeArrows> VALUES = Collections.unmodifiableList(Arrays.asList(EdgeArrows.VALUES_ARRAY));
@@ -395,7 +395,10 @@ public enum EdgeArrows implements Enumerator {
     /**
      * Returns the '<em><b>Edge Arrows</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param literal
+     *            the literal.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeArrows get(String literal) {
@@ -410,7 +413,10 @@ public enum EdgeArrows implements Enumerator {
     /**
      * Returns the '<em><b>Edge Arrows</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param name
+     *            the name.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeArrows getByName(String name) {
@@ -425,7 +431,10 @@ public enum EdgeArrows implements Enumerator {
     /**
      * Returns the '<em><b>Edge Arrows</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param value
+     *            the integer value.
+     * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EdgeArrows get(int value) {
@@ -462,21 +471,21 @@ public enum EdgeArrows implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -484,7 +493,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private EdgeArrows(int value, String name, String literal) {
@@ -495,7 +504,7 @@ public enum EdgeArrows implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -505,7 +514,7 @@ public enum EdgeArrows implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -515,7 +524,7 @@ public enum EdgeArrows implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -526,7 +535,7 @@ public enum EdgeArrows implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

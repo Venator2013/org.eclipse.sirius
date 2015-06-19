@@ -59,6 +59,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
             addDescriptionPropertyDescriptor(object);
             addBorderSizeComputationExpressionPropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
+            addBorderLineStylePropertyDescriptor(object);
             addHideLabelByDefaultPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -71,9 +72,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Style_description_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"),
-                ViewpointPackage.Literals.STYLE__DESCRIPTION, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Style_description_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"), ViewpointPackage.Literals.STYLE__DESCRIPTION, true, false, true, null, null, null));
     }
 
     /**
@@ -100,6 +100,18 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BorderedStyle_borderColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"),
                 DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Border Line Style feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBorderLineStylePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BorderedStyle_borderLineStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderLineStyle_feature", "_UI_BorderedStyle_type"),
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -143,6 +155,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE:
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
+        case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
         case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;

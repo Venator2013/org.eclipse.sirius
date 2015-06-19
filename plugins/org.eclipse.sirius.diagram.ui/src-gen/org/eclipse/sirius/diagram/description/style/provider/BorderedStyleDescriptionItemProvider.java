@@ -38,8 +38,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * 
  * @generated
  */
-public class BorderedStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class BorderedStyleDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -63,6 +63,7 @@ IItemPropertySource {
 
             addBorderSizeComputationExpressionPropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
+            addBorderLineStylePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -87,10 +88,23 @@ IItemPropertySource {
      * @generated
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BorderedStyleDescription_borderColor_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyleDescription_borderColor_feature", "_UI_BorderedStyleDescription_type"),
+                        StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Border Line Style feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBorderLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyleDescription_borderColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyleDescription_borderColor_feature", "_UI_BorderedStyleDescription_type"),
-                StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_BorderedStyleDescription_borderLineStyle_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyleDescription_borderLineStyle_feature", "_UI_BorderedStyleDescription_type"),
+                StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -131,6 +145,7 @@ IItemPropertySource {
         switch (notification.getFeatureID(BorderedStyleDescription.class)) {
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

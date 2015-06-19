@@ -198,8 +198,8 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VARIABLE, ToolFactory.eINSTANCE.createNodeCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION,
                 org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation()));

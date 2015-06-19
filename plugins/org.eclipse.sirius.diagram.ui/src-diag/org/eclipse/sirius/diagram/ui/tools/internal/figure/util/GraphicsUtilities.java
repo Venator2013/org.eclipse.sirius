@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.figure.util;
 
+import java.lang.management.GarbageCollectorMXBean;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -17,6 +18,8 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graphics.ScaledGraphics;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor;
 
 /**
  * .
@@ -50,26 +53,29 @@ public final class GraphicsUtilities {
      *            the wrapped SWT graphics instance
      * @return the wrapped graphic instance
      */
-    public static SWTGraphics getSWTGraphics(final Graphics graphics) {
+    public static Graphics getSWTGraphics(final Graphics graphics) {
 
-        SWTGraphics swtGrpahics = null;
-
+        Graphics swtGrpahics = null;
+        
         Graphics internalGraphics = null;
         if (graphics instanceof ScaledGraphics) {
             internalGraphics = GraphicsUtilities.getInternalGraphics((ScaledGraphics) graphics);
         }
 
         if (internalGraphics instanceof SWTGraphics) {
-            swtGrpahics = (SWTGraphics) internalGraphics;
+            swtGrpahics = internalGraphics;
             /* we need to recheck in case of zoom see trac #1065 */
         } else if (internalGraphics instanceof ScaledGraphics) {
             swtGrpahics = GraphicsUtilities.getSWTGraphics(internalGraphics);
         } else if (internalGraphics instanceof org.eclipse.draw2d.ScaledGraphics) {
             swtGrpahics = GraphicsUtilities.getSWTGraphics(internalGraphics);
+        } else if( internalGraphics instanceof GraphicsSVG) {
+            swtGrpahics = internalGraphics;
         }
         return swtGrpahics;
     }
-
+    
+   
     private static Graphics getInternalGraphics(final ScaledGraphics graphics) {
         try {
             method = ScaledGraphics.class.getDeclaredMethod("getGraphics"); //$NON-NLS-1$
@@ -84,10 +90,11 @@ public final class GraphicsUtilities {
         } catch (final InvocationTargetException e) {
             // // Cannot happen here
         } catch (final NoSuchMethodException e) {
-            // Cannot happen here
+            // // Cannot happen here
         }
         return null;
     }
+	
 
     /**
      * Get zoom fill rectangle.
