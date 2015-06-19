@@ -187,14 +187,14 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__TARGET_VIEW, ToolFactory.eINSTANCE.createTargetEdgeViewCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__ELEMENT,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__ELEMENT, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__INITIAL_OPERATION, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
+        newChildDescriptors.add(
+                createChildParameter(ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable()));
     }
 
     /**

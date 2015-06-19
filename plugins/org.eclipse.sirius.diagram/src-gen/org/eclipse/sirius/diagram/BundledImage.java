@@ -22,11 +22,13 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}
+ * </li>
+ * <li>{@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}
+ * </li>
+ * </ul>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage()
  * @model
@@ -53,7 +55,7 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -83,7 +85,7 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()

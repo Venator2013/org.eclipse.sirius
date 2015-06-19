@@ -148,8 +148,8 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Layer_reusedTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedTools_feature", "_UI_Layer_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_reusedTools_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedTools_feature", "_UI_Layer_type"),
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_TOOLS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
     }
 
@@ -161,8 +161,8 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     protected void addIconPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_icon_feature"),
-                getString("_UI_Layer_icon_description"), org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ICON, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_Layer_icon_description"), org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -321,14 +321,14 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, edgeDomain));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPING_IMPORTS,
-                DescriptionFactory.eINSTANCE.createEdgeMappingImport()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPING_IMPORTS, DescriptionFactory.eINSTANCE.createEdgeMappingImport()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createContainerMapping()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS,
-                DescriptionFactory.eINSTANCE.createContainerMappingImport()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__TOOL_SECTIONS, ToolFactory.eINSTANCE.createToolSection()));
 

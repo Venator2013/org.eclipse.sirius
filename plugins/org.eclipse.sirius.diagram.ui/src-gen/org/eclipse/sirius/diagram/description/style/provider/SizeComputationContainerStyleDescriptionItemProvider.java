@@ -38,8 +38,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
  * 
  * @generated
  */
-public class SizeComputationContainerStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-IItemLabelProvider, IItemPropertySource {
+public class SizeComputationContainerStyleDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -75,13 +75,12 @@ IItemLabelProvider, IItemPropertySource {
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                        getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
+                                "_UI_SizeComputationContainerStyleDescription_type"),
+                        StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -91,14 +90,12 @@ IItemLabelProvider, IItemPropertySource {
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                        "_UI_SizeComputationContainerStyleDescription_type"),
+                StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**

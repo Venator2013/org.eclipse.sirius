@@ -90,14 +90,14 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.spec.WorkspaceImag
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static DiagramFactory init() {
@@ -115,7 +115,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DiagramFactoryImpl() {
@@ -124,7 +124,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -211,7 +211,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -246,7 +246,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -325,7 +325,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -336,7 +336,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -347,7 +347,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -358,7 +358,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -435,7 +435,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -556,7 +556,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -578,7 +578,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -589,7 +589,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -600,7 +600,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -611,7 +611,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -622,7 +622,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -633,7 +633,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -644,7 +644,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -655,7 +655,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -666,7 +666,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -677,7 +677,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -688,7 +688,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerLayout createContainerLayoutFromString(EDataType eDataType, String initialValue) {
@@ -701,7 +701,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertContainerLayoutToString(EDataType eDataType, Object instanceValue) {
@@ -710,7 +710,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LabelPosition createLabelPositionFromString(EDataType eDataType, String initialValue) {
@@ -723,7 +723,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertLabelPositionToString(EDataType eDataType, Object instanceValue) {
@@ -732,7 +732,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContainerShape createContainerShapeFromString(EDataType eDataType, String initialValue) {
@@ -745,7 +745,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertContainerShapeToString(EDataType eDataType, Object instanceValue) {
@@ -754,7 +754,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BackgroundStyle createBackgroundStyleFromString(EDataType eDataType, String initialValue) {
@@ -767,7 +767,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertBackgroundStyleToString(EDataType eDataType, Object instanceValue) {
@@ -776,7 +776,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public BundledImageShape createBundledImageShapeFromString(EDataType eDataType, String initialValue) {
@@ -789,7 +789,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertBundledImageShapeToString(EDataType eDataType, Object instanceValue) {
@@ -798,7 +798,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public LineStyle createLineStyleFromString(EDataType eDataType, String initialValue) {
@@ -811,7 +811,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertLineStyleToString(EDataType eDataType, Object instanceValue) {
@@ -820,7 +820,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeArrows createEdgeArrowsFromString(EDataType eDataType, String initialValue) {
@@ -833,7 +833,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertEdgeArrowsToString(EDataType eDataType, Object instanceValue) {
@@ -842,7 +842,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EdgeRouting createEdgeRoutingFromString(EDataType eDataType, String initialValue) {
@@ -855,7 +855,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertEdgeRoutingToString(EDataType eDataType, Object instanceValue) {
@@ -864,7 +864,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AlignmentKind createAlignmentKindFromString(EDataType eDataType, String initialValue) {
@@ -877,7 +877,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertAlignmentKindToString(EDataType eDataType, Object instanceValue) {
@@ -886,7 +886,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ResizeKind createResizeKindFromString(EDataType eDataType, String initialValue) {
@@ -899,7 +899,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertResizeKindToString(EDataType eDataType, Object instanceValue) {
@@ -908,7 +908,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ArrangeConstraint createArrangeConstraintFromString(EDataType eDataType, String initialValue) {
@@ -921,7 +921,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public String convertArrangeConstraintToString(EDataType eDataType, Object instanceValue) {
@@ -930,7 +930,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -940,7 +940,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

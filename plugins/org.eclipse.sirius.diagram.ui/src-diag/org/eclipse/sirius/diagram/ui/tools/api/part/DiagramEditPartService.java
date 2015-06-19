@@ -159,6 +159,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         List<?> editParts = diagramEP.getPrimaryEditParts();
         org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
         // Define max size in properties file.
+		
         int maxSize = Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax"));
         if (imageRect.height * imageRect.width > maxSize && format != ImageFileFormat.SVG) {
             String representationName = ((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getName();
@@ -187,6 +188,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         // CHECKSTYLE:OFF (duplicate code from GMF)
         try {
             FileOutputStream stream = new FileOutputStream(destination.toOSString());
+			imageFormat.setQuality((float)1.0);
             saveToOutputStream(stream, image, imageFormat, monitor);
             stream.close();
         } catch (Exception e) {

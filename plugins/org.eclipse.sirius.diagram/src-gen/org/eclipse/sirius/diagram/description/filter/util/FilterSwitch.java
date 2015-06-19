@@ -33,14 +33,14 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage
  * @generated
  */
 public class FilterSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static FilterPackage modelPackage;
@@ -48,7 +48,7 @@ public class FilterSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FilterSwitch() {
@@ -61,7 +61,7 @@ public class FilterSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -74,7 +74,7 @@ public class FilterSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -92,7 +92,7 @@ public class FilterSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -181,7 +181,7 @@ public class FilterSwitch<T> {
      * <em>Description</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -198,7 +198,7 @@ public class FilterSwitch<T> {
      * <em>Filter</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -215,7 +215,7 @@ public class FilterSwitch<T> {
      * <em>Mapping Filter</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -232,7 +232,7 @@ public class FilterSwitch<T> {
      * <em>Composite Filter Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -249,7 +249,7 @@ public class FilterSwitch<T> {
      * <em>Variable Filter</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -266,7 +266,7 @@ public class FilterSwitch<T> {
      * <em>Variable</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -283,7 +283,7 @@ public class FilterSwitch<T> {
      * <em>Documented Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -300,7 +300,7 @@ public class FilterSwitch<T> {
      * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -317,7 +317,7 @@ public class FilterSwitch<T> {
      * <em>Selection Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -334,7 +334,7 @@ public class FilterSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

@@ -19,7 +19,14 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.concerndescription;version="2.0.4",
+Export-Package: org,
+ org.eclipse,
+ org.eclipse.sirius,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.diagram.editor,
+ org.eclipse.sirius.diagram.editor.properties,
+ org.eclipse.sirius.diagram.editor.properties.filters,
+ org.eclipse.sirius.diagram.editor.properties.filters.concern.concerndescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.filters.description.abstractnodemapping;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.filters.description.additionallayer;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.filters.description.compositelayout;version="2.0.4",
@@ -79,6 +86,7 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.properties.filters.tool.toolsection;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.section.description.containermapping;version="2.1.0",
  org.eclipse.sirius.diagram.editor.properties.section.description.diagramelementmapping;version="2.0.4",
+ org.eclipse.sirius.diagram.editor.properties.sections,
  org.eclipse.sirius.diagram.editor.properties.sections.concern.concerndescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.description.abstractnodemapping;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.description.additionallayer;version="2.0.4",
@@ -137,9 +145,9 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.properties.sections.tool.requestdescription;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.tool.toolgroupextension;version="2.0.4",
  org.eclipse.sirius.diagram.editor.properties.sections.tool.toolsection;version="3.0.0",
- org.eclipse.sirius.diagram.editor.tools.internal.editor;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.diagram.editor.tools.internal.menu.child;x-internal:=true;version="2.1.0",
- org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring;x-internal:=true;version="2.1.0",
- org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;x-internal:=true;version="2.0.4"
+ org.eclipse.sirius.diagram.editor.tools.internal.editor;version="2.0.4";x-internal:=true,
+ org.eclipse.sirius.diagram.editor.tools.internal.menu.child;version="2.1.0";x-internal:=true,
+ org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring;version="2.1.0";x-internal:=true,
+ org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;version="2.0.4";x-internal:=true
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.swt;version="2.0.0"

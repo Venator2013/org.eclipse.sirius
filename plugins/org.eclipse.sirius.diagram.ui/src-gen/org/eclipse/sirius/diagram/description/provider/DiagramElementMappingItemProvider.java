@@ -113,11 +113,10 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
      * @generated
      */
     protected void addLabelDirectEditPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramElementMapping_labelDirectEdit_feature"), getString("_UI_DiagramElementMapping_labelDirectEdit_description"),
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, true, false, true, null,
-                getString("_UI_BehaviorPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_ELEMENT_MAPPING__LABEL_DIRECT_EDIT, true, false, true, null, getString("_UI_BehaviorPropertyCategory"),
+                null));
     }
 
     /**

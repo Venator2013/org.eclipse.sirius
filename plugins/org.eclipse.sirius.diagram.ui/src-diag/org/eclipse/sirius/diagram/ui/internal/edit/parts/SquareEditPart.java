@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.StackLayout;
@@ -59,6 +60,7 @@ public class SquareEditPart extends AbstractNotSelectableShapeNodeEditPart imple
             if (square.getBorderSize() != null) {
                 borderSize = square.getBorderSize().intValue();
             }
+            
             this.getPrimaryShape().setLineWidth(borderSize);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), square);
         }

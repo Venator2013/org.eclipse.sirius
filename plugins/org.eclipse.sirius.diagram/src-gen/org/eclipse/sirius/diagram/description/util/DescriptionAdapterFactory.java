@@ -54,14 +54,14 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage
  * @generated
  */
 public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static DescriptionPackage modelPackage;
@@ -69,7 +69,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DescriptionAdapterFactory() {
@@ -83,7 +83,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This implementation returns <code>true</code> if
      * the object is either the model's package or is an instance object of the
      * model. <!-- end-user-doc -->
-     * 
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -279,7 +279,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -297,7 +297,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.DiagramDescription
      * @generated
@@ -313,7 +313,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.DiagramImportDescription
      * @generated
@@ -329,7 +329,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.DiagramExtensionDescription
      * @generated
@@ -345,7 +345,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.DiagramElementMapping
      * @generated
@@ -361,7 +361,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.AbstractNodeMapping
      * @generated
@@ -377,7 +377,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.NodeMapping
      * @generated
@@ -393,7 +393,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.ContainerMapping
      * @generated
@@ -409,7 +409,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.NodeMappingImport
      * @generated
@@ -425,7 +425,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.ContainerMappingImport
      * @generated
@@ -441,7 +441,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.EdgeMapping
      * @generated
@@ -457,7 +457,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.IEdgeMapping
      * @generated
@@ -473,7 +473,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.EdgeMappingImport
      * @generated
@@ -489,9 +489,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription
+     * @see org.eclipse.sirius.diagram.description.
+     *      ConditionalNodeStyleDescription
      * @generated
      */
     public Adapter createConditionalNodeStyleDescriptionAdapter() {
@@ -505,9 +506,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription
+     * @see org.eclipse.sirius.diagram.description.
+     *      ConditionalEdgeStyleDescription
      * @generated
      */
     public Adapter createConditionalEdgeStyleDescriptionAdapter() {
@@ -521,9 +523,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.
+     *      ConditionalContainerStyleDescription
      * @generated
      */
     public Adapter createConditionalContainerStyleDescriptionAdapter() {
@@ -536,7 +539,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.Layout
      * @generated
@@ -552,7 +555,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.OrderedTreeLayout
      * @generated
@@ -568,7 +571,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.CompositeLayout
      * @generated
@@ -584,7 +587,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.MappingBasedDecoration
      * @generated
@@ -599,7 +602,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.Layer
      * @generated
@@ -615,7 +618,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.AdditionalLayer
      * @generated
@@ -631,7 +634,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.description.DragAndDropTargetDescription
      * @generated
@@ -647,7 +650,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
      * @generated
@@ -663,7 +666,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement
      * @generated
@@ -679,7 +682,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.IdentifiedElement
      * @generated
@@ -695,7 +698,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.RepresentationDescription
      * @generated
@@ -711,7 +714,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.PasteTargetDescription
      * @generated
@@ -727,9 +730,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.RepresentationImportDescription
+     * @see org.eclipse.sirius.viewpoint.description.
+     *      RepresentationImportDescription
      * @generated
      */
     public Adapter createRepresentationImportDescriptionAdapter() {
@@ -743,9 +747,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription
+     * @see org.eclipse.sirius.viewpoint.description.
+     *      RepresentationExtensionDescription
      * @generated
      */
     public Adapter createRepresentationExtensionDescriptionAdapter() {
@@ -759,9 +764,10 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.RepresentationElementMapping
+     * @see org.eclipse.sirius.viewpoint.description.
+     *      RepresentationElementMapping
      * @generated
      */
     public Adapter createRepresentationElementMappingAdapter() {
@@ -775,7 +781,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport
      * @generated
@@ -791,7 +797,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription
      * @generated
@@ -807,7 +813,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.DecorationDescription
      * @generated
@@ -819,7 +825,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This
      * default implementation returns null. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @generated
      */

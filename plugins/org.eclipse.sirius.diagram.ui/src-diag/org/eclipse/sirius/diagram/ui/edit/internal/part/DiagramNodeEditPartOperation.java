@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.edit.internal.part;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
@@ -62,7 +63,7 @@ public final class DiagramNodeEditPartOperation {
      * 
      * @param self
      *            the node edit part.
-     */
+     */ 
     public static void refreshVisuals(final IDiagramNodeEditPart self) {
         final EObject eObj = self.resolveSemanticElement();
         if (eObj instanceof DNode) {
@@ -133,6 +134,7 @@ public final class DiagramNodeEditPartOperation {
                         styleConfiguration.adaptNodeLabel(viewNode, self.getNodeLabel());
                     }
                 }
+         
 
                 if (viewNode.getStyle() instanceof BorderedStyle) {
                     BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
@@ -173,6 +175,10 @@ public final class DiagramNodeEditPartOperation {
             if (!(styledFigure instanceof NoteFigure)) {
                 styledFigure.setBorder(null);
             }
+        }
+        
+        if (borderedStyle.getBorderLineStyle() != null) {
+            lineBorder.setStyle(LineStyleHelper.getLineStyle(borderedStyle.getBorderLineStyle()));
         }
     }
 

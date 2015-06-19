@@ -43,8 +43,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * 
  * @generated
  */
-public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
+        implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -81,12 +81,11 @@ IItemPropertySource {
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_RepresentationExtensionDescription_name_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_RepresentationExtensionDescription_name_feature", "_UI_RepresentationExtensionDescription_type"),
-                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                null));
     }
 
     /**
@@ -223,8 +222,8 @@ IItemPropertySource {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS,
-                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET,
                 ValidationFactory.eINSTANCE.createValidationSet()));
@@ -244,14 +243,14 @@ IItemPropertySource {
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS,
-                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+        newChildDescriptors.add(
+                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET,
                 ValidationFactory.eINSTANCE.createValidationSet()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS,
-                ConcernFactory.eINSTANCE.createConcernSet()));
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
     }
 
     /**

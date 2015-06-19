@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * <em><b>Filter Variable Value</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.FilterVariableValueImpl#getVariableDefinition
@@ -34,7 +35,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * {@link org.eclipse.sirius.diagram.impl.FilterVariableValueImpl#getModelElement
  * <em>Model Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -43,7 +43,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
      * The cached value of the '{@link #getVariableDefinition()
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getVariableDefinition()
      * @generated
      * @ordered
@@ -51,10 +51,9 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
     protected FilterVariable variableDefinition;
 
     /**
-     * The cached value of the '{@link #getModelElement()
-     * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The cached value of the '{@link #getModelElement() <em>Model Element</em>
+     * }' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getModelElement()
      * @generated
      * @ordered
@@ -63,7 +62,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterVariableValueImpl() {
@@ -72,7 +71,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -82,7 +81,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,7 +100,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FilterVariable basicGetVariableDefinition() {
@@ -110,7 +109,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -124,7 +123,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -143,7 +142,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetModelElement() {
@@ -152,7 +151,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -166,7 +165,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -188,7 +187,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -206,7 +205,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -224,7 +223,7 @@ public class FilterVariableValueImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

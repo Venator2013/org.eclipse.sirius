@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StyleFactory
  * @model kind="package"
  * @generated
@@ -34,21 +34,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface StylePackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "style";
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/style/1.1.0";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "style";
@@ -56,7 +56,7 @@ public interface StylePackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     StylePackage eINSTANCE = org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl.init();
@@ -66,8 +66,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
      * <em>Bordered Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      BorderedStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBorderedStyleDescription()
      * @generated
      */
@@ -93,22 +94,32 @@ public interface StylePackage extends EPackage {
     int BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '
-     * <em>Bordered Style Description</em>' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The number of structural features of the '
+     * <em>Bordered Style Description</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BORDERED_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl
      * <em>Node Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      NodeStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNodeStyleDescription()
      * @generated
      */
@@ -134,13 +145,22 @@ public interface StylePackage extends EPackage {
     int NODE_STYLE_DESCRIPTION__BORDER_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_SIZE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int NODE_STYLE_DESCRIPTION__LABEL_SIZE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
@@ -149,7 +169,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_FORMAT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int NODE_STYLE_DESCRIPTION__LABEL_FORMAT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
@@ -158,7 +178,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__SHOW_ICON = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int NODE_STYLE_DESCRIPTION__SHOW_ICON = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
@@ -167,7 +187,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
@@ -176,7 +196,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int NODE_STYLE_DESCRIPTION__LABEL_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -185,7 +205,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 7;
+    int NODE_STYLE_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -195,7 +215,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 8;
+    int NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -205,25 +225,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
+    int NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
@@ -232,7 +252,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -241,24 +261,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__RESIZE_KIND = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 13;
+    int NODE_STYLE_DESCRIPTION__RESIZE_KIND = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The number of structural features of the '<em>Node Style Description</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 14;
+    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl
      * <em>Custom Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      CustomStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCustomStyleDescription()
      * @generated
      */
@@ -282,6 +303,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -360,7 +390,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -369,7 +399,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -406,7 +436,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Custom Style Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -417,8 +447,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl
      * <em>Square Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      SquareDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSquareDescription()
      * @generated
      */
@@ -442,6 +473,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SQUARE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SQUARE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -520,7 +560,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -529,7 +569,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -583,7 +623,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Square Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -594,8 +634,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl
      * <em>Lozenge Node Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      LozengeNodeDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getLozengeNodeDescription()
      * @generated
      */
@@ -619,6 +660,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int LOZENGE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LOZENGE_NODE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -687,7 +737,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -696,7 +746,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -705,7 +755,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -732,7 +782,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -741,7 +791,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -760,7 +810,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Lozenge Node Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -771,8 +821,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl
      * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      EllipseNodeDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
      * @generated
      */
@@ -796,6 +847,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int ELLIPSE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE_NODE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -863,7 +923,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -872,7 +932,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -881,7 +941,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -918,7 +978,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '
      * <em><b>Horizontal Diameter Computation Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -938,7 +998,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Ellipse Node Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -949,8 +1009,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl
      * <em>Bundled Image Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      BundledImageDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBundledImageDescription()
      * @generated
      */
@@ -974,6 +1035,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BUNDLED_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1041,7 +1111,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1050,7 +1120,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1059,7 +1129,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1105,7 +1175,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Bundled Image Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1116,8 +1186,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl
      * <em>Note Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      NoteDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNoteDescription()
      * @generated
      */
@@ -1141,6 +1212,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int NOTE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int NOTE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1208,7 +1288,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1217,7 +1297,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1226,7 +1306,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1262,7 +1342,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Note Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1273,7 +1353,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl
      * <em>Dot Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getDotDescription()
      * @generated
@@ -1298,6 +1378,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int DOT_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DOT_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1376,7 +1465,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1385,7 +1474,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1431,7 +1520,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Dot Description</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1442,8 +1531,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl
      * <em>Gauge Composite Style Description</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      GaugeCompositeStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeCompositeStyleDescription()
      * @generated
      */
@@ -1467,6 +1557,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1545,7 +1644,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1554,7 +1653,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1590,7 +1689,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sections</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1600,7 +1699,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Gauge Composite Style Description</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1611,8 +1710,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
      * <em>Gauge Section Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      GaugeSectionDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeSectionDescription()
      * @generated
      */
@@ -1621,7 +1721,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Min Value Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1630,7 +1730,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Max Value Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1676,7 +1776,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Gauge Section Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1688,7 +1788,8 @@ public interface StylePackage extends EPackage {
      * <em>Size Computation Container Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      SizeComputationContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
      * @generated
      */
@@ -1697,7 +1798,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1706,7 +1807,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1727,8 +1828,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
      * <em>Rounded Corner Style Description</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      RoundedCornerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
      * @generated
      */
@@ -1756,7 +1858,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Rounded Corner Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1767,8 +1869,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
      * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      ContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getContainerStyleDescription()
      * @generated
      */
@@ -1812,13 +1915,22 @@ public interface StylePackage extends EPackage {
     int CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
@@ -1827,7 +1939,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
@@ -1836,7 +1948,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
@@ -1845,7 +1957,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
@@ -1854,7 +1966,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1863,7 +1975,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
+    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -1873,25 +1985,25 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
+    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
@@ -1900,25 +2012,26 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The number of structural features of the '
      * <em>Container Style Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
      * <em>Flat Container Style Description</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      FlatContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
      * @generated
      */
@@ -1960,6 +2073,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2038,7 +2160,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2056,7 +2178,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2065,7 +2187,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2101,7 +2223,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Border Style</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2111,7 +2233,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Flat Container Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2122,8 +2244,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
      * <em>Shape Container Style Description</em>}' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      ShapeContainerStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
      * @generated
      */
@@ -2165,6 +2288,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2243,7 +2375,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2261,7 +2393,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2270,7 +2402,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2298,7 +2430,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Shape Container Style Description</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2309,8 +2441,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
      * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      WorkspaceImageDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
      * @generated
      */
@@ -2334,6 +2467,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2412,7 +2554,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2421,7 +2563,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2485,7 +2627,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Workspace Image Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2496,8 +2638,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
      * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      EdgeStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
      * @generated
      */
@@ -2542,7 +2685,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2569,7 +2712,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Begin Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2578,7 +2721,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2587,7 +2730,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>End Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2605,7 +2748,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Centered Source Mappings</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2614,7 +2757,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Centered Target Mappings</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2623,7 +2766,7 @@ public interface StylePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Edge Style Description</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2634,8 +2777,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
      * <em>Begin Label Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      BeginLabelStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBeginLabelStyleDescription()
      * @generated
      */
@@ -2699,7 +2843,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Begin Label Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2710,8 +2854,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
      * <em>Center Label Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      CenterLabelStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCenterLabelStyleDescription()
      * @generated
      */
@@ -2775,7 +2920,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Center Label Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2786,8 +2931,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
      * <em>End Label Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      EndLabelStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEndLabelStyleDescription()
      * @generated
      */
@@ -2851,7 +2997,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>End Label Style Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2862,8 +3008,9 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
      * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
+     *
+     * @see org.eclipse.sirius.diagram.description.style.impl.
+     *      BracketEdgeStyleDescriptionImpl
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
      * @generated
      */
@@ -2908,7 +3055,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2935,7 +3082,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Begin Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2944,7 +3091,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2953,7 +3100,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>End Label Style Description</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2971,7 +3118,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Centered Source Mappings</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2980,7 +3127,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Centered Target Mappings</b></em>'
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2990,7 +3137,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Bracket Edge Style Description</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3002,7 +3149,8 @@ public interface StylePackage extends EPackage {
      * <em>Hide Label Capability Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      HideLabelCapabilityStyleDescription
      * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getHideLabelCapabilityStyleDescription()
      * @generated
      */
@@ -3011,7 +3159,7 @@ public interface StylePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3032,9 +3180,10 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription
      * <em>Bordered Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bordered Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.BorderedStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      BorderedStyleDescription
      * @generated
      */
     EClass getBorderedStyleDescription();
@@ -3044,7 +3193,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression
      * <em>Border Size Computation Expression</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Border Size Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderSizeComputationExpression()
@@ -3057,7 +3206,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor
      * <em>Border Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Border Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor()
      * @see #getBorderedStyleDescription()
@@ -3066,11 +3215,24 @@ public interface StylePackage extends EPackage {
     EReference getBorderedStyleDescription_BorderColor();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
+     * <em>Border Line Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Border Line Style</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle()
+     * @see #getBorderedStyleDescription()
+     * @generated
+     */
+    EAttribute getBorderedStyleDescription_BorderLineStyle();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription
      * <em>Node Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Node Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription
      * @generated
@@ -3082,7 +3244,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression
      * <em>Size Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Size Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getSizeComputationExpression()
@@ -3095,7 +3257,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition
      * <em>Label Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Position</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getLabelPosition()
      * @see #getNodeStyleDescription()
@@ -3107,7 +3269,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind
      * <em>Resize Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Resize Kind</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NodeStyleDescription#getResizeKind()
      * @see #getNodeStyleDescription()
@@ -3120,7 +3282,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription
      * <em>Custom Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Custom Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.CustomStyleDescription
      * @generated
@@ -3131,7 +3293,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.diagram.description.style.CustomStyleDescription#getId()
      * @see #getCustomStyleDescription()
@@ -3155,7 +3317,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SquareDescription#getWidth()
      * @see #getSquareDescription()
@@ -3167,7 +3329,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight
      * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SquareDescription#getHeight()
      * @see #getSquareDescription()
@@ -3179,7 +3341,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.SquareDescription#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SquareDescription#getColor()
      * @see #getSquareDescription()
@@ -3192,7 +3354,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription
      * <em>Lozenge Node Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Lozenge Node Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.LozengeNodeDescription
      * @generated
@@ -3204,7 +3366,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Width Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getWidthComputationExpression()
@@ -3218,7 +3380,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Height Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getHeightComputationExpression()
@@ -3231,7 +3393,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.LozengeNodeDescription#getColor()
      * @see #getLozengeNodeDescription()
@@ -3244,7 +3406,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription
      * <em>Ellipse Node Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Ellipse Node Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EllipseNodeDescription
      * @generated
@@ -3255,7 +3417,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getColor()
      * @see #getEllipseNodeDescription()
@@ -3282,7 +3444,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
      * <em>Vertical Diameter Computation Expression</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Vertical Diameter Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression()
@@ -3296,7 +3458,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription
      * <em>Bundled Image Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bundled Image Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.BundledImageDescription
      * @generated
@@ -3307,7 +3469,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
      * <em>Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Shape</em>'.
      * @see org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape()
      * @see #getBundledImageDescription()
@@ -3319,7 +3481,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor()
      * @see #getBundledImageDescription()
@@ -3343,7 +3505,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.NoteDescription#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.NoteDescription#getColor()
      * @see #getNoteDescription()
@@ -3355,7 +3517,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.DotDescription
      * <em>Dot Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Dot Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.DotDescription
      * @generated
@@ -3380,7 +3542,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.DotDescription#getStrokeSizeComputationExpression
      * <em>Stroke Size Computation Expression</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Stroke Size Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.DotDescription#getStrokeSizeComputationExpression()
@@ -3394,10 +3556,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription
      * <em>Gauge Composite Style Description</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Gauge Composite Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      GaugeCompositeStyleDescription
      * @generated
      */
     EClass getGaugeCompositeStyleDescription();
@@ -3406,7 +3569,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment
      * <em>Alignment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Alignment</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getAlignment()
      * @see #getGaugeCompositeStyleDescription()
@@ -3418,7 +3581,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getSections
      * <em>Sections</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Sections</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeCompositeStyleDescription#getSections()
@@ -3432,7 +3595,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
      * <em>Gauge Section Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Gauge Section Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
      * @generated
@@ -3444,7 +3607,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
      * <em>Min Value Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Min Value Expression</em>
      *         '.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression()
@@ -3458,7 +3621,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
      * <em>Max Value Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Max Value Expression</em>
      *         '.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression()
@@ -3510,7 +3673,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel()
      * @see #getGaugeSectionDescription()
@@ -3526,7 +3689,8 @@ public interface StylePackage extends EPackage {
      *
      * @return the meta object for class '
      *         <em>Size Computation Container Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      SizeComputationContainerStyleDescription
      * @generated
      */
     EClass getSizeComputationContainerStyleDescription();
@@ -3536,7 +3700,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Width Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
@@ -3550,7 +3714,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Height Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
@@ -3564,10 +3728,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
      * <em>Rounded Corner Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Rounded Corner Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      RoundedCornerStyleDescription
      * @generated
      */
     EClass getRoundedCornerStyleDescription();
@@ -3576,7 +3741,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
      * <em>Arc Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Arc Width</em>'.
      * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth()
      * @see #getRoundedCornerStyleDescription()
@@ -3588,7 +3753,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
      * <em>Arc Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Arc Height</em>'.
      * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight()
      * @see #getRoundedCornerStyleDescription()
@@ -3601,9 +3766,10 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription
      * <em>Container Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Container Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.ContainerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      ContainerStyleDescription
      * @generated
      */
     EClass getContainerStyleDescription();
@@ -3612,7 +3778,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner
      * <em>Rounded Corner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Rounded Corner</em>'.
      * @see org.eclipse.sirius.diagram.description.style.ContainerStyleDescription#isRoundedCorner()
      * @see #getContainerStyleDescription()
@@ -3625,10 +3791,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription
      * <em>Flat Container Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Flat Container Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      FlatContainerStyleDescription
      * @generated
      */
     EClass getFlatContainerStyleDescription();
@@ -3690,10 +3857,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription
      * <em>Shape Container Style Description</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Shape Container Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      ShapeContainerStyleDescription
      * @generated
      */
     EClass getShapeContainerStyleDescription();
@@ -3702,7 +3870,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape
      * <em>Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Shape</em>'.
      * @see org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription#getShape()
      * @see #getShapeContainerStyleDescription()
@@ -3728,9 +3896,10 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription
      * <em>Workspace Image Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Workspace Image Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      WorkspaceImageDescription
      * @generated
      */
     EClass getWorkspaceImageDescription();
@@ -3739,7 +3908,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath
      * <em>Workspace Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Workspace Path</em>'.
      * @see org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription#getWorkspacePath()
      * @see #getWorkspaceImageDescription()
@@ -3752,7 +3921,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription
      * <em>Edge Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription
      * @generated
@@ -3763,7 +3932,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getStrokeColor
      * <em>Stroke Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Stroke Color</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getStrokeColor()
      * @see #getEdgeStyleDescription()
@@ -3775,7 +3944,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getLineStyle
      * <em>Line Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Line Style</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getLineStyle()
      * @see #getEdgeStyleDescription()
@@ -3787,7 +3956,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getSourceArrow
      * <em>Source Arrow</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Source Arrow</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getSourceArrow()
      * @see #getEdgeStyleDescription()
@@ -3799,7 +3968,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getTargetArrow
      * <em>Target Arrow</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target Arrow</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getTargetArrow()
      * @see #getEdgeStyleDescription()
@@ -3812,7 +3981,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getSizeComputationExpression
      * <em>Size Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '
      *         <em>Size Computation Expression</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getSizeComputationExpression()
@@ -3825,7 +3994,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getRoutingStyle
      * <em>Routing Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Routing Style</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getRoutingStyle()
      * @see #getEdgeStyleDescription()
@@ -3837,7 +4006,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getFoldingStyle
      * <em>Folding Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Folding Style</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getFoldingStyle()
      * @see #getEdgeStyleDescription()
@@ -3850,7 +4019,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getBeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Begin Label Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getBeginLabelStyleDescription()
@@ -3864,7 +4033,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenterLabelStyleDescription
      * <em>Center Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Center Label Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenterLabelStyleDescription()
@@ -3878,7 +4047,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndLabelStyleDescription
      * <em>End Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>End Label Style Description</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndLabelStyleDescription()
@@ -3891,7 +4060,7 @@ public interface StylePackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering
      * <em>Ends Centering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Ends Centering</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering()
      * @see #getEdgeStyleDescription()
@@ -3904,7 +4073,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredSourceMappings
      * <em>Centered Source Mappings</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Centered Source Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredSourceMappings()
@@ -3918,7 +4087,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredTargetMappings
      * <em>Centered Target Mappings</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Centered Target Mappings</em>'.
      * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredTargetMappings()
@@ -3932,10 +4101,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Begin Label Style Description</em>
      *         '.
-     * @see org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      BeginLabelStyleDescription
      * @generated
      */
     EClass getBeginLabelStyleDescription();
@@ -3945,10 +4115,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription
      * <em>Center Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Center Label Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      CenterLabelStyleDescription
      * @generated
      */
     EClass getCenterLabelStyleDescription();
@@ -3958,9 +4129,10 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription
      * <em>End Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>End Label Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      EndLabelStyleDescription
      * @generated
      */
     EClass getEndLabelStyleDescription();
@@ -3970,10 +4142,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription
      * <em>Bracket Edge Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Bracket Edge Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      BracketEdgeStyleDescription
      * @generated
      */
     EClass getBracketEdgeStyleDescription();
@@ -3983,10 +4156,11 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
      * <em>Hide Label Capability Style Description</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '
      *         <em>Hide Label Capability Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+     * @see org.eclipse.sirius.diagram.description.style.
+     *      HideLabelCapabilityStyleDescription
      * @generated
      */
     EClass getHideLabelCapabilityStyleDescription();
@@ -3996,7 +4170,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault
      * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Hide Label By Default</em>
      *         '.
      * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription#isHideLabelByDefault()
@@ -4024,7 +4198,7 @@ public interface StylePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -4033,8 +4207,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
          * <em>Bordered Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      BorderedStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBorderedStyleDescription()
          * @generated
          */
@@ -4044,7 +4219,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Border Size Computation Expression</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderSizeComputationExpression();
@@ -4052,18 +4227,27 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor();
+
+        /**
+         * The meta object literal for the '<em><b>Border Line Style</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderLineStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl
          * <em>Node Style Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.NodeStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      NodeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNodeStyleDescription()
          * @generated
          */
@@ -4081,7 +4265,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Position</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute NODE_STYLE_DESCRIPTION__LABEL_POSITION = StylePackage.eINSTANCE.getNodeStyleDescription_LabelPosition();
@@ -4089,7 +4273,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Resize Kind</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute NODE_STYLE_DESCRIPTION__RESIZE_KIND = StylePackage.eINSTANCE.getNodeStyleDescription_ResizeKind();
@@ -4099,8 +4283,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl
          * <em>Custom Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.CustomStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      CustomStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCustomStyleDescription()
          * @generated
          */
@@ -4109,7 +4294,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CUSTOM_STYLE_DESCRIPTION__ID = StylePackage.eINSTANCE.getCustomStyleDescription_Id();
@@ -4119,8 +4304,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl
          * <em>Square Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.SquareDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      SquareDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSquareDescription()
          * @generated
          */
@@ -4129,7 +4315,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SQUARE_DESCRIPTION__WIDTH = StylePackage.eINSTANCE.getSquareDescription_Width();
@@ -4137,7 +4323,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SQUARE_DESCRIPTION__HEIGHT = StylePackage.eINSTANCE.getSquareDescription_Height();
@@ -4145,7 +4331,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SQUARE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getSquareDescription_Color();
@@ -4155,8 +4341,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl
          * <em>Lozenge Node Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.LozengeNodeDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      LozengeNodeDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getLozengeNodeDescription()
          * @generated
          */
@@ -4175,7 +4362,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Height Computation Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getLozengeNodeDescription_HeightComputationExpression();
@@ -4183,7 +4370,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference LOZENGE_NODE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getLozengeNodeDescription_Color();
@@ -4193,8 +4380,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl
          * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.EllipseNodeDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      EllipseNodeDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
          * @generated
          */
@@ -4203,7 +4391,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference ELLIPSE_NODE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getEllipseNodeDescription_Color();
@@ -4212,7 +4400,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Horizontal Diameter Computation Expression</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getEllipseNodeDescription_HorizontalDiameterComputationExpression();
@@ -4221,7 +4409,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Vertical Diameter Computation Expression</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getEllipseNodeDescription_VerticalDiameterComputationExpression();
@@ -4231,8 +4419,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl
          * <em>Bundled Image Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      BundledImageDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBundledImageDescription()
          * @generated
          */
@@ -4241,7 +4430,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute BUNDLED_IMAGE_DESCRIPTION__SHAPE = StylePackage.eINSTANCE.getBundledImageDescription_Shape();
@@ -4249,7 +4438,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference BUNDLED_IMAGE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getBundledImageDescription_Color();
@@ -4259,8 +4448,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl
          * <em>Note Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.NoteDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      NoteDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getNoteDescription()
          * @generated
          */
@@ -4269,7 +4459,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Color</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference NOTE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getNoteDescription_Color();
@@ -4279,8 +4469,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl
          * <em>Dot Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.DotDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      DotDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getDotDescription()
          * @generated
          */
@@ -4289,7 +4480,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference DOT_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getDotDescription_BackgroundColor();
@@ -4298,7 +4489,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Stroke Size Computation Expression</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getDotDescription_StrokeSizeComputationExpression();
@@ -4309,7 +4500,8 @@ public interface StylePackage extends EPackage {
          * <em>Gauge Composite Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.impl.GaugeCompositeStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      GaugeCompositeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeCompositeStyleDescription()
          * @generated
          */
@@ -4318,7 +4510,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Alignment</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT = StylePackage.eINSTANCE.getGaugeCompositeStyleDescription_Alignment();
@@ -4327,7 +4519,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '<em><b>Sections</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS = StylePackage.eINSTANCE.getGaugeCompositeStyleDescription_Sections();
@@ -4337,8 +4529,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
          * <em>Gauge Section Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      GaugeSectionDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeSectionDescription()
          * @generated
          */
@@ -4347,7 +4540,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Min Value Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_MinValueExpression();
@@ -4355,7 +4548,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Max Value Expression</b></em>
          * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_MaxValueExpression();
@@ -4363,7 +4556,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Value Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION = StylePackage.eINSTANCE.getGaugeSectionDescription_ValueExpression();
@@ -4371,7 +4564,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getGaugeSectionDescription_BackgroundColor();
@@ -4379,7 +4572,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference GAUGE_SECTION_DESCRIPTION__FOREGROUND_COLOR = StylePackage.eINSTANCE.getGaugeSectionDescription_ForegroundColor();
@@ -4387,7 +4580,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute GAUGE_SECTION_DESCRIPTION__LABEL = StylePackage.eINSTANCE.getGaugeSectionDescription_Label();
@@ -4398,7 +4591,8 @@ public interface StylePackage extends EPackage {
          * <em>Size Computation Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      SizeComputationContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
          * @generated
          */
@@ -4417,7 +4611,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Height Computation Expression</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
@@ -4428,7 +4622,8 @@ public interface StylePackage extends EPackage {
          * <em>Rounded Corner Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      RoundedCornerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
          * @generated
          */
@@ -4437,7 +4632,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Arc Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH = StylePackage.eINSTANCE.getRoundedCornerStyleDescription_ArcWidth();
@@ -4445,7 +4640,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Arc Height</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT = StylePackage.eINSTANCE.getRoundedCornerStyleDescription_ArcHeight();
@@ -4455,8 +4650,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
          * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      ContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getContainerStyleDescription()
          * @generated
          */
@@ -4465,7 +4661,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Rounded Corner</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.eINSTANCE.getContainerStyleDescription_RoundedCorner();
@@ -4476,7 +4672,8 @@ public interface StylePackage extends EPackage {
          * <em>Flat Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      FlatContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
          * @generated
          */
@@ -4485,7 +4682,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundStyle();
@@ -4493,7 +4690,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundColor();
@@ -4501,7 +4698,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = StylePackage.eINSTANCE.getFlatContainerStyleDescription_ForegroundColor();
@@ -4509,7 +4706,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Label Border Style</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = StylePackage.eINSTANCE.getFlatContainerStyleDescription_LabelBorderStyle();
@@ -4520,7 +4717,8 @@ public interface StylePackage extends EPackage {
          * <em>Shape Container Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      ShapeContainerStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
          * @generated
          */
@@ -4529,7 +4727,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = StylePackage.eINSTANCE.getShapeContainerStyleDescription_Shape();
@@ -4537,7 +4735,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = StylePackage.eINSTANCE.getShapeContainerStyleDescription_BackgroundColor();
@@ -4547,8 +4745,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
          * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      WorkspaceImageDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
          * @generated
          */
@@ -4557,7 +4756,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Workspace Path</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH = StylePackage.eINSTANCE.getWorkspaceImageDescription_WorkspacePath();
@@ -4567,8 +4766,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
          * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      EdgeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
          * @generated
          */
@@ -4577,7 +4777,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__STROKE_COLOR = StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor();
@@ -4585,7 +4785,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__LINE_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_LineStyle();
@@ -4593,7 +4793,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Source Arrow</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__SOURCE_ARROW = StylePackage.eINSTANCE.getEdgeStyleDescription_SourceArrow();
@@ -4601,7 +4801,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Target Arrow</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__TARGET_ARROW = StylePackage.eINSTANCE.getEdgeStyleDescription_TargetArrow();
@@ -4618,7 +4818,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Routing Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__ROUTING_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_RoutingStyle();
@@ -4626,7 +4826,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Folding Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__FOLDING_STYLE = StylePackage.eINSTANCE.getEdgeStyleDescription_FoldingStyle();
@@ -4635,7 +4835,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Begin Label Style Description</b></em>' containment reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_BeginLabelStyleDescription();
@@ -4644,7 +4844,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Center Label Style Description</b></em>' containment reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_CenterLabelStyleDescription();
@@ -4653,7 +4853,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>End Label Style Description</b></em>' containment reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = StylePackage.eINSTANCE.getEdgeStyleDescription_EndLabelStyleDescription();
@@ -4661,7 +4861,7 @@ public interface StylePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Ends Centering</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EAttribute EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = StylePackage.eINSTANCE.getEdgeStyleDescription_EndsCentering();
@@ -4670,7 +4870,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Centered Source Mappings</b></em>' reference list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = StylePackage.eINSTANCE.getEdgeStyleDescription_CenteredSourceMappings();
@@ -4679,7 +4879,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '
          * <em><b>Centered Target Mappings</b></em>' reference list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = StylePackage.eINSTANCE.getEdgeStyleDescription_CenteredTargetMappings();
@@ -4689,8 +4889,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
          * <em>Begin Label Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      BeginLabelStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBeginLabelStyleDescription()
          * @generated
          */
@@ -4701,8 +4902,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
          * <em>Center Label Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      CenterLabelStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCenterLabelStyleDescription()
          * @generated
          */
@@ -4713,8 +4915,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
          * <em>End Label Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      EndLabelStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEndLabelStyleDescription()
          * @generated
          */
@@ -4725,8 +4928,9 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
          * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
+         *
+         * @see org.eclipse.sirius.diagram.description.style.impl.
+         *      BracketEdgeStyleDescriptionImpl
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
          * @generated
          */
@@ -4738,7 +4942,8 @@ public interface StylePackage extends EPackage {
          * <em>Hide Label Capability Style Description</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription
+         * @see org.eclipse.sirius.diagram.description.style.
+         *      HideLabelCapabilityStyleDescription
          * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getHideLabelCapabilityStyleDescription()
          * @generated
          */

@@ -71,13 +71,12 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
-                getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                        getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
+                                "_UI_SizeComputationContainerStyleDescription_type"),
+                        StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -87,14 +86,12 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
      * @generated
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                        "_UI_SizeComputationContainerStyleDescription_type"),
+                StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**

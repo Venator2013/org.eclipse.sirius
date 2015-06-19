@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
@@ -281,6 +282,27 @@ public final class DiagramBorderNodeEditPartOperation {
             lineBorder.setWidth(borderSize);
             if (borderedStyle.getBorderColor() != null) {
                 lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor()));
+            }
+            
+            lineBorder.setStyle(Graphics.LINE_SOLID);
+            if (borderedStyle.getBorderLineStyle() != null) {
+                switch (borderedStyle.getBorderLineStyle()) {
+                case SOLID_LITERAL:
+                    lineBorder.setStyle(Graphics.LINE_SOLID);
+                    break;
+                case DOT_LITERAL:
+                    lineBorder.setStyle(Graphics.LINE_DOT);
+                    break;
+                case DASH_LITERAL:
+                    lineBorder.setStyle(Graphics.LINE_DASH);
+                    break;
+                case DASH_DOT_LITERAL:
+                    lineBorder.setStyle(Graphics.LINE_DASHDOT);
+                    break;
+                default:
+                    break;
+                }
+                
             }
 
             if (borderSize == 0) {

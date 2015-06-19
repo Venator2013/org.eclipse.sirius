@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * <em><b>Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl#getCandidatesExpression
@@ -46,7 +47,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * {@link org.eclipse.sirius.diagram.description.filter.impl.FilterVariableImpl#getName
  * <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -55,7 +55,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The default value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The cached value of the '{@link #getCandidatesExpression()
      * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getCandidatesExpression()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The default value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -86,7 +86,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #isMultiple() <em>Multiple</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isMultiple()
      * @generated
      * @ordered
@@ -96,7 +96,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The default value of the '{@link #isTree() <em>Tree</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isTree()
      * @generated
      * @ordered
@@ -117,7 +117,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The default value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -128,7 +128,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The cached value of the '{@link #getRootExpression()
      * <em>Root Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getRootExpression()
      * @generated
      * @ordered
@@ -139,7 +139,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The default value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -150,7 +150,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
      * The cached value of the '{@link #getChildrenExpression()
      * <em>Children Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getChildrenExpression()
      * @generated
      * @ordered
@@ -160,7 +160,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -170,7 +170,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -180,7 +180,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -190,7 +190,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -199,7 +199,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FilterVariableImpl() {
@@ -208,7 +208,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -218,7 +218,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -228,7 +228,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -242,7 +242,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -252,7 +252,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -276,7 +276,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -290,7 +290,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -300,7 +300,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -314,7 +314,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -324,7 +324,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -338,7 +338,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -348,7 +348,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -362,7 +362,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -372,7 +372,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -386,7 +386,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -412,7 +412,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -445,7 +445,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -478,7 +478,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -504,7 +504,7 @@ public class FilterVariableImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

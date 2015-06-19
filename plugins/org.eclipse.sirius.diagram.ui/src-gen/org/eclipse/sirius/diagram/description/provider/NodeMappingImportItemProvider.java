@@ -84,8 +84,8 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"),
-                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_ImportPropertyCategory"), null));
+                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"),
+                null));
     }
 
     /**

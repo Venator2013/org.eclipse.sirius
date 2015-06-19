@@ -23,6 +23,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
  * <em>Color</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription()
  * @model
@@ -58,7 +58,7 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
      * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -84,7 +84,7 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()

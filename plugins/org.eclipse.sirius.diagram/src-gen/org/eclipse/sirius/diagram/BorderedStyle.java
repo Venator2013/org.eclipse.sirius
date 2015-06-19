@@ -20,16 +20,18 @@ import org.eclipse.sirius.viewpoint.Style;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSize <em>Border
- * Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSize
+ * <em>Border Size</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor <em>Border
- * Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor
+ * <em>Border Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle()
  * @model
@@ -44,7 +46,7 @@ public interface BorderedStyle extends Style {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size</em>' attribute.
      * @see #setBorderSize(Integer)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderSize()
@@ -58,7 +60,7 @@ public interface BorderedStyle extends Style {
      * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderSize
      * <em>Border Size</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Size</em>' attribute.
      * @see #getBorderSize()
@@ -76,7 +78,7 @@ public interface BorderedStyle extends Style {
      * here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Border Size Computation Expression</em>'
      *         attribute.
      * @see #setBorderSizeComputationExpression(String)
@@ -125,12 +127,46 @@ public interface BorderedStyle extends Style {
      * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor
      * <em>Border Color</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Border Color</em>' attribute.
      * @see #getBorderColor()
      * @generated
      */
     void setBorderColor(RGBValues value);
+
+    /**
+     * Returns the value of the '<em><b>Border Line Style</b></em>' attribute.
+     * The default value is <code>"solid"</code>. The literals are from the
+     * enumeration {@link org.eclipse.sirius.diagram.LineStyle}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Border Line Style</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Border Line Style</em>' attribute.
+     * @see org.eclipse.sirius.diagram.LineStyle
+     * @see #setBorderLineStyle(LineStyle)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderLineStyle()
+     * @model default="solid" required="true"
+     * @generated
+     */
+    LineStyle getBorderLineStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Border Line Style</em>' attribute.
+     * @see org.eclipse.sirius.diagram.LineStyle
+     * @see #getBorderLineStyle()
+     * @generated
+     */
+    void setBorderLineStyle(LineStyle value);
 
 } // BorderedStyle

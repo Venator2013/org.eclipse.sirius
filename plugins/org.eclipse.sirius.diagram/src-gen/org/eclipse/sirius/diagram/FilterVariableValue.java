@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>
  * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * <li>{@link org.eclipse.sirius.diagram.FilterVariableValue#getModelElement
  * <em>Model Element</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue()
  * @model
@@ -42,7 +42,7 @@ public interface FilterVariableValue extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Variable Definition</em>' reference.
      * @see #setVariableDefinition(FilterVariable)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue_VariableDefinition()
@@ -56,7 +56,7 @@ public interface FilterVariableValue extends EObject {
      * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
      * <em>Variable Definition</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Variable Definition</em>' reference.
      * @see #getVariableDefinition()
@@ -86,7 +86,7 @@ public interface FilterVariableValue extends EObject {
      * {@link org.eclipse.sirius.diagram.FilterVariableValue#getModelElement
      * <em>Model Element</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Model Element</em>' reference.
      * @see #getModelElement()
