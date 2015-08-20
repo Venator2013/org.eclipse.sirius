@@ -6,12 +6,98 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius3.1.0). Changes in Sirius 3.1.0
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to brother shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of edge, see "documentation":./user/diagrams/Diagrams.html#snap_to_shapes for details.
+* <span class="label label-info">Modified</span> The _Snap to Grid_ and _Snap to Shapes_ are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see "documentation":./user/sequences/Sequence%20Diagrams.html#introduction for details. Previously, the user has to explicitely disable the snap features.
+* <span class="label label-info">Modified</span> The Link with Editor behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. By now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-info">Modified</span> You have now really the capability to set the @BorderSizeComputationExpression@ as 0 for style of @ContainerMapping@. Before Sirius 3.1.0, a size of 0 is interpreted as 1 at runtime. For compatibility reason, all existing @BorderSizeComputationExpression@ equals to 0 for style of @ContainerMapping@ are automatically set to 1 (ditto for results of this expression in representations file for container elements). For @ContainerMapping@, the default value of @BorderSizeComputationExpression@ for new style is now 1, except for _Worskpace Image_ where the value is 0.
+
 h3. Developer-Visible Changes
+
+h4. Partial support for internationalization
+
+Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate "language packs" as OSGi fragments. Note that this does not concern the VSM editor's UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.
+
+Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:
+* <span class="label label-success">Added</span>@org.eclipse.sirius.diagram.layoutdata.LayoutDataPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @LayoutDataPlugin.Implementation@.
+* <span class="label label-success">Added</span>@org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @SequenceDiagramPlugin.Implementation@.
+* <span class="label label-success">Added</span>@org.eclipse.sirius.common.xtext.internal.XtextIntegrationPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @XtextIntegrationPlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ext.base.BasePlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @BasePlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ext.draw2d.Draw2DExtPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @Draw2DExtPlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ext.e3.ui.Eclipse3UIExtPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @Eclipse3UIExtPlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ext.emf.EMFExtPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @EMFExtPlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.synchronizer.internal.SynchronizerPlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @SynchronizerPlugin.Implementation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tree.tools.internal.TreePlugin@, a subclass of @org.eclipse.emf.common.EMFPlugin@ has been added. The corresponding OSGi bundle activator is the internal class @TreePlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterIDEPlugin@ is no longer an OSGi @BundleActivator@, and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @AcceleoMTLInterpreterIDEPlugin.Implementation@.
+* <span class="label label-info">Modified</span>  @org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterPlugin@ is no longer an OSGi @BundleActivator@, and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @AcceleoMTLInterpreterPlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.common.ocl.DslOclPlugin@ is no longer a @org.eclipse.core.runtime.Plugin@ (nor an OSGi @BundleActivator@), and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @DslOclPlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.common.tools.DslCommonPlugin@ is no longer a @org.eclipse.core.runtime.Plugin@ (nor an OSGi @BundleActivator@), and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @DslCommonPlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.DiagramPlugin@ is no longer a @org.eclipse.core.runtime.Plugin@ (nor an OSGi @BundleActivator@), and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @DiagramPlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin@ is no longer a @org.eclipse.core.runtime.Plugin@ (nor an OSGi @BundleActivator@), and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @ExtenderPlugin.Implementation@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.table.tools.internal.TablePlugin@ is no longer a @org.eclipse.core.runtime.Plugin@ (nor an OSGi @BundleActivator@), and instead extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @TablePlugin.Implementation@.
+* <span class="label label-info">Renamed, Modified</span> @org.eclipse.sirius.eef.adapters.Activator@ has been renamed into @org.eclipse.sirius.eef.adapters.EEFAdapterPlugin@ and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @EEFAdapterPlugin.Implementation@.
+* <span class="label label-info">Renamed, Modified</span> @org.eclipse.sirius.common.acceleo.interpreter.Activator@ has been renamed into @org.eclipse.sirius.common.acceleo.interpreter.InterpreterViewPlugin@ and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @InterpreterViewPlugin.Implementation@.
+* <span class="label label-info">Renamed, Modified</span> @org.eclipse.sirius.table.ui.ext.Activator@ has been renamed into @org.eclipse.sirius.table.ui.ext.TableUIExtPlugin@ and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @TableUIExtPlugin.Implementation@.
+* <span class="label label-info">Renamed, Modified</span> @org.eclipse.sirius.ui.ext.Activator@ has been renamed into @org.eclipse.sirius.ui.ext.SiriusUIExtPlugin@ and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @SiriusUIExtPlugin.Implementation@.
+* <span class="label label-info">Renamed, Modified</span> @org.eclipse.sirius.tree.ui.ext.Activator@ has been renamed into @org.eclipse.sirius.tree.ui.ext.TreeUIExtPlugin@ and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends @org.eclipse.emf.common.EMFPlugin@. The actual bundle activator is the new internal class @TreeUIExtPlugin.Implementation@.
+* <span class="label label-info">Renamed</span> @org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramPlugin@ has been renamed into @org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin@ for consistency and to avoid potential name clashes with the new @org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin@.
+
+Additional non-breaking changes:
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ext.base.I18N@ has been added. It provides common utility code to support internationalization. 
+* <span class="label label-success">Added</span> The translation keys (and default values) have been added to all the concerned bundles, in their @plugin.properties@ file. These (translated) messages are available at runtime as static fields of new @Messages@ classes, added to all concerned bundles (always in the same package as their plug-in/activator class). The concerned bundles are:
+** @org.eclipse.sirius.ext.base@
+** @org.eclipse.sirius.ecore.extender@
+** @org.eclipse.sirius.synchronizer@
+** @org.eclipse.sirius.common.acceleo.aql@
+** @org.eclipse.sirius.common.acceleo.aql.ide@
+** @org.eclipse.sirius.eef.adapters@
+
+h4. Changes in @org.eclipse.sirius.ext.gef@
+
+* <span class="label label-success">Added</span> The new class @org.eclipse.sirius.ext.gef.query.EditPartQuery@ has been added. It allows to retrieve all children of the current part.
+
+h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
+
+* <span class="label label-success">Added</span> 2 new @getIntersection@ methods have been added in org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper. They are similar to the existing @getIntersection@ methods, but they consider the nearest point on the figure if there is no intersection.
+
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods removed because they are useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-success">Added</span> The method @addEvaluateSelectionExpressionTask@ has been added in class @org.eclipse.sirius.tools.api.command.AbstractCommandFactory@ to allow selection after tool execution.
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.common.tools.api.interpreter.StandardServices@ has been added. This class owns methods used for service: interpreter.
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* <span class="label label-warning">Deprecated</span>  @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()@ method has been deprecated as a @IEditorInput@ can be reused by several instances of @IEditorPart@ through the navigation history view.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getSession(boolean)@ method has been added to let the caller choose to create and open a new @Session@ or not when the known session is closed or does not exist. The @getSession@ method calls getSession(true).
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-danger">Removed</span> The method @setUseLocalCoordinates(boolean)@ has been removed from @org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle@, @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram@, @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc@ as it was generated by GMF tooling and never used in Sirius whose edit parts and edit policies expect @org.eclipse.draw2d.IFigure.useLocalCoordinates()@ to always return false for its figures. 
+
+h4. Changes in @org.eclipse.sirius.tests.support@
+
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.tests.support.api.AbstractToolDescriptionTestCase@ has been created. It contains utility methods about tools.
+* <span class="label label-info">Modified</span> The class @org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase@ has been modified 
+** It inherits from @AbstractToolDescriptionTestCase@ 
+** The method @applyContainerCreationTool(String,DDiagram,EObject)@ has been added.
+** The method @applyGenericTool(String,DDiagram,EObject)@ has been added.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @closePerspective(String)@, @closeSiriusPerspective()@ and @closeModelingPerspective()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives@ to allow the closing of perspectives.
 * <span class="label label-success">Added</span> The @org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition@ new offers the capability to inverse the test. This condition becomes a DeactivatedCondition instead of an ActivatedCondition by using the new constructor with inverse parameter.
+* <span class="label label-success">Added</span> The methods @isSnapToShape@ and @isSnapToGrid()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@. They allow to know the state of the corresponding properties.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)@, and so @SWTBotSiriusGefViewer.dragWithKey@ and @SWTBotSiriusFigureCanvas.mouseDragWithKey@), has an additional parameter, compared to @drag(int, int, int, int)@ method, to precise the key code to press during the drag'n'drop. It is possible to call this method with SWT.None to retrieve the standard behavior of @drag@ method. This method also has a correct behavior for the move of bendpoints of edges.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.TopCondition@: New condition to wait that top of the edit part is on the expected location.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointLocationCondition@: New condition to wait that a bendpoint is on the expected x or y location.
 
 h2(#sirius3.0.0). Changes in Sirius 3.0.0
 

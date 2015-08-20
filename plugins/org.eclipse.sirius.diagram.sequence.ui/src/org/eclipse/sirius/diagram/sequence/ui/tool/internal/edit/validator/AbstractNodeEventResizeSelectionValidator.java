@@ -59,7 +59,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      */
     public static final String GROUP_REQUEST_ALREADY_ANSWERED = "Already answered";
 
-    private static final String EXECUTION_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.execution.validator";
+    private static final String EXECUTION_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.execution.validator"; //$NON-NLS-1$
 
     /**
      * The expansionZine.
@@ -381,7 +381,7 @@ public class AbstractNodeEventResizeSelectionValidator {
 
             if (iSequenceEvent instanceof Lifeline || iSequenceEvent instanceof AbstractNodeEvent) {
                 reconnectionParent = iSequenceEvent;
-            } else if (ise != null) {
+            } else {
                 reconnectionParent = getReconnectionFinalParent(iSequenceEvent);
             }
         }

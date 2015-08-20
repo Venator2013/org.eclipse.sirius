@@ -23,8 +23,6 @@ public class ViewNodeContainerParallelogram extends ParallelogramFigure implemen
 
     private SiriusWrapLabel fContainerLabelFigure;
 
-    private boolean myUseLocalCoordinates;
-
     /**
      * Constructor.
      */
@@ -36,23 +34,9 @@ public class ViewNodeContainerParallelogram extends ParallelogramFigure implemen
 
     private void createContents() {
         fContainerLabelFigure = new SiriusWrapLabel();
-        fContainerLabelFigure.setText("  ");
+        fContainerLabelFigure.setText("  "); //$NON-NLS-1$
         fContainerLabelFigure.setTextWrap(true);
         this.add(fContainerLabelFigure);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.Figure#useLocalCoordinates()
-     */
-    @Override
-    protected boolean useLocalCoordinates() {
-        return myUseLocalCoordinates;
-    }
-
-    protected void setUseLocalCoordinates(final boolean useLocalCoordinates) {
-        myUseLocalCoordinates = useLocalCoordinates;
     }
 
     /**

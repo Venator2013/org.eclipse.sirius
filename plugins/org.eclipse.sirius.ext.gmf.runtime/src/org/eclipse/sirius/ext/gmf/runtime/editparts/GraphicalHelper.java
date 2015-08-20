@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.gmf.runtime.editparts;
 
+import java.util.List;
+
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformViewport;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
@@ -33,6 +36,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 
 /**
  * Utility class to collect helper methods which deal with GraphicalOrdering but
@@ -117,7 +121,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Applies inverse zoom on a point and returns this point for convenience.<BR>
+     * Applies inverse zoom on a point and returns this point for convenience.
+     * <BR>
      * For example:
      * <UL>
      * <LI>For a zoom of 200%, the result of this method for the point (100,
@@ -311,11 +316,11 @@ public final class GraphicalHelper {
      * @return The corresponding point to this anchor
      */
     public static Point getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (parent.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) parent.getFigure()).getHandleBounds();
+            bounds = new PrecisionRectangle(((HandleBounds) parent.getFigure()).getHandleBounds());
         } else {
-            bounds = parent.getFigure().getBounds();
+            bounds = new PrecisionRectangle(parent.getFigure().getBounds());
         }
         parent.getFigure().translateToAbsolute(bounds);
 
@@ -326,7 +331,7 @@ public final class GraphicalHelper {
             // If anchor is null, the default value is (0.5, 0.5)
             rel = new PrecisionPoint(0.5, 0.5);
         }
-        Point location = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+        Point location = new PrecisionPoint(bounds.preciseX() + bounds.preciseWidth() * rel.preciseX(), bounds.preciseY() + bounds.preciseHeight() * rel.preciseY());
         return location;
     }
 
@@ -347,9 +352,32 @@ public final class GraphicalHelper {
      * @return Intersection between a line and a rectangle.
      */
     public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, IGraphicalEditPart part, boolean minimalDistancefromLineOrigin) {
+        return getIntersection(lineOrigin, lineTerminus, part, minimalDistancefromLineOrigin, false);
+    }
+
+    /**
+     * Get intersection between a line between lineOrigin and lineTerminus, and
+     * the rectangle bounds of the part. If there are several intersections, the
+     * shortest is returned.
+     * 
+     * @param lineOrigin
+     *            Origin of the line
+     * @param lineTerminus
+     *            Terminus of the line
+     * @param part
+     *            Part to detect intersection.
+     * @param minimalDistancefromLineOrigin
+     *            true if the shortest distance is between the line origin and
+     *            the part, false otherwise.
+     * @param useNearestPoint
+     *            If true, if there is no intersection, the nearest point on the
+     *            rectangle is returned.
+     * @return Intersection between a line and a rectangle.
+     */
+    public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, IGraphicalEditPart part, boolean minimalDistancefromLineOrigin, boolean useNearestPoint) {
         // Get the bounds of the part
         Rectangle bounds = getAbsoluteBoundsIn100Percent(part);
-        return getIntersection(lineOrigin, lineTerminus, bounds, minimalDistancefromLineOrigin);
+        return getIntersection(lineOrigin, lineTerminus, bounds, minimalDistancefromLineOrigin, useNearestPoint);
     }
 
     /**
@@ -369,6 +397,30 @@ public final class GraphicalHelper {
      * @return Intersection between a line and a rectangle.
      */
     public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, Rectangle rectangle, boolean minimalDistancefromLineOrigin) {
+        return getIntersection(lineOrigin, lineTerminus, rectangle, minimalDistancefromLineOrigin, false);
+    }
+
+    /**
+     * Get intersection between a line between lineOrigin and lineTerminus, and
+     * a rectangle. If there are several intersections, the shortest is
+     * returned.
+     * 
+     * @param lineOrigin
+     *            Origin of the line
+     * @param lineTerminus
+     *            Terminus of the line
+     * @param rectangle
+     *            rectangle to detect intersection.
+     * @param minimalDistancefromLineOrigin
+     *            true if the shortest distance is between the line origin and
+     *            the part, false otherwise.
+     * @param useNearestPoint
+     *            If true, if there is no intersection, the nearest point on the
+     *            rectangle is returned.
+     * @return Intersection between a line and a rectangle.
+     */
+    public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, Rectangle rectangle, boolean minimalDistancefromLineOrigin, boolean useNearestPoint) {
+        Option<Point> result = Options.newNone();
         // Create the line segment
         PointList line = new PointList();
         line.addPoint(lineOrigin);
@@ -379,27 +431,68 @@ public final class GraphicalHelper {
         PointList intersections = new PointList();
         PointListUtilities.findIntersections(line, partBoundsPointList, intersections, distances);
 
+        Point oppositePoint;
+        if (minimalDistancefromLineOrigin) {
+            oppositePoint = lineOrigin;
+        } else {
+            oppositePoint = lineTerminus;
+        }
         if (intersections.size() > 0) {
-            Point referencePoint;
-            if (minimalDistancefromLineOrigin) {
-                referencePoint = lineOrigin;
-            } else {
-                referencePoint = lineTerminus;
-            }
             Point shortestPoint = intersections.getFirstPoint();
-            double minimalDistance = shortestPoint.getDistance(referencePoint);
+            double minimalDistance = shortestPoint.getDistance(oppositePoint);
             for (int i = 1; i < intersections.size(); i++) {
                 Point intersectionPoint = intersections.getPoint(i);
-                double currentDistance = intersectionPoint.getDistance(referencePoint);
+                double currentDistance = intersectionPoint.getDistance(oppositePoint);
                 if (currentDistance < minimalDistance) {
                     minimalDistance = currentDistance;
                     shortestPoint = intersectionPoint;
                 }
             }
-            return Options.newSome(shortestPoint);
-        } else {
-            return Options.newNone();
+            result = Options.newSome(shortestPoint);
+        } else if (!lineOrigin.equals(lineTerminus) && useNearestPoint) {
+            // If no intersection is found and the origin is not the terminus,
+            // the origin (or the terminus) is outside the rectangle, probably
+            // because of the snap, so we search the nearest point on the figure
+            // respecting one of the x or y coordinate.
+            Point linePointToConsider;
+            if (minimalDistancefromLineOrigin) {
+                linePointToConsider = lineTerminus;
+            } else {
+                linePointToConsider = lineOrigin;
+            }
+
+            List<Point> nearestPoints = Lists.newArrayList();
+            List rectangleBorders = PointListUtilities.getLineSegments(partBoundsPointList);
+            for (Object rectangleBorder : rectangleBorders) {
+                if (rectangleBorder instanceof LineSeg) {
+                    LineSeg lineSeg = (LineSeg) rectangleBorder;
+                    Point potentialNearestPoint;
+                    if (lineSeg.getOrigin().x == lineSeg.getTerminus().x) {
+                        potentialNearestPoint = new Point(lineSeg.getOrigin().x, linePointToConsider.y);
+                    } else {
+                        potentialNearestPoint = new Point(linePointToConsider.x, lineSeg.getOrigin().y);
+                    }
+                    if (lineSeg.containsPoint(potentialNearestPoint, 0)) {
+                        nearestPoints.add(potentialNearestPoint);
+                    }
+                }
+            }
+            if (nearestPoints.size() > 0) {
+                double minimalDistance = -1;
+                Point resultPoint = null;
+                // Search the closest intersection
+                for (Point nearestPoint : nearestPoints) {
+                    double distance = nearestPoint.getDistance(oppositePoint);
+                    if (minimalDistance == -1 || distance < minimalDistance) {
+                        minimalDistance = distance;
+                        resultPoint = nearestPoint;
+                    }
+                }
+                result = Options.newSome(resultPoint);
+            }
+
         }
+        return result;
     }
 
     /**
@@ -438,11 +531,11 @@ public final class GraphicalHelper {
      * @return The absolute bounds.
      */
     public static Rectangle getAbsoluteBounds(IGraphicalEditPart part) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (part.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) part.getFigure()).getHandleBounds().getCopy();
+            bounds = new PrecisionRectangle(((HandleBounds) part.getFigure()).getHandleBounds());
         } else {
-            bounds = part.getFigure().getBounds().getCopy();
+            bounds = new PrecisionRectangle(part.getFigure().getBounds());
         }
         part.getFigure().translateToAbsolute(bounds);
         return bounds;
@@ -457,11 +550,11 @@ public final class GraphicalHelper {
      * @return The absolute bounds.
      */
     public static Rectangle getAbsoluteBoundsIn100Percent(GraphicalEditPart part) {
-        Rectangle bounds;
+        PrecisionRectangle bounds;
         if (part.getFigure() instanceof HandleBounds) {
-            bounds = ((HandleBounds) part.getFigure()).getHandleBounds().getCopy();
+            bounds = new PrecisionRectangle(((HandleBounds) part.getFigure()).getHandleBounds());
         } else {
-            bounds = part.getFigure().getBounds().getCopy();
+            bounds = new PrecisionRectangle(part.getFigure().getBounds());
         }
         part.getFigure().translateToAbsolute(bounds);
         screen2logical(bounds, part);

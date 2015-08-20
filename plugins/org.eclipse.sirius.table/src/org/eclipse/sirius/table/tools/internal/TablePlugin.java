@@ -12,69 +12,82 @@ package org.eclipse.sirius.table.tools.internal;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.BundleContext;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
  * Table plug-in.
  * 
  * @author mchauvin
  */
-public class TablePlugin extends Plugin {
-
-    /** The shared instance */
-    private static TablePlugin plugin;
+public class TablePlugin extends EMFPlugin {
+    /**
+     * Keep track of the singleton.
+     */
+    public static final TablePlugin INSTANCE = new TablePlugin();
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+     * Keep track of the singleton.
      */
-    @Override
-    public void start(final BundleContext context) throws Exception {
-        super.start(context);
-        plugin = this;
+    private static Implementation plugin;
+
+    /**
+     * Create the instance.
+     */
+    public TablePlugin() {
+        super(new ResourceLocator[0]);
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+     * @return the singleton instance.
      */
     @Override
-    public void stop(final BundleContext context) throws Exception {
-        plugin = null;
-        super.stop(context);
-    }
-
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance
-     */
-    public static TablePlugin getDefault() {
+    public ResourceLocator getPluginResourceLocator() {
         return plugin;
     }
 
     /**
-     * Logs an error in the error log.
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @param message
-     *            the message to log (optional).
-     * @param e
-     *            the exception (optional).
+     * @return the singleton instance.
      */
-    public void error(final String message, final Exception e) {
-        String msgToDisplay = message;
-        if (message == null && e != null) {
-            msgToDisplay = e.getMessage();
+    public static Implementation getPlugin() {
+        return plugin;
+    }
+
+    /**
+     * The actual implementation of the Eclipse <b>Plugin</b>.
+     */
+    public static class Implementation extends EclipsePlugin {
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
         }
-        if (e instanceof CoreException) {
-            this.getLog().log(((CoreException) e).getStatus());
-        } else {
-            final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
-            this.getLog().log(status);
+
+        /**
+         * Logs an error in the error log.
+         * 
+         * @param message
+         *            the message to log (optional).
+         * @param e
+         *            the exception (optional).
+         */
+        public void error(final String message, final Exception e) {
+            String msgToDisplay = message;
+            if (message == null && e != null) {
+                msgToDisplay = e.getMessage();
+            }
+            if (e instanceof CoreException) {
+                this.getLog().log(((CoreException) e).getStatus());
+            } else {
+                final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
+                this.getLog().log(status);
+            }
         }
     }
 

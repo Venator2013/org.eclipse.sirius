@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
@@ -56,6 +57,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -73,17 +75,17 @@ import com.google.common.collect.Sets;
  */
 public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
 
-    private static final String DIAGRAM_D_SEMANTIC_DIAGRAM = "diagram.DSemanticDiagram";
+    private static final String DIAGRAM_D_SEMANTIC_DIAGRAM = "diagram.DSemanticDiagram"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_D_NODE = "diagram.DNode";
+    private static final String DIAGRAM_D_NODE = "diagram.DNode"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_D_NODE_LIST = "diagram.DNodeList";
+    private static final String DIAGRAM_D_NODE_LIST = "diagram.DNodeList"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_D_NODE_CONTAINER = "diagram.DNodeContainer";
+    private static final String DIAGRAM_D_NODE_CONTAINER = "diagram.DNodeContainer"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge";
+    private static final String DIAGRAM_D_EDGE_TYPE = "diagram.DEdge"; //$NON-NLS-1$
 
-    private static final String DIAGRAM_EDGE_TARGET_TYPE = "diagram.EdgeTarget";
+    private static final String DIAGRAM_EDGE_TARGET_TYPE = "diagram.EdgeTarget"; //$NON-NLS-1$
 
     /**
      * Default constructor.
@@ -133,7 +135,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             EditMaskVariables emv = ((DirectEditLabel) context).getMask();
             appendEditMaskVariables(emv, definitions);
         }
-        // Add CreateViewn and CreateEdgeView Variable Name to available
+        // Add CreateView and CreateEdgeView Variable Name to available
         // variables
         if (context instanceof CreateView) {
             availableVariables.put(((CreateView) context).getVariableName(), VariableType.ANY_EOBJECT);
@@ -166,17 +168,48 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
         Map<String, VariableType> availableVariables = super.getAvailableVariables();
 
-        if (getToolContext().some()) {
-            EObject operationContext = getToolContext().get();
-            if (operationContext instanceof EdgeCreationDescription) {
-                EdgeCreationDescription tool = (EdgeCreationDescription) operationContext;
+        /*
+         * [428757] tool variables are not displayed in autocompletion. This
+         * patch adds hard coded variables and hence is a temporary solution.
+         * The good way would be to put those metadata on the
+         * EdgeCreationDescription EClass in the diagram.ecore metamodel and to
+         * complete the AbstractInterpretedExpressionQuery to make it able to
+         * find specific variables for concrete types.
+         */
+        if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
+            availableVariables.put("diagram", VariableType.fromString("diagram.DDiagram")); //$NON-NLS-1$ //$NON-NLS-2$
+            availableVariables.put("preSource", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
+            availableVariables.put("preSourceView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+            availableVariables.put("preTarget", VariableType.fromString("ecore.EObject")); //$NON-NLS-1$ //$NON-NLS-2$
+            availableVariables.put("preTargetView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+        }
+
+        return availableVariables;
+    }
+
+    @Override
+    protected void addVariableFromCreateOperation(ModelOperation modelOperation) {
+        super.addVariableFromCreateOperation(modelOperation);
+
+        if (modelOperation instanceof CreateEdgeView) {
+            availableVariables.put(((CreateEdgeView) modelOperation).getVariableName(), VariableType.fromString("diagram.DEdge")); //$NON-NLS-1$
+        } else if (modelOperation instanceof CreateView) {
+            availableVariables.put(((CreateView) modelOperation).getVariableName(), VariableType.fromString("viewpoint.DView")); //$NON-NLS-1$
+        }
+    }
+
+    @Override
+    protected void addVariablesFromToolContext(EObject toolContext) {
+        if (toolContext != null) {
+            if (toolContext instanceof EdgeCreationDescription) {
+                EdgeCreationDescription tool = (EdgeCreationDescription) toolContext;
                 declareEdgeSourceTargets(availableVariables, tool.getEdgeMappings(), tool.getExtraSourceMappings(), tool.getExtraTargetMappings());
             }
-            if (operationContext instanceof ReconnectEdgeDescription) {
-                ReconnectEdgeDescription tool = (ReconnectEdgeDescription) operationContext;
+            if (toolContext instanceof ReconnectEdgeDescription) {
+                ReconnectEdgeDescription tool = (ReconnectEdgeDescription) toolContext;
                 declareEdgeSourceTargets(availableVariables, tool.getMappings(), Collections.<DiagramElementMapping> emptyList(), Collections.<DiagramElementMapping> emptyList());
-                availableVariables.put("otherEnd", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
-                availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE));
+                availableVariables.put("otherEnd", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE)); //$NON-NLS-1$
+                availableVariables.put("edgeView", VariableType.fromString(DIAGRAM_D_EDGE_TYPE)); //$NON-NLS-1$
 
                 Collection<String> possibleSources = Lists.newArrayList();
                 for (EdgeMapping eMapping : tool.getMappings()) {
@@ -185,8 +218,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSources);
 
             }
-            if (operationContext instanceof NodeCreationDescription) {
-                NodeCreationDescription tool = (NodeCreationDescription) operationContext;
+            if (toolContext instanceof NodeCreationDescription) {
+                NodeCreationDescription tool = (NodeCreationDescription) toolContext;
                 Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
                 /*
                  * gather types for the "container" variable.
@@ -204,8 +237,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER_VIEW, possibleViewTypes);
             }
 
-            if (operationContext instanceof ContainerCreationDescription) {
-                ContainerCreationDescription tool = (ContainerCreationDescription) operationContext;
+            if (toolContext instanceof ContainerCreationDescription) {
+                ContainerCreationDescription tool = (ContainerCreationDescription) toolContext;
                 Collection<String> possibleTypes = Sets.newLinkedHashSet();
                 /*
                  * gather types for the "container" variable.
@@ -221,8 +254,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.CONTAINER, possibleTypes);
             }
 
-            if (operationContext instanceof DeleteElementDescription) {
-                DeleteElementDescription tool = (DeleteElementDescription) operationContext;
+            if (toolContext instanceof DeleteElementDescription) {
+                DeleteElementDescription tool = (DeleteElementDescription) toolContext;
                 Collection<String> possibleSemanticTypes = Sets.newLinkedHashSet();
                 Collection<String> possibleViewTypes = Sets.newLinkedHashSet();
                 Collection<String> possibleContainerViewTypes = Sets.newLinkedHashSet();
@@ -231,36 +264,17 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                     collectPotentialContainerTypes(Sets.<String> newLinkedHashSet(), possibleContainerViewTypes, mapping);
                 }
                 refineVariableType(availableVariables, IInterpreterSiriusVariables.ELEMENT, possibleSemanticTypes);
-                refineVariableType(availableVariables, "elementView", possibleViewTypes);
-                refineVariableType(availableVariables, "containerView", possibleContainerViewTypes);
+                refineVariableType(availableVariables, "elementView", possibleViewTypes); //$NON-NLS-1$
+                refineVariableType(availableVariables, "containerView", possibleContainerViewTypes); //$NON-NLS-1$
             }
 
-            if (operationContext instanceof OperationAction) {
-                OperationAction tool = (OperationAction) operationContext;
+            if (toolContext instanceof OperationAction) {
+                OperationAction tool = (OperationAction) toolContext;
                 if (new EObjectQuery(tool).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION).some()) {
-                    availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM));
+                    availableVariables.put("diagram", VariableType.fromString(DIAGRAM_D_SEMANTIC_DIAGRAM)); //$NON-NLS-1$
                 }
             }
-
         }
-        /*
-         * [428757] tool variables and not displayed in autocompletion This
-         * patch adds hard coded variables and hence is a temporary solution.
-         * The good way would be to put those metadata on the
-         * EdgeCreationDescription EClass in the diagram.ecore metamodel and to
-         * complete the AbstractInterpretedExpressionQuery to make it able to
-         * find specific variables for concrete types.
-         */
-        if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
-            availableVariables.put("diagram", VariableType.fromString("diagram.DDiagram"));
-            availableVariables.put("preSource", VariableType.fromString("ecore.EObject"));
-            availableVariables.put("preSourceView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
-            availableVariables.put("preTarget", VariableType.fromString("ecore.EObject"));
-            availableVariables.put("preTargetView", VariableType.fromString(DIAGRAM_EDGE_TARGET_TYPE));
-
-        }
-
-        return availableVariables;
     }
 
     private void refineVariableType(Map<String, VariableType> availableVariables, String variableName, Collection<String> foundTypes) {

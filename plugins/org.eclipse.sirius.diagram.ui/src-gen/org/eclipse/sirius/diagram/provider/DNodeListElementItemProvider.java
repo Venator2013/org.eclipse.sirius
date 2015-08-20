@@ -70,7 +70,8 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractDNode_arrangeConstraints_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbstractDNode_arrangeConstraints_feature", "_UI_AbstractDNode_type"),
+                getString("_UI_AbstractDNode_arrangeConstraints_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractDNode_arrangeConstraints_feature", "_UI_AbstractDNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -82,7 +83,8 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeListElement_originalStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_originalStyle_feature", "_UI_DNodeListElement_type"),
+                getString("_UI_DNodeListElement_originalStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_originalStyle_feature", "_UI_DNodeListElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DNODE_LIST_ELEMENT__ORIGINAL_STYLE, true, false, true, null, null, null));
     }
 
@@ -94,7 +96,8 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeListElement_actualMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_actualMapping_feature", "_UI_DNodeListElement_type"),
+                getString("_UI_DNodeListElement_actualMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_actualMapping_feature", "_UI_DNodeListElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DNODE_LIST_ELEMENT__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
@@ -105,10 +108,17 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors.add(
                 createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DNodeListElement_candidatesMapping_feature"),
                         getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_candidatesMapping_feature", "_UI_DNodeListElement_type"),
                         DiagramPackage.Literals.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING, true, false, true, null, null, null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DNodeListElement_candidatesMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DNodeListElement_candidatesMapping_feature", "_UI_DNodeListElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING, true, false, true, null, null, null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -153,7 +163,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeListElement"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeListElement")); //$NON-NLS-1$
     }
 
     /**
@@ -165,7 +175,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DNodeListElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DNodeListElement_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DNodeListElement_type") : label; //$NON-NLS-1$
     }
 
     /**

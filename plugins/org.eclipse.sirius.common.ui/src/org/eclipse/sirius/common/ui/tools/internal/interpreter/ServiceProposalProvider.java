@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -80,9 +81,7 @@ public class ServiceProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof ServiceInterpreter)) {
@@ -133,9 +132,10 @@ public class ServiceProposalProvider implements IProposalProvider {
                 serviceNamePrefix = serviceNamePrefix.substring(receiverVariableName.get().length() + 1);
             }
 
-            for (String serviceName : services.keySet()) {
+            for (Entry<String, IService> entry : services.entrySet()) {
+                String serviceName = entry.getKey();
                 if (serviceName.startsWith(serviceNamePrefix)) {
-                    IService service = services.get(serviceName);
+                    IService service = entry.getValue();
                     if (service instanceof IPolymorphicService) {
                         addAllImplementations(proposals, (IPolymorphicService) service);
                     } else {
@@ -179,7 +179,7 @@ public class ServiceProposalProvider implements IProposalProvider {
                     // Add a "." to each proposal
                     for (ContentProposal contentProposal : variableProposals) {
                         proposals.add(new ContentProposal(contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR, contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR
-                                + ": " + contentProposal.getInformation(), contentProposal.getInformation(), contentProposal.getCursorPosition() + 1));
+                                + ": " + contentProposal.getInformation(), contentProposal.getInformation(), contentProposal.getCursorPosition() + 1)); //$NON-NLS-1$
                     }
                 }
             }
@@ -195,15 +195,15 @@ public class ServiceProposalProvider implements IProposalProvider {
             Iterator<String> iterator = parametersTypes.iterator();
             if (iterator.hasNext()) {
                 iterator.next();
-                serviceName += "(";
+                serviceName += "("; //$NON-NLS-1$
                 while (iterator.hasNext()) {
                     String parameter = iterator.next();
                     serviceName += parameter;
                     if (iterator.hasNext()) {
-                        serviceName += ", ";
+                        serviceName += ", "; //$NON-NLS-1$
                     }
                 }
-                serviceName += ")";
+                serviceName += ")"; //$NON-NLS-1$
             }
 
             serviceNames.add(serviceName);

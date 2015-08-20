@@ -72,8 +72,8 @@ public class FilterVariableValueItemProvider extends ItemProviderAdapter
      */
     protected void addVariableDefinitionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FilterVariableValue_variableDefinition_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_variableDefinition_feature", "_UI_FilterVariableValue_type"),
+                getString("_UI_FilterVariableValue_variableDefinition_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_variableDefinition_feature", "_UI_FilterVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION, true, false, true, null, null, null));
     }
 
@@ -84,10 +84,17 @@ public class FilterVariableValueItemProvider extends ItemProviderAdapter
      * @generated
      */
     protected void addModelElementPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FilterVariableValue_modelElement_feature"),
                         getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_modelElement_feature", "_UI_FilterVariableValue_type"),
                         DiagramPackage.Literals.FILTER_VARIABLE_VALUE__MODEL_ELEMENT, true, false, true, null, null, null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_FilterVariableValue_modelElement_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_FilterVariableValue_modelElement_feature", "_UI_FilterVariableValue_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.FILTER_VARIABLE_VALUE__MODEL_ELEMENT, true, false, true, null, null, null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -98,7 +105,7 @@ public class FilterVariableValueItemProvider extends ItemProviderAdapter
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FilterVariableValue"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FilterVariableValue")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +116,7 @@ public class FilterVariableValueItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_FilterVariableValue_type");
+        return getString("_UI_FilterVariableValue_type"); //$NON-NLS-1$
     }
 
     /**

@@ -87,10 +87,13 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -101,8 +104,10 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), getString("_UI_IdentifiedElement_name_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -113,8 +118,10 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), getString("_UI_IdentifiedElement_label_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -125,8 +132,10 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     protected void addReusedMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Layer_reusedMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedMappings_feature", "_UI_Layer_type"),
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_Layer_reusedMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedMappings_feature", "_UI_Layer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -136,9 +145,9 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addAllToolsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_allTools_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Layer_allTools_feature", "_UI_Layer_type"), org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ALL_TOOLS,
-                false, false, false, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_allTools_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Layer_allTools_feature", "_UI_Layer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ALL_TOOLS, false, false, false, null, null, null));
     }
 
     /**
@@ -148,9 +157,17 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_reusedTools_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedTools_feature", "_UI_Layer_type"),
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_TOOLS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_Layer_reusedTools_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedTools_feature", "_UI_Layer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_TOOLS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -160,9 +177,18 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Layer_icon_feature"),
                 getString("_UI_Layer_icon_description"), org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                 getString("_UI_AdvancedPropertyCategory"), null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_Layer_icon_feature"), //$NON-NLS-1$
+                getString("_UI_Layer_icon_description"), //$NON-NLS-1$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -173,7 +199,8 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Layer_allEdgeMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_allEdgeMappings_feature", "_UI_Layer_type"),
+                getString("_UI_Layer_allEdgeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Layer_allEdgeMappings_feature", "_UI_Layer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
     }
 
@@ -230,7 +257,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
             }
         }
 
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Layer"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Layer")); //$NON-NLS-1$
     }
 
     /**
@@ -242,7 +269,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((Layer) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_Layer_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Layer_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -301,11 +328,11 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
         EdgeStyleDescription edgeDomainStyle = StyleFactory.eINSTANCE.createEdgeStyleDescription();
 
         // Add the center label style to edge style description
-        edgeStyle.setSizeComputationExpression("2");
+        edgeStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
         edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
         // Add the center label style to edge style description for edge with
         // domain element
-        edgeDomainStyle.setSizeComputationExpression("2");
+        edgeDomainStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
         edgeDomainStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
 
         // Add the edge style description to edge mapping

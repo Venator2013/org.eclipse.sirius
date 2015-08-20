@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,6 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,12 +23,9 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -41,9 +36,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tree.DTree;
@@ -56,13 +48,8 @@ import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -88,306 +75,25 @@ import org.eclipse.ui.part.FileEditorInput;
  * Editor for tree representations.
  * 
  * @author nlepine
- * 
  */
 public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor {
 
     /**
      * The DTreeEditor ID.
      */
-    public static final String ID = "org.eclipse.sirius.tree.ui.EditorID";
+    public static final String ID = "org.eclipse.sirius.tree.ui.EditorID"; //$NON-NLS-1$
 
     /** The context ID. */
-    private static final String CONTEXT_ID = ID + ".treeContext";
+    private static final String CONTEXT_ID = ID + ".treeContext"; //$NON-NLS-1$
 
     /** Initial title image descriptor **/
-    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TreeUIPlugin.getBundledImageDescriptor("icons/full/obj16/TreeDescription.gif");
+    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TreeUIPlugin.getBundledImageDescriptor("icons/full/obj16/TreeDescription.gif"); //$NON-NLS-1$
+
+    /** This DTree model */
+    private DTree treeModel;
 
     private IPartListener refreshAtOpeningActivator;
 
-    private DTree treeModel;
-
-    /**
-     * {@inheritDoc}
-     */
-    public Image getInitialImage() {
-        if (initialTitleImage == null || initialTitleImage.isDisposed()) {
-            initialTitleImage = SiriusEditPlugin.getPlugin().getImage(INITIAL_TITLE_IMAGE_DESCRIPTOR);
-        }
-        return initialTitleImage;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Image getFrozenRepresentationImage() {
-        if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
-            Image refreshImage = TreeUIPlugin.getImage(TreeUIPlugin.getBundledImageDescriptor("icons/" + DTreeViewerManager.REFRESH_IMG + ".gif"));
-            List<Object> images = new ArrayList<Object>(2);
-            images.add(refreshImage);
-            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
-            images.add(lockByOtherOverlayImage);
-            ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
-            frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);
-        }
-        return frozenRepresentationImage;
-    }
-
-    /**
-     * We have to take care of the case when Eclipse starts up with a session
-     * and diagram already open.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
-        setSite(site);
-
-        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-
-        /*
-         * we are during eclipse boot, we are not trying to close the editor
-         */
-        if (sessions.isEmpty() && (!isClosing)) {
-            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
-        }
-        isClosing = false;
-
-        if (input instanceof SessionEditorInput) {
-            final URI uri = ((SessionEditorInput) input).getURI();
-            this.session = ((SessionEditorInput) input).getSession();
-            setTreeModel(getDTree(uri, false));
-        } else if (input instanceof URIEditorInput) {
-            /* This happens when Eclipse is launched with an open tree editor */
-            final URI uri = ((URIEditorInput) input).getURI();
-            final DTree rootElement = getDTree(uri, true);
-            if (rootElement != null) {
-                setTreeModel(rootElement);
-            }
-        }
-
-        setInput(input);
-
-        if (session != null) {
-            session.addListener(this);
-        }
-
-        initCommandFactoryProviders();
-
-        adapterFactory = new ComposedAdapterFactory(TreeUIPlugin.getPlugin().getItemProvidersAdapterFactory());
-
-        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
-        uiSession.open();
-        uiSession.attachEditor(this);
-        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getTreeModel()));
-
-        if (getTreeModel() != null) {
-            /* Update title. Semantic tree could have been renamed */
-            notify(PROP_TITLE);
-
-            // Launch the refresh if needed
-            if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
-                launchRefresh(true);
-            }
-
-            initCollaborativeIPermissionAuthority(getTreeModel());
-        }
-    }
-
-    /**
-     * Creates the SWT controls for this workbench part.
-     * <p>
-     * Subclasses must implement this method. For a detailed description of the
-     * requirements see <code>IWorkbenchPart</code>
-     * </p>
-     * 
-     * @param parent
-     *            the parent control
-     * @see org.eclipse.ui.IWorkbenchPart
-     */
-    @Override
-    public void createPartControl(final Composite parent) {
-        super.createPartControl(parent);
-
-        // DslCommonPlugin.PROFILER.startWork(SiriusTasks.CREATE_TREE);
-        if (getTreeModel() == null) {
-            /* eclipse was closed with an editor opened and not saved */
-            final Label errorLabel = new Label(parent, SWT.CENTER);
-            errorLabel.setText("This tree was not saved. You can close the editor");
-            return;
-        }
-        treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
-        // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
-        getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
-
-        /* initialize Java Service. */
-        EObject semantic = null;
-        if (treeModel != null) {
-            semantic = treeModel.getTarget();
-        }
-        if (semantic == null) {
-            final TreeIterator<?> allContents = this.getEditingDomain().getResourceSet().getAllContents();
-            while (allContents.hasNext() && semantic == null) {
-                final Object next = allContents.next();
-                if (next instanceof DSemanticDecorator) {
-                    semantic = ((DSemanticDecorator) next).getTarget();
-                }
-            }
-        }
-        EObject anyEObject = semantic;
-        final Iterator<Resource> iterResources = this.getEditingDomain().getResourceSet().getResources().iterator();
-        while (iterResources.hasNext() && anyEObject == null) {
-            final Resource res = iterResources.next();
-            if (!res.getContents().isEmpty()) {
-                anyEObject = res.getContents().get(0);
-            }
-        }
-        Resource resource = anyEObject.eResource();
-        if (resource.getResourceSet() != getEditingDomain().getResourceSet()) {
-            resource.unload();
-        }
-        if (anyEObject != null) {
-            final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(anyEObject);
-            InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(anyEObject));
-        }
-        // Add the CreateTreeItem menu of the toolbar
-        ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
-
-        refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
-        getSite().getPage().addPartListener(refreshAtOpeningActivator);
-
-        // Activate context
-        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
-        contextService.activateContext(CONTEXT_ID);
-    }
-
-    /**
-     * Overridden to update the UI part when the {@link DTree} model is changed
-     * outside of a EMF Command (which notify DTreeContentAdapter) in case of
-     * collab model.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    public void setInput(IEditorInput input) {
-        super.setInput(input);
-
-        // Expands the TreeItem according to the model
-        Viewer viewer = getViewer();
-        if (viewer instanceof TreeViewer) {
-            TreeViewer treeViewer = (TreeViewer) viewer;
-            treeViewer.setExpandedElements(TreeHelper.getExpandedItems(getTreeModel()).toArray());
-        }
-    }
-
-    private DTree getDTree(final URI uri, final boolean loadOnDemand) {
-        DTree result = null;
-        final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
-        if (resource != null && resource.isLoaded()) {
-            if (uri.fragment() != null) {
-                final EObject rootElement = resource.getEObject(uri.fragment());
-                if (rootElement instanceof DTree) {
-                    result = (DTree) rootElement;
-                }
-            }
-        }
-        return result;
-    }
-
-    private void initCommandFactoryProviders() {
-        /* get IEMFCommandFactories */
-        emfCommandFactory = TreeCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
-
-        /* We add a callback for UI stuffs */
-        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-    }
-
-    private IInterpreter getInterpreter() {
-        return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTreeModel().getTarget());
-    }
-
-    /**
-     * @param accessor
-     *            the accessor to set
-     */
-    private void setAccessor(final ModelAccessor accessor) {
-        this.accessor = accessor;
-        ((ITreeCommandFactory) emfCommandFactory).setModelAccessor(this.accessor);
-    }
-
-    /**
-     * {@inheritDoc}
-     * */
-    protected void launchRefresh(boolean loading) {
-        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
-        if (!loading) {
-            getViewer().refresh();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor#launchRefresh()
-     */
-    @Override
-    protected void launchRefresh() {
-        launchRefresh(false);
-    }
-
-    private void setTreeModel(final DTree rootElement) {
-        this.treeModel = rootElement;
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#validateRepresentation()
-     */
-    public void validateRepresentation() {
-        // TODO Auto-generated method stub
-    }
-
-    /**
-     * Closes this DTreeEditor.
-     * 
-     * @param save
-     *            indicates whether the modifications should save or not
-     */
-    public void close(final boolean save) {
-        Display display = getSite().getShell().getDisplay();
-        display.asyncExec(new Runnable() {
-            public void run() {
-                if (treeViewerManager != null) {
-                    getSite().getPage().closeEditor(DTreeEditor.this, save);
-                }
-            }
-        });
-
-    }
-
-    public DTree getTreeModel() {
-        return this.treeModel;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public DRepresentation getRepresentation() {
-        return getTreeModel();
-    }
-
-    public String getContributorId() {
-        return ID;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
         if (isDeleted(getEditorInput())) {
@@ -447,10 +153,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void doSaveAs() {
         if (isSaveAsAllowed()) {
@@ -458,11 +160,177 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
+    @Override
+    public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
+        super.init(site, input);
+
+        if (getTreeModel() != null) {
+            // Launch the refresh if needed
+            if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+                launchRefresh(true);
+            }
+
+            // In case of shared tree representation, we notify the use of tree
+            // representation locking
+            initPermissionAuthority(getTreeModel());
+        }
+    }
+
+    @Override
+    protected void configureCommandFactoryProviders() {
+        /* get IEMFCommandFactories */
+        emfCommandFactory = TreeCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
+
+        /* We add a callback for UI stuffs */
+        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
+    }
+
+    @Override
+    public void createPartControl(final Composite parent) {
+        super.createPartControl(parent);
+
+        // DslCommonPlugin.PROFILER.startWork(SiriusTasks.CREATE_TREE);
+        if (getTreeModel() == null) {
+            /* eclipse was closed with an editor opened and not saved */
+            final Label errorLabel = new Label(parent, SWT.CENTER);
+            errorLabel.setText("This tree was not saved. You can close the editor");
+            return;
+        }
+        treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
+        // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
+        getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
+
+        /* initialize interpreter. */
+        if (session != null) {
+            InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
+        }
+        // Add the CreateTreeItem menu of the toolbar
+        ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
+
+        refreshAtOpeningActivator = new RefreshAtOpeningActivator(this);
+        getSite().getPage().addPartListener(refreshAtOpeningActivator);
+
+        // Activate context
+        IContextService contextService = (IContextService) getSite().getService(IContextService.class);
+        contextService.activateContext(CONTEXT_ID);
+    }
+
     /**
-     * {@inheritDoc}
+     * Overridden to update the UI part when the {@link DTree} model is changed
+     * outside of a EMF Command (which notify DTreeContentAdapter) in case of
+     * collab model.
      * 
-     * @see org.eclipse.ui.ide.IGotoMarker#gotoMarker(org.eclipse.core.resources.IMarker)
+     * {@inheritDoc}
      */
+    @Override
+    public void setInput(IEditorInput input) {
+        super.setInput(input);
+
+        // Expands the TreeItem according to the model
+        Viewer viewer = getViewer();
+        if (viewer instanceof TreeViewer) {
+            TreeViewer treeViewer = (TreeViewer) viewer;
+            treeViewer.setExpandedElements(TreeHelper.getExpandedItems(getTreeModel()).toArray());
+        }
+    }
+
+    @Override
+    public Image getFrozenRepresentationImage() {
+        if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
+            Image refreshImage = TreeUIPlugin.getImage(TreeUIPlugin.getBundledImageDescriptor("icons/" + DTreeViewerManager.REFRESH_IMG + ".gif")); //$NON-NLS-1$ //$NON-NLS-2$
+            List<Object> images = new ArrayList<Object>(2);
+            images.add(refreshImage);
+            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
+            images.add(lockByOtherOverlayImage);
+            ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
+            frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);
+        }
+        return frozenRepresentationImage;
+    }
+
+    @Override
+    public Control getControl() {
+        TreeViewer treeViewer = this.getTableViewer().getTreeViewer();
+        return treeViewer.getTree();
+    }
+
+    private void launchRefresh(boolean loading) {
+        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
+        if (!loading) {
+            getViewer().refresh();
+        }
+    }
+
+    @Override
+    protected void launchRefresh() {
+        launchRefresh(false);
+    }
+
+    @Override
+    public String getContributorId() {
+        return ID;
+    }
+
+    @Override
+    protected void setRepresentation(URI uri, boolean loadOnDemand) {
+        setTreeModel(getDTree(uri, loadOnDemand));
+    }
+
+    /**
+     * Get the DTree corresponding to this URI
+     * 
+     * @param uri
+     *            the URI to resolve.
+     * @param loadOnDemand
+     *            whether to create and load the resource, if it doesn't already
+     *            exists.
+     * @return the DTree resource resolved by the URI, or <code>null</code> if
+     *         there isn't one and it's not being demand loaded.
+     */
+    private DTree getDTree(final URI uri, final boolean loadOnDemand) {
+        DTree result = null;
+        final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
+        if (resource != null && resource.isLoaded()) {
+            if (uri.fragment() != null) {
+                final EObject rootElement = resource.getEObject(uri.fragment());
+                if (rootElement instanceof DTree) {
+                    result = (DTree) rootElement;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public DRepresentation getRepresentation() {
+        return treeModel;
+    }
+
+    /**
+     * Get the tree model.
+     * 
+     * @return the tree model
+     */
+    public DTree getTreeModel() {
+        return this.treeModel;
+    }
+
+    private void setTreeModel(final DTree rootElement) {
+        this.treeModel = rootElement;
+    }
+
+    @Override
+    public void validateRepresentation() {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    protected void setAccessor(ModelAccessor accessor) {
+        super.setAccessor(accessor);
+        ((ITreeCommandFactory) emfCommandFactory).setModelAccessor(this.accessor);
+    }
+
+    @Override
     public void gotoMarker(IMarker marker) {
         if (TraceabilityMarkerNavigationProvider.isTraceabilityMarker(marker)) {
             new TraceabilityMarkerNavigationProvider(this).gotoMarker(marker);
@@ -542,13 +410,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return result;
     }
 
-    /**
-     * Return the adapter factory used for providing views of the model of this
-     * editor.
-     * 
-     * @return the adapter factory used for providing views of the model of this
-     *         editor.
-     */
+    @Override
     public AdapterFactory getAdapterFactory() {
         if (adapterFactory == null) {
             // Create an adapter factory that yields item providers.
@@ -557,9 +419,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return adapterFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         if (refreshAtOpeningActivator != null) {
@@ -573,11 +432,29 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     }
 
     /**
-     * {@inheritDoc}
+     * Closes this DTreeEditor.
+     * 
+     * @param save
+     *            indicates whether the modifications should save or not
      */
-    public Control getControl() {
-        TreeViewer treeViewer = this.getTableViewer().getTreeViewer();
-        return treeViewer.getTree();
-    }
+    public void close(final boolean save) {
+        Display display = getSite().getShell().getDisplay();
+        display.asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                if (treeViewerManager != null) {
+                    getSite().getPage().closeEditor(DTreeEditor.this, save);
+                }
+            }
+        });
 
+    }
+    
+    @Override
+    public Image getInitialImage() {
+        if (initialTitleImage == null || initialTitleImage.isDisposed()) {
+            initialTitleImage = SiriusEditPlugin.getPlugin().getImage(INITIAL_TITLE_IMAGE_DESCRIPTOR);
+        }
+        return initialTitleImage;
+    }
 }

@@ -35,11 +35,11 @@ import org.eclipse.ui.IMemento;
  */
 public class SessionSpecificEditorInput extends SessionEditorInput {
 
-    private static final String VIEWPOINT_URI = "VIEWPOINT_URI";
+    private static final String VIEWPOINT_URI = "VIEWPOINT_URI"; //$NON-NLS-1$
 
-    private static final String REPRESENTATION_DESCRIPTION_NAME = "REPRESENTATION_DESCRIPTION_NAME";
+    private static final String REPRESENTATION_DESCRIPTION_NAME = "REPRESENTATION_DESCRIPTION_NAME"; //$NON-NLS-1$
 
-    private static final String SEMANTIC_MODEL_PATH = "SEMANTIC_MODEL_PATH";
+    private static final String SEMANTIC_MODEL_PATH = "SEMANTIC_MODEL_PATH"; //$NON-NLS-1$
 
     private IPath mySemanticModelPath;
 
@@ -88,11 +88,6 @@ public class SessionSpecificEditorInput extends SessionEditorInput {
         this.myRepresentationDescriptionName = representationDescriptionName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.SessionEditorInput#saveState(org.eclipse.ui.IMemento)
-     */
     @Override
     public void saveState(IMemento memento) {
         super.saveState(memento);
@@ -107,23 +102,12 @@ public class SessionSpecificEditorInput extends SessionEditorInput {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.SessionEditorInput#loadState(org.eclipse.ui.IMemento)
-     */
     @Override
     protected void loadState(IMemento memento) {
         super.loadState(memento);
         restoreValuesFromMemento(memento);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.SessionEditorInput#getSession(org.eclipse.emf.transaction.TransactionalEditingDomain,
-     *      org.eclipse.ui.IMemento, org.eclipse.emf.common.util.URI)
-     */
     @Override
     protected Session getSession(URI sessionModelURI) {
         final URI uriWithoutFragment = sessionModelURI.trimFragment();
@@ -131,17 +115,21 @@ public class SessionSpecificEditorInput extends SessionEditorInput {
     }
 
     private Session createSessionFromURIAndMemento(final URI uri) {
+        Session session = null;
         SpecificEditorInputTranformer tranformer = new SpecificEditorInputTranformer();
         tranformer.init(mySiriusURI, myRepresentationDescriptionName);
         try {
-            final DRepresentation representation = tranformer.createSessionAndRepresentation(mySemanticModelPath, uri.toString());
-            return SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+            session = SessionManager.INSTANCE.getExistingSession(uri);
+            if (session == null) {
+                final DRepresentation representation = tranformer.createSessionAndRepresentation(mySemanticModelPath, uri.toString());
+                session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+            }
         } catch (final IOException exception) {
             SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Failing of EditorInput transformation.", exception));
         } catch (CoreException exception) {
             SiriusEditPlugin.getPlugin().getLog().log(exception.getStatus());
         }
-        return null;
+        return session;
     }
 
     private void restoreValuesFromMemento(final IMemento memento) {

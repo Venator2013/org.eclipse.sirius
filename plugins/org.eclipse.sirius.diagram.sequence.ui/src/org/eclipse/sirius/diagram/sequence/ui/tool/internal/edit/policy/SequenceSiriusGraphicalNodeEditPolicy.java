@@ -69,7 +69,7 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
      * Constant used to store the location in draw2d absolute coordinates of the
      * click on the {@link EdgeTarget} source.
      */
-    protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source";
+    protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -103,12 +103,9 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
         IFigure feedbackLayer = null;
         IFigure scaledLayers = getLayer(LayerConstants.SCALABLE_LAYERS);
         if (scaledLayers instanceof LayeredPane) {
-            LayeredPane layeredPane = (LayeredPane) scaledLayers;
-            if (scaledLayers != null) {
-                Layer layer = layeredPane.getLayer(LayerConstants.SCALED_FEEDBACK_LAYER);
-                if (layer != null) {
-                    feedbackLayer = layer;
-                }
+            Layer layer = ((LayeredPane) scaledLayers).getLayer(LayerConstants.SCALED_FEEDBACK_LAYER);
+            if (layer != null) {
+                feedbackLayer = layer;
             }
         }
         if (feedbackLayer == null) {
@@ -193,7 +190,7 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
                     validator.setFirstClickLocation(firstClickLocation);
                     validator.setSecondClickLocation(secondClickLocation);
 
-                    if ((request.getSourceEditPart() instanceof NoteEditPart) || firstClickLocation == null || secondClickLocation == null || validator.isValid(request)) {
+                    if ((request.getSourceEditPart() instanceof NoteEditPart) || validator.isValid(request)) {
                         result = super.getConnectionCompleteCommand(request);
                     }
                 }

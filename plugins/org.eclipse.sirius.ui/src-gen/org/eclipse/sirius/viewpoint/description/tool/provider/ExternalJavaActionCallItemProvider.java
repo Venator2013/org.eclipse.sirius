@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -68,9 +68,10 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      */
     protected void addActionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaActionCall_action_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ExternalJavaActionCall_action_feature", "_UI_ExternalJavaActionCall_type"),
-                ToolPackage.Literals.EXTERNAL_JAVA_ACTION_CALL__ACTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ExternalJavaActionCall_action_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ExternalJavaActionCall_action_feature", "_UI_ExternalJavaActionCall_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.EXTERNAL_JAVA_ACTION_CALL__ACTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -114,7 +115,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaActionCall"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaActionCall")); //$NON-NLS-1$
     }
 
     /**
@@ -126,7 +127,7 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ExternalJavaActionCall) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaActionCall_type") : getString("_UI_ExternalJavaActionCall_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaActionCall_type") : getString("_UI_ExternalJavaActionCall_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

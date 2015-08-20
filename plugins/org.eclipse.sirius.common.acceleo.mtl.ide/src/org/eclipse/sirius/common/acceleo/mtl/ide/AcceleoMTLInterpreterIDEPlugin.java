@@ -10,33 +10,59 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
  * The activator class controls the plug-in life cycle.
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
-public class AcceleoMTLInterpreterIDEPlugin implements BundleActivator {
+public class AcceleoMTLInterpreterIDEPlugin extends EMFPlugin {
     /** The plug-in ID. */
     public static final String PLUGIN_ID = "org.eclipse.sirius.common.acceleo.mtl.ide"; //$NON-NLS-1$
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+     * Keep track of the singleton.
      */
-    public void start(BundleContext bundleContext) throws Exception {
-        // empty implementation
+    public static final AcceleoMTLInterpreterIDEPlugin INSTANCE = new AcceleoMTLInterpreterIDEPlugin();
+
+    /**
+     * Keep track of the singleton.
+     */
+    private static Implementation plugin;
+
+    /**
+     * Create the instance.
+     */
+    public AcceleoMTLInterpreterIDEPlugin() {
+        super(new ResourceLocator[0]);
+    }
+
+    @Override
+    public ResourceLocator getPluginResourceLocator() {
+        return plugin;
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+     * @return the singleton instance.
      */
-    public void stop(BundleContext bundleContext) throws Exception {
-        // empty implementation
+    public static Implementation getPlugin() {
+        return plugin;
     }
+
+    /**
+     * The actual implementation of the Eclipse <b>Plugin</b>.
+     */
+    public static class Implementation extends EclipsePlugin {
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
+        }
+    }
+
 }

@@ -103,6 +103,7 @@ public interface BorderedStyleDescription extends StyleDescription {
     void setBorderColor(ColorDescription value);
 
     /**
+<<<<<<< HEAD
      * Returns the value of the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc -->
      * <p>
@@ -115,6 +116,19 @@ public interface BorderedStyleDescription extends StyleDescription {
      * @see #setBorderColor(ColorDescription)
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderColor()
      * @model required="true"
+=======
+     * Returns the value of the '<em><b>Border Line Style</b></em>' attribute.
+     * The default value is <code>"solid"</code>. The literals are from the
+     * enumeration {@link org.eclipse.sirius.diagram.LineStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * style of the border line. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Border Line Style</em>' attribute.
+     * @see org.eclipse.sirius.diagram.LineStyle
+     * @see #setBorderLineStyle(LineStyle)
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderLineStyle()
+     * @model default="solid"
+>>>>>>> pcdavid/master
      * @generated
      */
     LineStyle getBorderLineStyle();
@@ -124,7 +138,11 @@ public interface BorderedStyleDescription extends StyleDescription {
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @param value
      *            the new value of the '<em>Border Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle

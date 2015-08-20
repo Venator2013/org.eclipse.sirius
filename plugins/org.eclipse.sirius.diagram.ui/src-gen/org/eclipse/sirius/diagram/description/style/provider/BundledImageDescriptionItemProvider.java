@@ -66,10 +66,18 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      * @generated
      */
     protected void addShapePropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_BundledImageDescription_shape_feature"),
                         getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"),
                         StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BundledImageDescription_shape_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_shape_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -80,8 +88,15 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+<<<<<<< HEAD
                 getString("_UI_BundledImageDescription_color_feature"), getString("_UI_BundledImageDescription_color_description"), StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true, false,
                 false, null, getString("_UI_ColorPropertyCategory"), null));
+=======
+                getString("_UI_BundledImageDescription_color_feature"), //$NON-NLS-1$
+                getString("_UI_BundledImageDescription_color_description"), //$NON-NLS-1$
+                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -92,7 +107,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BundledImageDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BundledImageDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -106,10 +121,10 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
 
         String color = new ColorQuery(((BundledImageDescription) object).getColor()).getLabel();
         String shape = ((BundledImageDescription) object).getShape().getName();
-        String label = getString("_UI_BundledImageDescription_type");
+        String label = getString("_UI_BundledImageDescription_type"); //$NON-NLS-1$
 
         if (shape != null && color != null) {
-            return label + " " + color + " " + shape;
+            return label + " " + color + " " + shape; //$NON-NLS-1$ //$NON-NLS-2$
         } else {
             return label;
         }

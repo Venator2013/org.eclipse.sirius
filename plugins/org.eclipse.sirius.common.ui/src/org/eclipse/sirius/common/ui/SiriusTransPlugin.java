@@ -57,7 +57,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
      * @generated
      */
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ui";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ui"; //$NON-NLS-1$
 
     /**
      * Singleton instance.
@@ -301,12 +301,6 @@ public final class SiriusTransPlugin extends EMFPlugin {
             getLog().log(status);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-         * @generated-not
-         */
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);

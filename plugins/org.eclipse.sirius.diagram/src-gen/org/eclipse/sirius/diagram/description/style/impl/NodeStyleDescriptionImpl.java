@@ -101,7 +101,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -128,7 +128,11 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * The default value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -139,7 +143,11 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * The cached value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -205,7 +213,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelExpression()
@@ -236,7 +244,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -279,7 +287,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = "";
+    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTooltipExpression()
@@ -323,7 +331,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
      * @generated
      * @ordered
      */
-    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "3";
+    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "3"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getSizeComputationExpression()
@@ -491,6 +499,30 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @generated
+     */
+    @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? NodeStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -1131,31 +1163,37 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
+<<<<<<< HEAD
         result.append(", borderLineStyle: ");
         result.append(borderLineStyle);
         result.append(", labelSize: ");
+=======
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
+        result.append(borderLineStyle);
+        result.append(", labelSize: "); //$NON-NLS-1$
+>>>>>>> pcdavid/master
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
-        result.append(", showIcon: ");
+        result.append(", showIcon: "); //$NON-NLS-1$
         result.append(showIcon);
-        result.append(", labelExpression: ");
+        result.append(", labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", labelAlignment: ");
+        result.append(", labelAlignment: "); //$NON-NLS-1$
         result.append(labelAlignment);
-        result.append(", tooltipExpression: ");
+        result.append(", tooltipExpression: "); //$NON-NLS-1$
         result.append(tooltipExpression);
-        result.append(", hideLabelByDefault: ");
+        result.append(", hideLabelByDefault: "); //$NON-NLS-1$
         result.append(hideLabelByDefault);
-        result.append(", sizeComputationExpression: ");
+        result.append(", sizeComputationExpression: "); //$NON-NLS-1$
         result.append(sizeComputationExpression);
-        result.append(", labelPosition: ");
+        result.append(", labelPosition: "); //$NON-NLS-1$
         result.append(labelPosition);
-        result.append(", resizeKind: ");
+        result.append(", resizeKind: "); //$NON-NLS-1$
         result.append(resizeKind);
         result.append(')');
         return result.toString();

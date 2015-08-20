@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -18,12 +19,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -42,12 +44,12 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListe
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -90,17 +92,17 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
-            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif");
+            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
-    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
 
-    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");;
+    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");; //$NON-NLS-1$
 
     /**
      * This is the one adapter factory used for providing views of the model.
      */
-    protected ComposedAdapterFactory adapterFactory;
+    protected AdapterFactory adapterFactory;
 
     /**
      * Model accessor.
@@ -177,7 +179,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     /** Singleton instance of the Image for the REPRESENTATION_FROZEN status. */
     protected Image frozenRepresentationImage;
 
-    /** CDO specific {@link IAuthorityListener}. */
+    /** The {@link IAuthorityListener}. */
     private IAuthorityListener dRepresentationLockStatusListener;
 
     /** Singleton instance of the Image for the LOCK_BY_ME status */
@@ -234,7 +236,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     }
 
     /**
-     * Lasily gets the image when there is no write permission of the
+     * Lazily gets the image when there is no write permission of the
      * DRepresentation.
      * 
      * @return the image when there is no write permission of the
@@ -254,6 +256,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     public abstract Image getFrozenRepresentationImage();
 
+    @Override
     public TransactionalEditingDomain getEditingDomain() {
         return session.getTransactionalEditingDomain();
     }
@@ -309,16 +312,65 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      * {@inheritDoc}
      */
     @Override
-    public abstract void init(final IEditorSite site, final IEditorInput input) throws PartInitException;
+    public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
+        setSite(site);
+
+        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
+
+        /*
+         * we are during eclipse boot, we are not trying to close the editor
+         */
+        if (sessions.isEmpty() && (!isClosing)) {
+            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
+        }
+        isClosing = false;
+
+        if (input instanceof SessionEditorInput) {
+            SessionEditorInput sessionEditorInput = (SessionEditorInput) input;
+            final URI uri = sessionEditorInput.getURI();
+            this.session = sessionEditorInput.getSession();
+            setRepresentation(uri, false);
+        } else if (input instanceof URIEditorInput) {
+            /* This happens when Eclipse is launched with an open tree editor */
+            final URI uri = ((URIEditorInput) input).getURI();
+            setRepresentation(uri, true);
+        }
+
+        setInput(input);
+
+        if (session != null) {
+            session.addListener(this);
+        }
+
+        configureCommandFactoryProviders();
+
+        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
+        uiSession.open();
+        uiSession.attachEditor(this);
+        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getRepresentation()));
+
+        DRepresentation representation = getRepresentation();
+        if (representation != null) {
+            /* Update title. Semantic table could have been renamed */
+            notify(PROP_TITLE);
+
+            initialTitleImage = getTitleImage();
+        }
+    }
 
     /**
-     * Initialize CDO {@link IPermissionAuthority} and the title image if the
-     * Table is already locked by the current user before opening.
+     * Configure and set the command factory.
+     */
+    protected abstract void configureCommandFactoryProviders();
+
+    /**
+     * Initialize {@link IPermissionAuthority} and the title image if the Table
+     * is already locked by the current user before opening.
      * 
      * @param representation
      *            the {@link DSemanticDecorator} that is opening.
      */
-    protected void initCollaborativeIPermissionAuthority(DSemanticDecorator representation) {
+    protected void initPermissionAuthority(DSemanticDecorator representation) {
         // This IPermissionAuthority is added only on shared
         // representations.
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.getTarget());
@@ -327,17 +379,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
         if (!permissionAuthority.canEditInstance(this.getRepresentation())) {
             notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED);
-        } else if (permissionAuthority instanceof ReadOnlyWrapperPermissionAuthority) {
-            // Find the CDOLockBasedPermissionAuthority and investigate by
-            // introspection if the diagram is "locked by me" in order to
-            // display the proper title image
-            ReadOnlyWrapperPermissionAuthority readOnlyWrapperPermissionAuthority = (ReadOnlyWrapperPermissionAuthority) permissionAuthority;
-            IPermissionAuthority wrappedAuthority = readOnlyWrapperPermissionAuthority.getWrappedAuthority();
-            if ("CDOLockBasedPermissionAuthority".equals(wrappedAuthority.getClass().getSimpleName())) {
-                if (LockStatus.LOCKED_BY_ME.equals(wrappedAuthority.getLockStatus(representation))) {
-                    notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
-                }
-            }
+        } else if (LockStatus.LOCKED_BY_ME.equals(permissionAuthority.getLockStatus(representation))) {
+            notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
         }
     }
 
@@ -354,29 +397,17 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean isDirty() {
         final boolean dirty = this.session.getStatus() == SessionStatus.DIRTY;
         return dirty;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSaveAsAllowed() {
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void setFocus() {
         if (treeViewerManager != null) {
@@ -392,6 +423,64 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
                 treeViewerManager.getControl().setFocus();
             }
             setEclipseWindowTitle();
+
+            // Resolve proxy model after aird reload.
+            DRepresentation representation = getRepresentation();
+            if (representation != null && representation.eIsProxy() && session != null) {
+                IEditorInput editorInput = getEditorInput();
+                if (editorInput instanceof URIEditorInput) {
+                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
+                    final URI uri = sessionEditorInput.getURI();
+                    setRepresentation(uri, false);
+                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+
+                    // Get the new representation
+                    representation = getRepresentation();
+                    if (uiSession != null && representation != null) {
+                        // Reinit dialect editor closer and other
+                        // IEditingSession mechanisms.
+                        uiSession.detachEditor(this);
+                        uiSession.attachEditor(this);
+                    }
+
+                    // Reinit the lock status listener.
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation);
+                    if (representation instanceof DSemanticDecorator && permissionAuthority != null && dRepresentationLockStatusListener != null) {
+                        permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+                        initPermissionAuthority((DSemanticDecorator) representation);
+                    }
+                }
+            }
+
+            checkSemanticAssociation();
+        }
+    }
+
+    /**
+     * Retrieve and set the representation from the given URI.
+     * 
+     * @param uri
+     *            the URI to resolve.
+     * @param loadOnDemand
+     *            whether to create and load the resource, if it doesn't already
+     *            exists.
+     */
+    protected abstract void setRepresentation(URI uri, boolean loadOnDemand);
+
+    private void checkSemanticAssociation() {
+        DRepresentation representation = getRepresentation();
+        boolean shouldClose = representation == null || representation.eResource() == null;
+        if (!shouldClose && representation instanceof DSemanticDecorator) {
+            EObject semanticTarget = ((DSemanticDecorator) representation).getTarget();
+            shouldClose = semanticTarget == null || semanticTarget.eResource() == null;
+        }
+
+        if (shouldClose) {
+            /*
+             * The element has been deleted, we should close the editor
+             */
+            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+            DialectUIManager.INSTANCE.closeEditor(this, false);
         }
     }
 
@@ -403,7 +492,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         // Removes the xmi id if the selected element and replace it with the
         // name of the tab.
         String title = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().getText();
-        final int end = title.lastIndexOf(".aird#");
+        final int end = title.lastIndexOf(".aird#"); //$NON-NLS-1$
         if (end > -1) {
             title = title.substring(0, end + 6) + this.getPartName() + " - Eclipse Platform";
             PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().setText(title);
@@ -421,11 +510,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return editorDesc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#needsRefresh(int)
-     */
+    @Override
     public boolean needsRefresh(int propId) {
         boolean result = false;
         if (propId == DialectEditor.PROP_REFRESH) {
@@ -443,11 +528,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     protected abstract void launchRefresh();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#getAdapter(java.lang.Class)
-     */
     @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
         Object result = super.getAdapter(type);
@@ -471,11 +551,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.common.ui.viewer.IViewerProvider#getViewer()
-     */
+    @Override
     public Viewer getViewer() {
         Viewer viewer = null;
         if (treeViewerManager != null) {
@@ -497,11 +573,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return accessor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#dispose()
-     */
     @Override
     public void dispose() {
 
@@ -521,12 +592,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         if (getTableViewer() != null) {
             getTableViewer().dispose();
         }
-        // Dispose the session editor input to keep the minimum information to
-        // be restore from the INavigationHistory and EditorHistory.
-        if (getEditorInput() instanceof SessionEditorInput) {
-            ((SessionEditorInput) getEditorInput()).dispose();
-        }
-
         // We need to perform the detachEditor after having disposed the viewer
         // and the editor input to avoid a refresh. A refresh can occurs in the
         // case where the detach triggers the reload of the modified resources
@@ -541,11 +606,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
-     */
     @Override
     public void setInput(final IEditorInput input) {
         super.setInput(input);
@@ -575,7 +635,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
 
     }
-
+    
     public AdapterFactory getAdapterFactory() {
         return adapterFactory;
     }
@@ -599,9 +659,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return propertiesUpdateEnabled;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notify(final int changeKind) {
         AbstractDTreeEditorSessionListenerDelegate abstractDTreeEditorSessionListenerDelegate = new AbstractDTreeEditorSessionListenerDelegate(this, changeKind);
         if (Display.getCurrent() == null) {
@@ -640,11 +698,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return SessionUIManager.INSTANCE.getUISession(session);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#isSaveOnCloseNeeded()
-     */
     @Override
     public boolean isSaveOnCloseNeeded() {
         /*
@@ -669,20 +722,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return autoRefresh;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#setDialogFactory(org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory)
-     */
+    @Override
     public void setDialogFactory(DialectEditorDialogFactory dialogFactory) {
         myDialogFactory = dialogFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ISaveablesSource#getSaveables()
-     */
+    @Override
     public Saveable[] getSaveables() {
         if (session != null && session.isOpen()) {
             IEditingSession uiSession = getUISession();
@@ -693,20 +738,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return new Saveable[0];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ISaveablesSource#getActiveSaveables()
-     */
+    @Override
     public Saveable[] getActiveSaveables() {
         return getSaveables();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see ISaveablePart2#promptToSaveOnClose()
-     */
+    @Override
     public int promptToSaveOnClose() {
         choice = ISaveablePart2.DEFAULT;
         if (session != null && session.isOpen()) {
@@ -720,11 +757,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return choice;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPartControl(Composite parent) {
         // setting up a UndoActionHandler
@@ -733,31 +765,19 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         setUpUndoRedoActionHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageOpened(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageOpened(IWorkbenchPage page) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageActivated(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageActivated(IWorkbenchPage page) {
         // As the page has been activated, we now can create the
         // UndoRedoActionHandler
         setUpUndoRedoActionHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageClosed(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageClosed(IWorkbenchPage page) {
 
     }
@@ -808,6 +828,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return searchedTreeItem;
     }
 
+    @Override
     public DialectEditorDialogFactory getDialogFactory() {
         return myDialogFactory;
     }
@@ -830,5 +851,15 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
             };
             refreshJob.schedule();
         }
+    }
+
+    /**
+     * Set the accessor.
+     * 
+     * @param accessor
+     *            the accessor to set
+     */
+    protected void setAccessor(ModelAccessor accessor) {
+        this.accessor = accessor;
     }
 }

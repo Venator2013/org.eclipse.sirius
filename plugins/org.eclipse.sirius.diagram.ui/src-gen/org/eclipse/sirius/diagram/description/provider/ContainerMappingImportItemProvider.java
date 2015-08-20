@@ -68,9 +68,10 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractMappingImport_hideSubMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"),
-                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_AbstractMappingImport_hideSubMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,9 +81,18 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
      * @generated
      */
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"),
                 DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"),
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+>>>>>>> pcdavid/master
                 null));
     }
 
@@ -94,8 +104,10 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
      */
     protected void addImportedMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMappingImport_importedMapping_feature"), getString("_UI_ContainerMappingImport_importedMapping_description"),
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ContainerMappingImport_importedMapping_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerMappingImport_importedMapping_description"), //$NON-NLS-1$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING_IMPORT__IMPORTED_MAPPING, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -106,7 +118,7 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerMappingImport"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerMappingImport")); //$NON-NLS-1$
     }
 
     /**
@@ -118,7 +130,7 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ContainerMappingImport) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerMappingImport_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ContainerMappingImport_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -170,7 +182,7 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

@@ -96,7 +96,7 @@ public class DNodeListItemProvider extends DDiagramElementContainerItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeList"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeList")); //$NON-NLS-1$
     }
 
     /**
@@ -108,7 +108,7 @@ public class DNodeListItemProvider extends DDiagramElementContainerItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((DNodeList) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DNodeList_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DNodeList_type") : label; //$NON-NLS-1$
     }
 
     /**

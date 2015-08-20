@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,20 +11,19 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 
 /**
  * A specific dragEditPartTracket that disable the clone feature. Indeed, in
- * Sirius it's not natural to clone a graphical element that will be removed
- * on the next refresh.
+ * Sirius it's not natural to clone a graphical element that will be removed on
+ * the next refresh.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
-public class NoCopyDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
+public class NoCopyDragEditPartsTrackerEx extends SnapToAllDragEditPartsTracker {
 
     /**
-     * Defaul constructor.
+     * Default constructor.
      * 
      * @param sourceEditPart
      *            the source edit part
@@ -48,7 +47,6 @@ public class NoCopyDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
 
     /*
      * (non-Javadoc)
-     * 
      * @see
      * org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx#reveal
      * (org.eclipse.gef.EditPart)

@@ -45,6 +45,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -147,7 +148,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
 
-            final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget"));
+            final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
             contents.add(diagramElement);
             for (final EObject element : contents) {
                 if (element instanceof EdgeTarget) {
@@ -181,6 +182,8 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);
                     addRefreshTask(diagramElement, result, tool);
+                    Option<DDiagram> parentDiagram = new EObjectQuery(diagramElement).getParentDiagram();
+                    result.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(diagramElement), diagramElement.getTarget(), parentDiagram.get()));
                     cmd = new NoNullResourceCommand(result, diagramElement);
                 } else {
                     cmd = buildDeleteDiagramElementCommandWithoutTool(result, semanticElements);

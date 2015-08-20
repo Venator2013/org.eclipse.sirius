@@ -18,7 +18,11 @@ import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilt
 // End of user code specific imports
 
 /**
+<<<<<<< HEAD
  * A filter for the borderColor property section.
+=======
+ * A filter for the borderLineStyle property section.
+>>>>>>> pcdavid/master
  */
 public class BorderedStyleDescriptionBorderLineStyleFilter extends ViewpointPropertyFilter {
 

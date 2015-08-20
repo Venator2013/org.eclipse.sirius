@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,12 +42,12 @@ public abstract class AbstractDTableViewerManager {
     /**
      * Boolean for OS.
      */
-    public static final boolean IS_GTK_OS = "gtk".equals(SWT.getPlatform());
+    public static final boolean IS_GTK_OS = "gtk".equals(SWT.getPlatform()); //$NON-NLS-1$
 
     /**
      * Use to store the semantic column in SWT column.
      */
-    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn";
+    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn"; //$NON-NLS-1$
 
     /**
      * The imageRegistry for the action images.
@@ -82,17 +82,12 @@ public abstract class AbstractDTableViewerManager {
     /**
      * The associated editor.
      */
-    protected final AbstractDTreeEditor tableEditor;
-
-    /**
-     * the current active column.
-     */
-    protected int activeColumn = -1;
+    protected final AbstractDTreeEditor treeEditor;
 
     /**
      * Menu manager.
      */
-    protected final MenuManager mgr = new MenuManager("#PopupMenu");
+    protected final MenuManager mgr = new MenuManager("#PopupMenu"); //$NON-NLS-1$
 
     /**
      * Indicates whether the odesign file has changed since the last load of the
@@ -127,7 +122,7 @@ public abstract class AbstractDTableViewerManager {
         this.editingDomain = editingDomain;
         this.accessor = accessor;
         this.tableCommandFactory = tableCommandFactory;
-        this.tableEditor = tableEditor;
+        this.treeEditor = tableEditor;
     }
 
     public static ImageRegistry getImageRegistry() {
@@ -221,7 +216,7 @@ public abstract class AbstractDTableViewerManager {
      * @return a table editor
      */
     public AbstractDTreeEditor getEditor() {
-        return tableEditor;
+        return treeEditor;
     }
 
     /**
@@ -235,34 +230,4 @@ public abstract class AbstractDTableViewerManager {
         descriptionFileChanged = modified;
     }
 
-    /**
-     * Manage height of the lines, selected colors.
-     */
-    protected void triggerCustomDrawingTreeItems() {
-        // Line height modification (aborted because of Windows SWT
-        // limitation)
-        // Manage height of the lines
-        // treeViewer.getTree().addListener(SWT.MeasureItem, new Listener() {
-        // public void handleEvent(final Event event) {
-        // if (event.item != null && event.item.getData() instanceof DLine) {
-        // final DLine currentLine = (DLine) event.item.getData();
-        // if (currentLine.getHeight() != 0) {
-        // event.height = currentLine.getHeight();
-        // }
-        // }
-        // }
-        // });
-        // Manage selected colors for cells
-        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
-    }
-
-    /**
-     * Return the index of the active column.<BR>
-     * Warning : The column 0 represents the line header.
-     * 
-     * @return the activeColumn
-     */
-    public int getActiveColumn() {
-        return activeColumn;
-    }
 }

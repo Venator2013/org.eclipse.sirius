@@ -897,8 +897,16 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
         defaultValueLiteral="0,0,0"/>
+<<<<<<< HEAD
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderLineStyle" lowerBound="1"
         eType="#//LineStyle" defaultValueLiteral="solid"/>
+=======
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderLineStyle" eType="#//LineStyle">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The style of the border line."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+>>>>>>> pcdavid/master
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//NodeStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
@@ -1791,9 +1799,16 @@
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="borderColor" lowerBound="1"
             eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+<<<<<<< HEAD
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderLineStyle" eType="#//LineStyle">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The style of the line."/>
+=======
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderLineStyle" eType="#//LineStyle"
+            defaultValueLiteral="solid">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of the border line."/>
+>>>>>>> pcdavid/master
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>

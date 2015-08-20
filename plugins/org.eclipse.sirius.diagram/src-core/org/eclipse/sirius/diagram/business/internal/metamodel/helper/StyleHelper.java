@@ -227,8 +227,8 @@ public final class StyleHelper {
         if (description.getCenterLabelStyleDescription() != null) {
             style.setCenterLabelStyle(DiagramFactory.eINSTANCE.createCenterLabelStyle());
         }
-        updateEdgeStyle(description, style);
-        Option<Style> noPreviousStyle = Options.newNone();
+        Option<EdgeStyle> noPreviousStyle = Options.newNone();
+        updateEdgeStyle(description, style, noPreviousStyle);
         refreshColors(style, noPreviousStyle);
         return style;
     }
@@ -328,16 +328,6 @@ public final class StyleHelper {
             updateLabels(edgeDescription, edgeStyle, previousStyle);
             updateEdgeCenteringInformations(edgeDescription, edgeStyle, previousStyle);
         }
-    }
-
-    /**
-     * @param description
-     * @param style
-     * @param previousStyle
-     */
-    private void updateEdgeStyle(EdgeStyleDescription description, EdgeStyle style) {
-        Option<EdgeStyle> noneEdgeStyle = Options.newNone();
-        updateEdgeStyle(description, style, noneEdgeStyle);
     }
 
     private void updateLabels(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
@@ -550,11 +540,11 @@ public final class StyleHelper {
         }
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-            style.setLabelSize(previousStyle.get().getLabelSize());
+            style.setLabelSize(Math.max(previousStyle.get().getLabelSize(), 1));
             style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName());
         } else {
             if (style.getLabelSize() != size && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-                style.setLabelSize(size);
+                style.setLabelSize(Math.max(size, 1));
             }
         }
     }
@@ -826,6 +816,25 @@ public final class StyleHelper {
                 }
             }
         }
+
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
+            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+        } else {
+            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
+                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
+            }
+        }
+
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName())) {
+            style.setBorderLineStyle(previousStyle.get().getBorderLineStyle());
+            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName());
+        } else {
+            if (!style.getBorderLineStyle().equals(description.getBorderLineStyle()) && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName())) {
+                style.setBorderLineStyle(description.getBorderLineStyle());
+            }
+        }
     }
 
     private void affectStyle(final AbstractDNode container, final NodeStyle newStyle) {
@@ -870,16 +879,6 @@ public final class StyleHelper {
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
         if (style.eContainer() instanceof DDiagramElementContainer) {
             setComputedSize((DDiagramElementContainer) style.eContainer(), description);
@@ -896,16 +895,6 @@ public final class StyleHelper {
     private void updateShapeContainerStyle(final ShapeContainerStyle style, final ShapeContainerStyleDescription description, Option<ContainerStyle> previousStyle) {
         if (style.getDescription() != description) {
             style.setDescription(description);
-        }
-
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
@@ -976,7 +965,7 @@ public final class StyleHelper {
     private Integer computeExpressions(EObject target, SizeComputationContainerStyleDescription description, EStructuralFeature feature) {
         Integer size = null;
         Object expression = description.eGet(feature);
-        if (expression instanceof String && !StringUtil.isEmpty((String) expression) && !((String) expression).equals("-1")) {
+        if (expression instanceof String && !StringUtil.isEmpty((String) expression) && !((String) expression).equals("-1")) { //$NON-NLS-1$
             try {
                 size = interpreter.evaluateInteger(target, (String) expression);
                 if (size == null) {
@@ -1003,17 +992,6 @@ public final class StyleHelper {
     private void updateWorkspaceImage(final WorkspaceImage image, final WorkspaceImageDescription description, Option<? extends Style> previousStyle) {
         if (image.getDescription() != description) {
             image.setDescription(description);
-        }
-
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())
-                && previousStyle.get() instanceof BorderedStyle) {
-            image.setBorderSizeComputationExpression(((BorderedStyle) previousStyle.get()).getBorderSizeComputationExpression());
-            image.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!image.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !image.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                image.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
         }
 
         if (!previousStyle.some() || (previousStyle.some() && previousStyle.get() instanceof LabelStyle)) {
@@ -1057,16 +1035,6 @@ public final class StyleHelper {
             image.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            image.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            image.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!image.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !image.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                image.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
-
         updateLabelStyleFeatures(description, image, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE.getName()) && previousStyle.get() instanceof BundledImage) {
@@ -1091,18 +1059,7 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
-
     }
 
     private GaugeCompositeStyle createGaugeCompositeStyle(final GaugeCompositeStyleDescription description) {
@@ -1115,16 +1072,6 @@ public final class StyleHelper {
     private void updateGaugeCompositeStyle(final GaugeCompositeStyle style, final GaugeCompositeStyleDescription description, Option<NodeStyle> previousStyle) {
         if (style.getDescription() != description) {
             style.setDescription(description);
-        }
-
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
@@ -1193,16 +1140,6 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName()) && previousStyle.get() instanceof Dot) {
@@ -1230,15 +1167,6 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
         updateLabelStyleFeatures(description, style, previousStyle);
         if (style.getHeight().intValue() != description.getHeight().intValue() && !style.getCustomFeatures().contains(DiagramPackage.Literals.SQUARE__HEIGHT.getName())) {
             style.setHeight(description.getHeight());
@@ -1280,16 +1208,6 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
-
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.CUSTOM_STYLE__ID.getName()) && previousStyle.get() instanceof CustomStyle) {
@@ -1314,15 +1232,6 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
-        }
         updateLabelStyleFeatures(description, style, previousStyle);
 
         if (style.eContainer() instanceof DNode) {
@@ -1392,16 +1301,6 @@ public final class StyleHelper {
     private void updateEllipse(final Ellipse style, final EllipseNodeDescription description, Option<NodeStyle> previousStyle) {
         if (style.getDescription() != description) {
             style.setDescription(description);
-        }
-
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-            style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
-        } else {
-            if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
-                style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
-            }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);

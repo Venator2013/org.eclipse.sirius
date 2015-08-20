@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -81,6 +81,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
@@ -224,7 +225,7 @@ public class PaletteManagerImpl implements PaletteManager {
         if (viewer != null) {
             paletteRoot = viewer.getPaletteRoot();
         } else {
-            paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get();
+            paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get(); //$NON-NLS-1$
         }
     }
 
@@ -317,9 +318,16 @@ public class PaletteManagerImpl implements PaletteManager {
      *            The {@session} containing the {@link DDiagram}.
      */
     private void updatePaletteForDiagramWithLayer(DiagramDescription description, Session session, DDiagram dDiagram) {
-        /* Get the list of activated layers */
-        final List<Layer> activatedLayers = dDiagram.getActivatedLayers();
-        final List<Layer> deactivatedLayers = PaletteManagerImpl.getDeactivatedLayers(dDiagram, session, description);
+        // Copy of all layers of selected viewpoints
+        HashSet<Layer> layersInActivatedViewpoints = new HashSet<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
+        // Copy of diagram activated layers (in all Viewpoints: activated or
+        // not)
+        HashSet<Layer> activatedLayers = new HashSet<Layer>(dDiagram.getActivatedLayers());
+        // Get the list of activated layers (of selected viewpoints)
+        final List<Layer> activatedLayersOfSelectedViewpoints = Lists.newArrayList(Sets.intersection(layersInActivatedViewpoints, activatedLayers));
+        // Get the list of deactivated layers (deactivated layers of selected
+        // viewpoints and all layers of deselected viewpoints)
+        final List<Layer> deactivatedLayersAndAllLayersOfDeselectedViewpoints = Lists.newArrayList(Sets.symmetricDifference(layersInActivatedViewpoints, activatedLayers));
         // Update the filters
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
@@ -334,10 +342,10 @@ public class PaletteManagerImpl implements PaletteManager {
                 updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
             }
         }
-        for (final Layer layer : Lists.newArrayList(deactivatedLayers)) {
+        for (final Layer layer : Lists.newArrayList(deactivatedLayersAndAllLayersOfDeselectedViewpoints)) {
             setLayerVisibility(layer, false);
         }
-        for (final Layer layer : Lists.newArrayList(activatedLayers)) {
+        for (final Layer layer : Lists.newArrayList(activatedLayersOfSelectedViewpoints)) {
             setLayerVisibility(layer, true);
         }
     }
@@ -386,7 +394,7 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
-        String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label");
+        String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label"); //$NON-NLS-1$
         PaletteContainer notesContainer = getPaletteContainer(paletteRoot, notesContainerLabel);
         if (notesContainer != null) {
             // Get the current noteAttachment tool
@@ -408,7 +416,7 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private CreationToolEntry getNoteAttachementToolEntry(final PaletteContainer container) {
-        String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label");
+        String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label"); //$NON-NLS-1$
         for (Object child : container.getChildren()) {
             if (child instanceof CreationToolEntry) {
                 CreationToolEntry paletteToolEntry = (CreationToolEntry) child;
@@ -585,29 +593,6 @@ public class PaletteManagerImpl implements PaletteManager {
         return EcoreUtil.getURI(entry).toString();
     }
 
-    // Browse list of all layers and remove from it all layers which are
-    // activated.
-    // all - activated = deactivated
-    private static List<Layer> getDeactivatedLayers(final DDiagram dDiagram, final Session session, final DiagramDescription description) {
-        // Copy of all layers
-        List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
-        // Use a copy of activated layers to avoid a potential
-        // ConcurrentModificationException linked to async execution of this
-        // code during the activation of a Viewpoint.
-        List<Layer> activatedLayers = Lists.newArrayList(dDiagram.getActivatedLayers());
-        for (Layer layer : activatedLayers) {
-            Iterator<Layer> iterator = deactivatedLayers.iterator();
-            while (iterator.hasNext()) {
-                Layer allLayer = iterator.next();
-                // If layer is activated (= in list of activated layer)
-                if (EqualityHelper.areEquals(layer, allLayer)) {
-                    iterator.remove();
-                }
-            }
-        }
-        return deactivatedLayers;
-    }
-
     /**
      * Adds the default tools contributed by the environment in the same group
      * as the default GEF tools.
@@ -615,12 +600,12 @@ public class PaletteManagerImpl implements PaletteManager {
     private void addDefaultTools(final Diagram diagram) {
         final PaletteContainer container = paletteRoot.getDefaultEntry().getParent();
         for (Object entry : container.getChildren()) {
-            if (entry instanceof PaletteSeparator && "defaultTools".equals(((PaletteSeparator) entry).getId())) {
+            if (entry instanceof PaletteSeparator && "defaultTools".equals(((PaletteSeparator) entry).getId())) { //$NON-NLS-1$
                 // Default tools are already there. Nothing to do.
                 return;
             }
         }
-        final PaletteSeparator marker = new PaletteSeparator("defaultTools");
+        final PaletteSeparator marker = new PaletteSeparator("defaultTools"); //$NON-NLS-1$
         marker.setVisible(false);
         container.add(marker);
         for (final ToolEntry defaultEntry : PaletteManagerImpl.getDefaultTools(TransactionUtil.getEditingDomain(diagram).getResourceSet())) {
@@ -647,7 +632,7 @@ public class PaletteManagerImpl implements PaletteManager {
         final PaletteContainer paletteDrawner = new SectionPaletteDrawer(name);
         paletteDrawner.setId(PaletteManagerImpl.getToolSectionId(section));
         if (StringUtil.isEmpty(iconPath)) {
-            iconPath = "icons/obj16/ToolSection.gif";
+            iconPath = "icons/obj16/ToolSection.gif"; //$NON-NLS-1$
         }
         final ImageDescriptor descIcon = org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.findImageDescriptor(iconPath);
         if (descIcon != null) {

@@ -74,8 +74,10 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"),
-                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -122,9 +124,9 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
-            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMapping"));
+            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMapping")); //$NON-NLS-1$
         }
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -140,7 +142,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return "Bordered " + label;
         }
-        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -151,7 +153,8 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      */
     public String getTextGen(Object object) {
         String label = ((NodeMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : getString("_UI_NodeMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : //$NON-NLS-1$
+            getString("_UI_NodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -203,7 +206,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
         WorkspaceImageDescription wkpImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
-        wkpImageDescription.setSizeComputationExpression("-1");
+        wkpImageDescription.setSizeComputationExpression("-1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, wkpImageDescription));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES, DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));

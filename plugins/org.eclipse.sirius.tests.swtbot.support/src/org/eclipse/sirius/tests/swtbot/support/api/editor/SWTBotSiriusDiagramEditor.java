@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
+import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -86,6 +87,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
+import org.eclipse.swtbot.swt.finder.results.BoolResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
@@ -220,6 +222,21 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      */
     public void click(final Point point) {
         click(point.x, point.y);
+    }
+
+    /**
+     * Helper to click with a Point as parameter.
+     * 
+     * @param point
+     *            the coordinate to click on described as a Point. This
+     *            coordinates is relative to screen.
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int,
+     *      int)
+     */
+    public void click(final Point point, boolean displayFeedback) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).click(point.x, point.y, displayFeedback);
     }
 
     /**
@@ -903,6 +920,29 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Drag and drop from the specified to the specified location with a key
+     * pressed during the drag'n'drop. This method also correctly handles the
+     * move of a bendpoint of an edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position to drag from
+     * @param fromYPosition
+     *            the relative y position to drag from
+     * @param toXPosition
+     *            the relative x position to drag to
+     * @param toYPosition
+     *            the relative y position to drag to
+     * @param keyCode
+     *            the key code of the key that was typed, as defined by the key
+     *            code constants in class <code>SWT</code>, or
+     *            {@link org.eclipse.swt.SWT#None} if no key. @see
+     *            org.eclipse.swt.SWT
+     */
+    public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
+    }
+
+    /**
      * Drag and drop the specified edit part to the specified location.
      * 
      * @param editPartBot
@@ -1100,7 +1140,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * type.<BR>
      * Examples :
      * <UL>
-     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)</LI>
+     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)
+     * </LI>
      * </UL>
      * 
      * @param editPartName
@@ -1451,6 +1492,22 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Return the "Snap to grid" option value for this editor.
+     * 
+     * @return the "Snap to grid" option value for this editor.
+     */
+    public boolean isSnapToShape() {
+        BoolResult snapToShape = new BoolResult() {
+
+            @Override
+            public Boolean run() {
+                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGEOMETRY);
+            }
+        };
+        return UIThreadRunnable.syncExec(snapToShape).booleanValue();
+    }
+
+    /**
      * Disable or enable the snapToGrid option for this editor.
      * 
      * @param snap
@@ -1470,6 +1527,22 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
                 ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.RULERUNIT, rulerUnits);
             }
         });
+    }
+
+    /**
+     * Return the "Snap to grid" option value for this editor.
+     * 
+     * @return the "Snap to grid" option value for this editor.
+     */
+    public boolean isSnapToGrid() {
+        BoolResult snapToGrid = new BoolResult() {
+
+            @Override
+            public Boolean run() {
+                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGRID);
+            }
+        };
+        return UIThreadRunnable.syncExec(snapToGrid).booleanValue();
     }
 
     /**
@@ -1715,6 +1788,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             Matcher<MenuItem> withLayerName = WidgetMatcherFactory.withText(layerName);
             SWTBotMenu layerButton = button.menuItem(withLayerName);
             layerButton.click();
+            layerButton.pressShortcut(KeyStroke.getInstance(SWT.ESC));
         } else {
             DesignerViews designerViews = new DesignerViews(designerBot);
             final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();

@@ -98,7 +98,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeFilterDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeFilterDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -113,7 +113,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
         if (label != null) {
             return label;
         }
-        return getString("_UI_CompositeFilterDescription_type");
+        return getString("_UI_CompositeFilterDescription_type"); //$NON-NLS-1$
     }
 
     /**

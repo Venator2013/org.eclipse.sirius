@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -59,11 +64,6 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -133,7 +133,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
         suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
-
+        suite.addTestSuite(EdgeReconnectionTests.class);
+        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
+        suite.addTestSuite(LineStyleTest.class);
     }
 
     /**
@@ -180,6 +182,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CloseWithoutSavingTest.class);
         suite.addTestSuite(CreateMandatoryElementsTest.class);
         suite.addTestSuite(LockedModelExplorerTest.class);
+        suite.addTestSuite(SnapAllShapesTest.class);
     }
 
     /**
@@ -296,6 +299,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest.class);
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
 
         suite.addTestSuite(DeleteHookTests.class);
 
@@ -341,6 +345,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteLayoutTest.class);
         suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
+        suite.addTestSuite(BendpointsStabilityOnMovesSpecificCasesTest.class);
         suite.addTestSuite(BorderedNodeCopyPastLayoutTest.class);
         suite.addTestSuite(ContainerDefaultSizeLayoutTest.class);
         suite.addTestSuite(ModifyEdgeLayoutAfterRefreshTest.class);
@@ -351,13 +356,16 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GroupingContentProviderTest.class);
         suite.addTestSuite(GroupingContentProviderByContainingTest.class);
         suite.addTestSuite(PaletteViewManagementTest.class);
+        suite.addTestSuite(PaletteManagerAfterVSMSelectionChange.class);
         suite.addTestSuite(CreateRepresentationFromSessionTest.class);
         suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(LocalSessionViewTest.class);
+        suite.addTestSuite(ShowTypeActionButtonTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
         suite.addTestSuite(ValidationTest.class);
+        suite.addTestSuite(ViewpointSelectionDialogTest.class);
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);
         suite.addTestSuite(RepairTest.class);

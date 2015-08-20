@@ -19,6 +19,7 @@ Export-Package: org.eclipse.sirius.table.business.api.helper;version="3.0.0",
  org.eclipse.sirius.table.business.internal.metamodel.description.spec.util;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.table.business.internal.metamodel.operations;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.table.business.internal.metamodel.spec;x-internal:=true;version="3.0.0",
+ org.eclipse.sirius.table.business.internal.migration.description;x-internal:=true;version="3.1.0",
  org.eclipse.sirius.table.business.internal.refresh;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.table.metamodel.table;version="3.0.0",
  org.eclipse.sirius.table.metamodel.table.description;version="3.0.0",
@@ -43,7 +44,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  com.google.guava;bundle-version="[11.0.2,16.0)"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.sirius.table.tools.internal.TablePlugin
+Bundle-Activator: org.eclipse.sirius.table.tools.internal.TablePlugin$Implementation
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.base.collect;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0"

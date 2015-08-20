@@ -22,7 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -62,6 +62,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
             addLabelPropertyDescriptor(object);
             addPreconditionPropertyDescriptor(object);
             addForceRefreshPropertyDescriptor(object);
+            addElementsToSelectPropertyDescriptor(object);
+            addInverseSelectionOrderPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -74,8 +76,10 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), getString("_UI_IdentifiedElement_name_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,8 +90,10 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), getString("_UI_IdentifiedElement_label_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -98,9 +104,10 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      */
     protected void addPreconditionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractToolDescription_precondition_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_precondition_feature", "_UI_AbstractToolDescription_type"),
-                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AbstractToolDescription_precondition_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_precondition_feature", "_UI_AbstractToolDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -111,9 +118,36 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      */
     protected void addForceRefreshPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractToolDescription_forceRefresh_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_forceRefresh_feature", "_UI_AbstractToolDescription_type"),
-                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AbstractToolDescription_forceRefresh_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_forceRefresh_feature", "_UI_AbstractToolDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
+    }
+
+    /**
+     * This adds a property descriptor for the Elements To Select feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addElementsToSelectPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractToolDescription_elementsToSelect_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractToolDescription_elementsToSelect_description"), //$NON-NLS-1$
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Inverse Selection Order feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractToolDescription_inverseSelectionOrder_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractToolDescription_inverseSelectionOrder_description"), //$NON-NLS-1$
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -158,7 +192,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((AbstractToolDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -178,6 +212,8 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__LABEL:
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH:
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:

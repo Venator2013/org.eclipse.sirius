@@ -43,8 +43,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
-import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.collect.Iterators;
@@ -189,7 +189,7 @@ public final class ModelUtils {
         if (extension != null) {
             fileExtension = extension;
         } else {
-            fileExtension = StringUtil.EMPTY_STRING;
+            fileExtension = ""; //$NON-NLS-1$
         }
 
         if (directory.exists() && directory.isDirectory() && directory.listFiles() != null) {
@@ -250,7 +250,7 @@ public final class ModelUtils {
      */
     public static EObject load(final InputStream stream, final String fileName, final ResourceSet resourceSet) throws IOException {
         if (stream == null) {
-            throw new NullPointerException("Input Stream for the model to load cannot be null.");
+            throw new NullPointerException(Messages.ModelUtils_missingInputStream);
         }
         EObject result = null;
 
@@ -311,8 +311,8 @@ public final class ModelUtils {
         try {
             resource = resourceSet.getResource(resourceURI, true);
         } catch (WrappedException e) {
-            if (ExtenderPlugin.getInstance().isDebugging()) {
-                ExtenderPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, ExtenderPlugin.ID, e.getMessage(), e));
+            if (ExtenderPlugin.getPlugin().isDebugging()) {
+                ExtenderPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, ExtenderPlugin.ID, e.getMessage(), e));
             }
             // Warning: as getResource has been called with loadOnDemand to
             // true, the resource is created with errors but is set on
@@ -388,7 +388,7 @@ public final class ModelUtils {
      */
     public static void save(final EObject root, final String path) throws IOException {
         if (root == null) {
-            throw new NullPointerException("Cannot serialize null object.");
+            throw new NullPointerException(Messages.ModelUtils_nullSerializationError);
         }
 
         final Resource newModelResource = ModelUtils.createResource(URI.createFileURI(path));
@@ -410,7 +410,7 @@ public final class ModelUtils {
      */
     public static String serialize(final EObject root) throws IOException {
         if (root == null) {
-            throw new NullPointerException("Cannot serialize null object.");
+            throw new NullPointerException(Messages.ModelUtils_nullSerializationError);
         }
 
         final XMIResourceImpl newResource = new XMIResourceImpl();

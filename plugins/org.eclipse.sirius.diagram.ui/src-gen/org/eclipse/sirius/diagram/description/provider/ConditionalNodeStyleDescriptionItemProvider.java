@@ -105,7 +105,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalNodeStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalNodeStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -117,7 +117,8 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
     @Override
     public String getText(Object object) {
         String label = ((ConditionalNodeStyleDescription) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ConditionalNodeStyleDescription_type") : getString("_UI_ConditionalNodeStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ConditionalNodeStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_ConditionalNodeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -168,7 +169,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
         WorkspaceImageDescription wkpImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
-        wkpImageDescription.setSizeComputationExpression("-1");
+        wkpImageDescription.setSizeComputationExpression("-1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE, wkpImageDescription));
 
         // Set by default all elements resizable and their label position on

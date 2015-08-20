@@ -100,7 +100,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConcernSet"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConcernSet")); //$NON-NLS-1$
     }
 
     /**
@@ -112,7 +112,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((ConcernSet) object).getDocumentation();
-        return label == null || label.length() == 0 ? getString("_UI_ConcernSet_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ConcernSet_type") : label; //$NON-NLS-1$
     }
 
     /**

@@ -193,7 +193,7 @@ public class ConnectionsFactory {
                 CenterLabelStyle centerLabelStyle = dEdge.getOwnedStyle().getCenterLabelStyle();
                 if (centerLabelStyle != null) {
                     int labelSize = centerLabelStyle.getLabelSize();
-                    fontStyle.setFontHeight(labelSize);
+                    fontStyle.setFontHeight(Math.max(labelSize, 1));
                 }
             }
         }
@@ -414,7 +414,7 @@ public class ConnectionsFactory {
             // Use center anchor (because this is what is done
             // by the {@link
             // org.eclipse.sirius.diagram.ui.tools.internal.routers.DTreeRouter#getTrunkLocation(org.eclipse.draw2d.Connection)}
-            targetTerminal = "(0.5,0.5)";
+            targetTerminal = "(0.5,0.5)"; //$NON-NLS-1$
         }
         if (targetTerminal != null) {
             if (targetTerminal.length() == 0)

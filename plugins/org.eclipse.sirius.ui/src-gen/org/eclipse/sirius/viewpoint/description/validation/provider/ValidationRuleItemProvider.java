@@ -16,20 +16,14 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
@@ -41,8 +35,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * 
  * @generated
  */
-public class ValidationRuleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -78,8 +71,10 @@ IItemPropertySource {
      */
     protected void addLevelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationRule_level_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_level_feature", "_UI_ValidationRule_type"),
-                ValidationPackage.Literals.VALIDATION_RULE__LEVEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ValidationRule_level_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_level_feature", "_UI_ValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_RULE__LEVEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,8 +85,10 @@ IItemPropertySource {
      */
     protected void addMessagePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationRule_message_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_message_feature", "_UI_ValidationRule_type"),
-                ValidationPackage.Literals.VALIDATION_RULE__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ValidationRule_message_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_message_feature", "_UI_ValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_RULE__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -131,14 +128,14 @@ IItemPropertySource {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((ValidationRule) object).getLevel();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label;
+        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        String label = query.getLabel();
+        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -180,17 +177,6 @@ IItemPropertySource {
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_RULE__AUDITS, ValidationFactory.eINSTANCE.createRuleAudit()));
 
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_RULE__FIXES, ValidationFactory.eINSTANCE.createValidationFix()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return ((IChildCreationExtender) adapterFactory).getResourceLocator();
     }
 
 }

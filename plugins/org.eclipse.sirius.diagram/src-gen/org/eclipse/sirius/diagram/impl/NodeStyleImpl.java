@@ -43,11 +43,20 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderSizeComputationExpression
  * <em>Border Size Computation Expression</em>}</li>
+<<<<<<< HEAD
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderColor
  * <em>Border Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderLineStyle
  * <em>Border Line Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#isHideLabelByDefault
+=======
+ * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderColor <em>
+ * Border Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#isHideLabelByDefault
+>>>>>>> pcdavid/master
  * <em>Hide Label By Default</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getLabelPosition
  * <em>Label Position</em>}</li>
@@ -95,7 +104,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -116,7 +125,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -132,7 +141,11 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * The default value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -143,7 +156,11 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * The cached value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -354,6 +371,30 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @generated
+     */
+    @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? NodeStyleImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -637,17 +678,23 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
-        result.append(", borderSizeComputationExpression: ");
+        result.append(", borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderColor: ");
+        result.append(", borderColor: "); //$NON-NLS-1$
         result.append(borderColor);
+<<<<<<< HEAD
         result.append(", borderLineStyle: ");
         result.append(borderLineStyle);
         result.append(", hideLabelByDefault: ");
+=======
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
+        result.append(borderLineStyle);
+        result.append(", hideLabelByDefault: "); //$NON-NLS-1$
+>>>>>>> pcdavid/master
         result.append(hideLabelByDefault);
-        result.append(", labelPosition: ");
+        result.append(", labelPosition: "); //$NON-NLS-1$
         result.append(labelPosition);
         result.append(')');
         return result.toString();

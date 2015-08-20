@@ -51,7 +51,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -78,7 +78,11 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * The default value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -89,7 +93,11 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * The cached value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -212,6 +220,30 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      */
     @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? BorderedStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
@@ -300,9 +332,13 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
+<<<<<<< HEAD
         result.append(", borderLineStyle: ");
+=======
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
+>>>>>>> pcdavid/master
         result.append(borderLineStyle);
         result.append(')');
         return result.toString();

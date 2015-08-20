@@ -37,21 +37,21 @@ public interface TreePackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "tree";
+    String eNAME = "tree"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/tree/1.0.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/tree/1.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "tree";
+    String eNS_PREFIX = "tree"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
@@ -137,6 +137,15 @@ public interface TreePackage extends EPackage {
      * @ordered
      */
     int DTREE__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
+
+    /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 
 /**
  * Registry for all the permission authorities.
@@ -39,11 +40,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
     public PermissionAuthorityRegistryImpl() {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry#getPermissionAuthority(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
     public IPermissionAuthority getPermissionAuthority(final EObject modelElement) {
         IPermissionAuthority authority = null;
         // If element is a Resource (can happen when the given parameter is a
@@ -60,7 +57,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
                     authority = resourceSetToAuthority.values().iterator().next();
                 } else {
                     // here we really can't manage something
-                    throw new RuntimeException("No resource to get the ExtendedPackage");
+                    throw new RuntimeException(Messages.PermissionAuthorityRegistryImpl_noResourceMessage);
                 }
             } else {
                 authority = getPermissionAuthority(modelElementResource.getResourceSet());
@@ -69,11 +66,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
         return authority;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry#getPermissionAuthority(org.eclipse.emf.ecore.resource.ResourceSet)
-     */
+    @Override
     public IPermissionAuthority getPermissionAuthority(final ResourceSet resourceSet) {
         if (!resourceSetToAuthority.containsKey(resourceSet)) {
             final IPermissionAuthority newAuth = PermissionService.createPermissionAuthority(resourceSet);
@@ -83,11 +76,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
         return resourceSetToAuthority.get(resourceSet);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry#getPermissionAuthority(org.eclipse.emf.ecore.resource.Resource)
-     */
+    @Override
     public IPermissionAuthority getPermissionAuthority(final Resource res) {
         IPermissionAuthority result = null;
         if (res.getResourceSet() != null) {
@@ -99,11 +88,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry#dispose()
-     */
+    @Override
     public void dispose() {
         resourceSetToAuthority.clear();
     }

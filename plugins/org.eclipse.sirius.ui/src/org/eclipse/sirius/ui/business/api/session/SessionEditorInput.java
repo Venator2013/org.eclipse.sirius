@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.session;
 
+import java.lang.ref.WeakReference;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -17,6 +19,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -36,16 +39,16 @@ public class SessionEditorInput extends URIEditorInput {
      * use the URI that is already store in the URIEditorInput because it can be
      * different in case of fragmentation.
      */
-    private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI";
+    private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI"; //$NON-NLS-1$
 
     /**
      * Default editor name
      * 
      * @since 0.9.0
      */
-    private static final String DEFAULT_EDITOR_NAME = "Representation";
+    private static final String DEFAULT_EDITOR_NAME = "Default_Representation_Editor";
 
-    private Session session;
+    private WeakReference<Session> sessionRef;
 
     /**
      * add a name field to override the {@link URIEditorInput} one's with
@@ -54,6 +57,8 @@ public class SessionEditorInput extends URIEditorInput {
     private String name;
 
     private URI sessionResourceURI;
+
+    private WeakReference<EObject> inputRef;
 
     /**
      * Create a new SessionEditorInput with the current session and ui session.
@@ -68,7 +73,7 @@ public class SessionEditorInput extends URIEditorInput {
     public SessionEditorInput(final URI uri, final String name, final Session session) {
         super(uri, name);
         this.name = name;
-        this.session = session;
+        this.sessionRef = new WeakReference<Session>(session);
         if (session.getSessionResource() != null) {
             this.sessionResourceURI = session.getSessionResource().getURI();
         }
@@ -91,23 +96,66 @@ public class SessionEditorInput extends URIEditorInput {
      * @return the model editing session.
      */
     public Session getSession() {
-        if (session == null) {
-            // It will probably be clean during the dispose, so recreate it from
-            // URI.
+        return getSession(true);
+    }
+
+    /**
+     * Return the model editing session.
+     * 
+     * @param restore
+     *            true to restore the session if it is not instantiated or
+     *            closed.
+     * @return the model editing session.
+     */
+    public Session getSession(boolean restore) {
+        Session session = sessionRef != null ? sessionRef.get() : null;
+        // Avoid to create a new session if the default editor name is used: we
+        // do not known yet for which representation the input is, like
+        // in the GotoMarker case for example.
+        if (session == null || (!session.isOpen() && !DEFAULT_EDITOR_NAME.equals(name))) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
                 sessionModelURI = sessionResourceURI;
             }
-            session = getSession(sessionModelURI);
+            session = getSession(sessionModelURI, restore);
+            if (session != null) {
+                this.sessionRef = new WeakReference<Session>(session);
+            }
         }
         return session;
     }
 
     /**
-     * {@inheritDoc}
+     * Get the input of this editor input.
      * 
-     * @see org.eclipse.emf.common.ui.URIEditorInput#getName()
+     * @return the input of this editor input
      */
+    public EObject getInput() {
+        return getInput(true);
+    }
+
+    /**
+     * Get the input of this editor input.
+     * 
+     * @param restore
+     *            true to restore the input and associated session if they are
+     *            not instantiated
+     * @return the input of this editor input
+     */
+    private EObject getInput(boolean restore) {
+        EObject input = inputRef != null ? inputRef.get() : null;
+        if (input == null) {
+            Session session = getSession(restore);
+            if (session != null && session.isOpen() && getURI().hasFragment()) {
+                input = session.getTransactionalEditingDomain().getResourceSet().getEObject(getURI(), false);
+                if (input != null) {
+                    inputRef = new WeakReference<EObject>(input);
+                }
+            }
+        }
+        return input;
+    }
+
     @Override
     public String getName() {
         return name == null ? super.getName() : name;
@@ -121,9 +169,6 @@ public class SessionEditorInput extends URIEditorInput {
         this.name = string;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void saveState(final IMemento memento) {
         super.saveState(memento);
@@ -134,9 +179,6 @@ public class SessionEditorInput extends URIEditorInput {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void loadState(final IMemento memento) {
         super.loadState(memento);
@@ -144,7 +186,10 @@ public class SessionEditorInput extends URIEditorInput {
         final String sessionResourceURIString = memento.getString(SESSION_RESOURCE_URI);
         if (sessionResourceURIString != null) {
             sessionResourceURI = URI.createURI(sessionResourceURIString);
-            session = getSession(sessionResourceURI);
+            Session newSession = getSession(sessionResourceURI);
+            if (newSession != null) {
+                this.sessionRef = new WeakReference<Session>(newSession);
+            }
         }
     }
 
@@ -158,21 +203,56 @@ public class SessionEditorInput extends URIEditorInput {
      * @since 0.9.0
      */
     protected Session getSession(URI sessionModelURI) {
+        return getSession(sessionModelURI, true);
+    }
+
+    /**
+     * Get the session.
+     * 
+     * @param sessionModelURI
+     *            the Session Resource URI
+     * @param restore
+     *            true to restore the session if it is not instantiated
+     * @return the session if it can be found, <code>null</code> otherwise
+     * 
+     * @since 0.9.0
+     */
+    private Session getSession(URI sessionModelURI, boolean restore) {
         Session sessionFromURI;
         try {
-            sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
-            if (sessionFromURI != null) {
-                if (!sessionFromURI.isOpen()) {
+            sessionFromURI = SessionManager.INSTANCE.getExistingSession(sessionModelURI);
+
+            // A session adds and removes itself from the session manager during
+            // open()/close()
+            // If restore, we try to create a new one and open it only in this
+            // case: the session lifecycle is not safe enough to try to open a
+            // previously closed session.
+            if (sessionFromURI == null && restore) {
+                sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
+                if (sessionFromURI != null && !sessionFromURI.isOpen()) {
                     sessionFromURI.open(new NullProgressMonitor());
                 }
-                IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
-                uiSession.open();
+            }
+
+            if (sessionFromURI != null && sessionFromURI.isOpen()) {
+                // The SessionUIManager creates and open an IEditingSession when
+                // a session is added to the SessionManager. This
+                // IEditingSession is closed and removed from the ui manager
+                // when the corresponding session is removed from the session
+                // manager (closed).
+                IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(sessionFromURI);
+                if (uiSession == null && restore) {
+                    uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
+                }
+                if (uiSession != null && !uiSession.isOpen()) {
+                    uiSession.open();
+                }
             }
         } catch (IllegalStateException e) {
             sessionFromURI = null;
             // Silent catch: can happen if failing to retrieve the session from
             // its URI
-        }  catch (OperationCanceledException e) {
+        } catch (OperationCanceledException e) {
             sessionFromURI = null;
             // Silent catch: can happen if failing to retrieve the session from
             // its URI
@@ -180,17 +260,11 @@ public class SessionEditorInput extends URIEditorInput {
         return sessionFromURI;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getBundleSymbolicName() {
         return SiriusEditPlugin.getPlugin().getSymbolicName();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getFactoryId() {
         return SessionEditorInputFactory.ID;
@@ -201,7 +275,7 @@ public class SessionEditorInput extends URIEditorInput {
      * 
      * @param sessionResourceURI
      *            a session Resource URI.
-     * @return a new Sessioneditorinput.
+     * @return a new SessionEditorinput.
      * 
      * @since 0.9.0
      */
@@ -215,12 +289,9 @@ public class SessionEditorInput extends URIEditorInput {
         return new SessionEditorInput(sessionResourceURI, DEFAULT_EDITOR_NAME, session);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getToolTipText() {
-        return getURI().trimFragment().toString() + "/" + getName();
+        return getURI().trimFragment().toString() + "/" + getName(); //$NON-NLS-1$
     }
 
     /**
@@ -230,31 +301,29 @@ public class SessionEditorInput extends URIEditorInput {
      * org.eclipse.ui.internal.EditorHistory. This method must not be called by
      * client, it is automatically called by the dispose of
      * {@link DDiagramEditor}.
+     * 
+     * @deprecated since a {@link org.eclipse.ui.IEditorInput} can be reused by
+     *             several instances of {@link org.eclipse.ui.IEditorPart}
+     *             through the navigation history view.
      */
+    @Deprecated
     public void dispose() {
-        session = null;
     }
 
     /**
-     * Super class URIEditorInput only check for existence of local URIs, and
-     * this behavior is not acceptable for collaborative sessions.
-     * 
-     * Instead we only want to ask the session knows about this URI.
-     * 
-     * This caused a bug when saving/restoring editor state in workbench memento
-     * state with collaborative sessions (URI with "cdo" scheme)
+     * Overridden to test input existence in a generic way.
      * 
      * {@inheritDoc}
      */
     @Override
     public boolean exists() {
         boolean exists = super.exists();
-        if (!exists && session != null) {
-            URI resourceURI = getURI().trimFragment();
-            for (Resource resource : session.getAllSessionResources()) {
-                if (resource.getURI().equals(resourceURI)) {
-                    exists = true;
-                    break;
+        if (!exists) {
+            EObject input = getInput(false);
+            if (input != null) {
+                Resource resource = input.eResource();
+                if (resource != null && resource.getResourceSet() != null) {
+                    exists = resource.getResourceSet().getURIConverter().exists(resource.getURI(), null);
                 }
             }
         }
@@ -275,4 +344,25 @@ public class SessionEditorInput extends URIEditorInput {
         return a;
     }
 
+    @Override
+    public int hashCode() {
+        EObject input = getInput(false);
+        if (input != null) {
+            return input.hashCode();
+        }
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        boolean equals = super.equals(o);
+        if (equals && o instanceof SessionEditorInput) {
+            EObject input = getInput(false);
+            if (input != null) {
+                SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
+                return input.equals(otherSessionEditorInput.getInput(false));
+            }
+        }
+        return equals;
+    }
 }

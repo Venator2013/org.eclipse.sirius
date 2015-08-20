@@ -86,7 +86,7 @@ public class ViewPropertiesSynchronizer {
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
     }
 
-    private static final String DEFAULT_FONT_STYLE = "Arial";
+    private static final String DEFAULT_FONT_STYLE = "Arial"; //$NON-NLS-1$
 
     /**
      * Update the specified GMF {@link View} properties according to Sirius
@@ -144,7 +144,7 @@ public class ViewPropertiesSynchronizer {
             fontStyle.setStrikeThrough(labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL));
         }
 
-        fontStyle.setFontHeight(basicLabelStyle.getLabelSize());
+        fontStyle.setFontHeight(Math.max(basicLabelStyle.getLabelSize(), 1));
         //
         // Default font (Change the code here to insert new font in the
         // case

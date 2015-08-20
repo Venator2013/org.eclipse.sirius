@@ -19,7 +19,6 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -83,7 +82,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
@@ -91,6 +89,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -214,14 +214,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     public void refresh() {
-        final EObject element = resolveSemanticElement();
-        if (element != null && this.getMetamodelType().isInstance(element)) {
-            super.refresh();
-
-            Iterable<EditPart> children = Iterables.filter(getChildren(), EditPart.class);
-            for (EditPart childEditPart : children) {
-                childEditPart.refresh();
-            }
+        super.refresh();
+        List<?> children = getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            EditPart editPart = (EditPart) children.get(i);
+            editPart.refresh();
         }
     }
 
@@ -327,18 +324,13 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      */
     protected void configureBorder(IFigure shapeFigure) {
         if (isRegion() && shapeFigure != null) {
-            // If the figure is a shape, do not draw the shape border.
-            if (shapeFigure instanceof Shape) {
-                ((Shape) shapeFigure).setOutline(false);
-            }
-
             if (isFirstRegionPart()) {
                 shapeFigure.setBorder(new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0));
             } else {
-                OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.TOP);
+                RoundedCornerMarginBorder oneLineBorder = new RoundedCornerMarginBorder(PositionConstants.TOP);
                 shapeFigure.setBorder(oneLineBorder);
+                oneLineBorder.setCornerDimensions(DiagramContainerEditPartOperation.getCornerDimension(this));
                 oneLineBorder.setMargin(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
-
                 if (getParentStackDirection() == PositionConstants.EAST_WEST) {
                     oneLineBorder.setPosition(PositionConstants.LEFT);
                 }
@@ -494,7 +486,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             deactivate();
         }
         if (shapeFigure == null) {
-            shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            if (isRegion()) {
+                shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            } else {
+                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            }
         }
 
         // Compute label visibility
@@ -771,7 +767,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         ResizeValidator resizeValidator = new ResizeValidator(request);
         valid = resizeValidator.validate();
 
-        if (valid && getMetamodelType().isInstance(this.resolveSemanticElement())) {
+        if (valid) {
             final Iterator<?> iterEditParts = request.getEditParts().iterator();
             while (iterEditParts.hasNext()) {
                 final Object next = iterEditParts.next();
@@ -820,8 +816,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position,
-                                dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()),
+                                new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }

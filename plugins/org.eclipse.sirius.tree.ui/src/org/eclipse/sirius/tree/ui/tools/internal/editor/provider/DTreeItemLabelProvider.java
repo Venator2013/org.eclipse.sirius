@@ -139,10 +139,8 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
     public String getText(final Object element) {
         String result = StringUtil.EMPTY_STRING;
         if (element instanceof DTreeItem) {
-            final DTreeItem item = (DTreeItem) element;
-            if (item != null) {
-                result = item.getName();
-            }
+            DTreeItem item = (DTreeItem) element;
+            result = item.getName();
         }
         return result;
     }
@@ -152,7 +150,7 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
         String text = getText(element);
         DefaultFontStyler styler = new DefaultFontStyler(getFont(element), getForeground(element), getBackground(element), getUnderline(element), getStrikeout(element));
         if (text == null) {
-            text = "";
+            text = ""; //$NON-NLS-1$
         }
         StyledString styledString = new StyledString(text, styler);
 

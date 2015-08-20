@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,14 +67,13 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
@@ -91,13 +90,13 @@ import com.google.common.collect.Lists;
 public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     /** The key for the image which represents a delete action. */
-    public static final String REFRESH_IMG = "tree/refresh";
+    public static final String REFRESH_IMG = "tree/refresh"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String DELETE_IMG = "tree/delete";
+    public static final String DELETE_IMG = "tree/delete"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String CREATE_TREE_ITEM_IMG = "tree/newTreeItem";
+    public static final String CREATE_TREE_ITEM_IMG = "tree/newTreeItem"; //$NON-NLS-1$
 
     static {
         imageRegistry.put(REFRESH_IMG, ImageDescriptor.createFromURL((URL) TreeUIPlugin.INSTANCE.getImage(REFRESH_IMG)));
@@ -116,6 +115,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     private DTreeMenuListener actualMenuListener;
 
     private final EditorCreateTreeItemMenuAction createTreeItemMenu = new EditorCreateTreeItemMenuAction();
+
+    private SelectDRepresentationElementsListener selectTableElementsListener;
 
     /**
      * The constructor.
@@ -169,13 +170,14 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         new TreeItemExpansionManager(dTreeViewer.getTree(), getSession());
 
         // Add a focus listener to deactivate the EMF actions on the Tree
-        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
+        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
         treeViewer.setUseHashlookup(true);
 
         // tableViewer.setSorter(new
         // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
 
         treeUIUpdater = new TreeUIUpdater(dTreeViewer, dRepresentation);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
 
         dTreeContentProvider = new DTreeContentProvider();
@@ -188,19 +190,15 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         treeViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         fillMenu();
-        triggerColumnSelectedColumn();
         initializeEditingSupport();
         initializeDragAndDropSupport();
         initializeKeyBindingSupport();
 
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
-
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
-                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
+                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
@@ -211,6 +209,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     private void initializeKeyBindingSupport() {
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
                 if (e.keyCode == SWT.DEL) {
                     DeleteTreeItemsAction deleteItemsAction = new DeleteTreeItemsAction(getEditingDomain(), getTreeCommandFactory());
@@ -221,6 +220,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
@@ -259,8 +259,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         ISelectionProvider selectionProvider = this.treeViewer;
         this.treeViewer.addDragSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new ModelDragTargetAdapter(selectionProvider));
-        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() },
-                new DTreeItemDropListener(this.treeViewer, this.editingDomain, this.treeCommandFactory, this.accessor));
+        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new DTreeItemDropListener(this.treeViewer, this.editingDomain,
+                this.treeCommandFactory, this.accessor));
     }
 
     /**
@@ -277,7 +277,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         Class<?> columnViewerClass = ColumnViewer.class;
         Method method;
         try {
-            method = columnViewerClass.getDeclaredMethod("getViewerColumn", Integer.TYPE);
+            method = columnViewerClass.getDeclaredMethod("getViewerColumn", Integer.TYPE); //$NON-NLS-1$
             method.setAccessible(true);
             Object invoke = method.invoke(treeViewer, 0);
             if (invoke instanceof ViewerColumn) {
@@ -299,8 +299,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table.
-     * <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      */
@@ -324,7 +323,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                 final Menu menu = mgr.createContextMenu(treeViewer.getControl());
                 treeViewer.getControl().setMenu(menu);
                 // // Add this line to have others contextual menus
-                tableEditor.getSite().registerContextMenu(mgr, treeViewer);
+                treeEditor.getSite().registerContextMenu(mgr, treeViewer);
             }
             getCreateTreeItemMenu().update(createActionsForTree);
         }
@@ -405,43 +404,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Add a listener on the tree to listen the mouseDouwn or the key left-right
-     * arrows and store the activeColumn
-     */
-    private void triggerColumnSelectedColumn() {
-        treeViewer.getTree().addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseDown(final MouseEvent event) {
-                int x = 0;
-                for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-                    x += treeViewer.getTree().getColumn(i).getWidth();
-                    if (event.x <= x) {
-                        activeColumn = i;
-                        break;
-                    }
-                }
-            }
-
-        });
-        treeViewer.getTree().addKeyListener(new KeyListener() {
-            public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn != 0) {
-                    activeColumn--;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn != treeViewer.getTree().getColumnCount() - 1) {
-                    activeColumn++;
-                    treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                }
-            }
-
-            public void keyReleased(final KeyEvent e) {
-            };
-        });
-
-    }
-
-    /**
      * Return the TableCommandFactory.
      * 
      * @return the TableCommandFactory
@@ -492,6 +454,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         descriptionFileChangedNotifier = null;
         treeUIUpdater.dispose();
         treeUIUpdater = null;
+        selectTableElementsListener.dispose();
+        selectTableElementsListener = null;
         dTreeContentProvider.dispose();
         dTreeContentProvider = null;
         super.dispose();

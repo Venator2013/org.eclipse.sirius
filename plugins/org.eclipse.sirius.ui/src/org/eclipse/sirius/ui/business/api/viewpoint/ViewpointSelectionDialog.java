@@ -28,6 +28,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
@@ -99,7 +100,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         }
 
         public String getLabel() {
-            return viewpoint.getName();
+            return new IdentifiedElementQuery(viewpoint).getLabel();
         }
 
         public URI getViewpointURI() {
@@ -209,7 +210,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         @Override
         public String toString() {
             if (parent != null) {
-                return parent.toString() + " > " + this.getLabel();
+                return parent.toString() + " > " + this.getLabel(); //$NON-NLS-1$
             } else {
                 return this.getLabel();
             }
@@ -383,7 +384,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
             public void update(ViewerCell cell) {
                 Item item = (Item) cell.getElement();
                 cell.setText(item.getLabel());
-                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif"));
+                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif")); //$NON-NLS-1$
             }
 
             @Override
@@ -424,10 +425,10 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
                     if (item != null && item.viewpoint != null) {
                         description.setText(item.viewpoint.getEndUserDocumentation());
                     } else {
-                        description.setText("");
+                        description.setText(""); //$NON-NLS-1$
                     }
                 } else {
-                    description.setText("");
+                    description.setText(""); //$NON-NLS-1$
                 }
             }
         });

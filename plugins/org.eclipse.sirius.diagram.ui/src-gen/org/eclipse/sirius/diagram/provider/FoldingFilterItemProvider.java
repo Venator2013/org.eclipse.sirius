@@ -68,7 +68,7 @@ public class FoldingFilterItemProvider extends ItemProviderAdapter
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FoldingFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FoldingFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -79,7 +79,7 @@ public class FoldingFilterItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_FoldingFilter_type");
+        return getString("_UI_FoldingFilter_type"); //$NON-NLS-1$
     }
 
     /**

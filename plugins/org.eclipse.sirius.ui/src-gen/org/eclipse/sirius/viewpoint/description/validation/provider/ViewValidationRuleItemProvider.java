@@ -18,9 +18,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
-import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * This is the item provider adapter for a
@@ -64,8 +64,10 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      */
     protected void addTargetsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewValidationRule_targets_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"),
-                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ViewValidationRule_targets_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,20 +78,20 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewValidationRule"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewValidationRule")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((ViewValidationRule) object).getLevel();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_ViewValidationRule_type") : getString("_UI_ViewValidationRule_type") + " " + label;
+        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        String label = query.getLabel();
+        return label == null || label.length() == 0 ? getString("_UI_ViewValidationRule_type") : getString("_UI_ViewValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

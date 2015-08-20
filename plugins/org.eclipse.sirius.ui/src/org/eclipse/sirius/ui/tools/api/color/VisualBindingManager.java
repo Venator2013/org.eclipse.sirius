@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -50,7 +51,7 @@ import com.google.common.base.Objects;
  * @author cbrun, pcdavid
  */
 public class VisualBindingManager {
-    private static final String DEFAULT_FONT_NAME = "ARIAL";
+    private static final String DEFAULT_FONT_NAME = "ARIAL"; //$NON-NLS-1$
 
     private static VisualBindingManager defaultInstance;
 
@@ -258,7 +259,7 @@ public class VisualBindingManager {
             // Ideally get the default color from the preferences page
             // (IPreferenceConstants.PREF_FONT_COLOR), but no editor (so
             // preferences) from this plugin
-            return getColorFromName("black");
+            return getColorFromName("black"); //$NON-NLS-1$
         }
     }
 
@@ -382,8 +383,8 @@ public class VisualBindingManager {
         final int min = pmin;
         int max = pmax;
         int value = pvalue;
-        final Color red = this.getColorFromName("red");
-        final Color green = this.getColorFromName("green");
+        final Color red = this.getColorFromName("red"); //$NON-NLS-1$
+        final Color green = this.getColorFromName("green"); //$NON-NLS-1$
 
         if (max <= min) {
             max = min + 1;
@@ -431,10 +432,10 @@ public class VisualBindingManager {
     public SystemColors findClosestSystemColor(final FixedColor color) {
         int bestDistanceSoFar = Integer.MAX_VALUE;
         String bestColorNameSoFar = null;
-        for (final String defaultColorName : systemPalette.keySet()) {
-            final int dist = squareDistance(systemPalette.get(defaultColorName), color);
+        for (Entry<String, RGB> defaultColorName : systemPalette.entrySet()) {
+            final int dist = squareDistance(defaultColorName.getValue(), color);
             if (dist < bestDistanceSoFar) {
-                bestColorNameSoFar = defaultColorName;
+                bestColorNameSoFar = defaultColorName.getKey();
                 bestDistanceSoFar = dist;
                 if (dist == 0) {
                     break;
@@ -456,7 +457,7 @@ public class VisualBindingManager {
      */
     public SystemColors findClosestStandardColor(final RGBValues values) {
         final SystemColor color = DescriptionFactory.eINSTANCE.createSystemColor();
-        color.setName("<anonymous>");
+        color.setName("<anonymous>"); //$NON-NLS-1$
         color.setRed(values.getRed());
         color.setGreen(values.getGreen());
         color.setBlue(values.getBlue());
@@ -747,7 +748,7 @@ public class VisualBindingManager {
      * @return return the color description corresponding to the color name.
      */
     public SystemColor getSystemColorDescription(final String name) {
-        final String uri = SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors/@entries[name='" + name + "']";
+        final String uri = SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors/@entries[name='" + name + "']"; //$NON-NLS-1$ //$NON-NLS-2$
         final EObject color = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSystemColor());
         final URI colorURI = URI.createURI(uri);
         ((InternalEObject) color).eSetProxyURI(colorURI);

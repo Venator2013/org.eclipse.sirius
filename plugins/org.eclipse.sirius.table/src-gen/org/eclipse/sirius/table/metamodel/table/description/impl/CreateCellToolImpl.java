@@ -57,6 +57,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getFilters
  * <em>Filters</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getElementsToSelect
+ * <em>Elements To Select</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#isInverseSelectionOrder
+ * <em>Inverse Selection Order</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.CreateCellToolImpl#getMask
  * <em>Mask</em>}</li>
  * <li>
@@ -77,7 +83,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()
@@ -98,7 +104,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -139,7 +145,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      * @ordered
      */
-    protected static final String PRECONDITION_EDEFAULT = "";
+    protected static final String PRECONDITION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
@@ -181,6 +187,50 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @ordered
      */
     protected EList<ToolFilterDescription> filters;
+
+    /**
+     * The default value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected String elementsToSelect = CreateCellToolImpl.ELEMENTS_TO_SELECT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean INVERSE_SELECTION_ORDER_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected boolean inverseSelectionOrder = CreateCellToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getMask() <em>Mask</em>}' containment
@@ -350,6 +400,54 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * @generated
      */
     @Override
+    public String getElementsToSelect() {
+        return elementsToSelect;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setElementsToSelect(String newElementsToSelect) {
+        String oldElementsToSelect = elementsToSelect;
+        elementsToSelect = newElementsToSelect;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT, oldElementsToSelect, elementsToSelect));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean isInverseSelectionOrder() {
+        return inverseSelectionOrder;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setInverseSelectionOrder(boolean newInverseSelectionOrder) {
+        boolean oldInverseSelectionOrder = inverseSelectionOrder;
+        inverseSelectionOrder = newInverseSelectionOrder;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER, oldInverseSelectionOrder, inverseSelectionOrder));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EditMaskVariables getMask() {
         return mask;
     }
@@ -429,7 +527,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public void setMapping(IntersectionMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.CREATE_CELL_TOOL__MAPPING && newMapping != null)) {
             if (EcoreUtil.isAncestor(this, newMapping)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {
@@ -516,6 +614,10 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
             return isForceRefresh();
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             return getFilters();
+        case DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+            return getElementsToSelect();
+        case DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
+            return isInverseSelectionOrder();
         case DescriptionPackage.CREATE_CELL_TOOL__MASK:
             return getMask();
         case DescriptionPackage.CREATE_CELL_TOOL__MAPPING:
@@ -551,6 +653,12 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             getFilters().clear();
             getFilters().addAll((Collection<? extends ToolFilterDescription>) newValue);
+            return;
+        case DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+            setElementsToSelect((String) newValue);
+            return;
+        case DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder((Boolean) newValue);
             return;
         case DescriptionPackage.CREATE_CELL_TOOL__MASK:
             setMask((EditMaskVariables) newValue);
@@ -588,6 +696,12 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             getFilters().clear();
             return;
+        case DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+            setElementsToSelect(CreateCellToolImpl.ELEMENTS_TO_SELECT_EDEFAULT);
+            return;
+        case DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder(CreateCellToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT);
+            return;
         case DescriptionPackage.CREATE_CELL_TOOL__MASK:
             setMask((EditMaskVariables) null);
             return;
@@ -618,6 +732,10 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
             return forceRefresh != CreateCellToolImpl.FORCE_REFRESH_EDEFAULT;
         case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
             return filters != null && !filters.isEmpty();
+        case DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+            return CreateCellToolImpl.ELEMENTS_TO_SELECT_EDEFAULT == null ? elementsToSelect != null : !CreateCellToolImpl.ELEMENTS_TO_SELECT_EDEFAULT.equals(elementsToSelect);
+        case DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
+            return inverseSelectionOrder != CreateCellToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
         case DescriptionPackage.CREATE_CELL_TOOL__MASK:
             return mask != null;
         case DescriptionPackage.CREATE_CELL_TOOL__MAPPING:
@@ -665,6 +783,10 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
                 return ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
             case DescriptionPackage.CREATE_CELL_TOOL__FILTERS:
                 return ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+            case DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+                return ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+            case DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
+                return ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
             default:
                 return -1;
             }
@@ -711,6 +833,10 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
                 return DescriptionPackage.CREATE_CELL_TOOL__FORCE_REFRESH;
             case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
                 return DescriptionPackage.CREATE_CELL_TOOL__FILTERS;
+            case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+                return DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT;
+            case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+                return DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER;
             default:
                 return -1;
             }
@@ -730,16 +856,20 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", precondition: ");
+        result.append(", precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", forceRefresh: ");
+        result.append(", forceRefresh: "); //$NON-NLS-1$
         result.append(forceRefresh);
+        result.append(", elementsToSelect: "); //$NON-NLS-1$
+        result.append(elementsToSelect);
+        result.append(", inverseSelectionOrder: "); //$NON-NLS-1$
+        result.append(inverseSelectionOrder);
         result.append(')');
         return result.toString();
     }

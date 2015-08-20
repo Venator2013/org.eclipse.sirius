@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
+import org.eclipse.sirius.common.acceleo.aql.business.Messages;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
 import org.eclipse.sirius.common.acceleo.aql.business.api.ExpressionTrimmer;
 import org.eclipse.sirius.common.acceleo.aql.business.api.TypesUtil;
@@ -88,7 +90,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 return siriusXref.getInverseReferences(self);
 
             } else {
-                return Collections.EMPTY_SET;
+                return Collections.emptySet();
             }
         }
     };
@@ -100,15 +102,15 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             try {
                 queryEnvironment.registerServicePackage(clazz);
             } catch (InvalidAcceleoPackageException e) {
-                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Error loading Java extension class " + qualifiedName + " :" + e.getMessage(), e));
+                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName,
+                        e.getMessage()), e));
             }
 
         }
 
         @Override
         public void notFound(String qualifiedName) {
-            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Could not find Java extension class " + qualifiedName));
-
+            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_javaClassNotFound, qualifiedName)));
         }
 
         @Override
@@ -134,7 +136,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
             @Override
             public void unloaded(String nsURI, EPackage pak) {
-                queryEnvironment.removeEPackage(pak.getNsPrefix());
+                queryEnvironment.removeEPackage(pak.getName());
             }
         };
         this.javaExtensions.addClassLoadingCallBack(callback);
@@ -180,7 +182,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         this.javaExtensions.reloadIfNeeded();
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
         Map<String, Object> variables = getVariables();
-        variables.put("self", target);
+        variables.put("self", target); //$NON-NLS-1$
         AstResult build;
         try {
             build = parsedExpressions.get(expression);
@@ -223,7 +225,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String fullExpression) {
         this.javaExtensions.reloadIfNeeded();
-        
+
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
         ValidationResult result = new ValidationResult();
 
@@ -242,7 +244,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                     if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
                         String typeName = eClassifierType.getType().getName();
                         if (eClassifierType.getType().getEPackage() != null && eClassifierType.getType().getEPackage().getName() != null) {
-                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName;
+                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName; //$NON-NLS-1$
                         }
                         classifierNames.add(typeName);
                     }
@@ -294,7 +296,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
          * and imports.
          */
         this.javaExtensions.reloadIfNeeded();
-        
+
         return this.queryEnvironment;
     }
 }

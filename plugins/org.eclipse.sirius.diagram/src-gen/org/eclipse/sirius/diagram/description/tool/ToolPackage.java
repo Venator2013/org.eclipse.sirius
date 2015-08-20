@@ -39,21 +39,21 @@ public interface ToolPackage extends EPackage {
      *
      * @generated
      */
-    String eNAME = "tool";
+    String eNAME = "tool"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/tool/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_PREFIX = "tool";
+    String eNS_PREFIX = "tool"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
@@ -328,6 +328,24 @@ public interface ToolPackage extends EPackage {
     int NODE_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -457,6 +475,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int EDGE_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' reference list.
@@ -626,6 +662,24 @@ public interface ToolPackage extends EPackage {
     int CONTAINER_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -757,6 +811,24 @@ public interface ToolPackage extends EPackage {
     int DELETE_ELEMENT_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_ELEMENT_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_ELEMENT_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -877,6 +949,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int DOUBLE_CLICK_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOUBLE_CLICK_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOUBLE_CLICK_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
@@ -1071,6 +1161,24 @@ public interface ToolPackage extends EPackage {
     int RECONNECT_EDGE_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RECONNECT_EDGE_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int RECONNECT_EDGE_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Reconnection Kind</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1220,6 +1328,24 @@ public interface ToolPackage extends EPackage {
     int REQUEST_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REQUEST_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REQUEST_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1302,6 +1428,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int DIRECT_EDIT_LABEL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIRECT_EDIT_LABEL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIRECT_EDIT_LABEL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
@@ -1404,6 +1548,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int BEHAVIOR_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BEHAVIOR_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BEHAVIOR_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1925,6 +2087,24 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_CREATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2065,6 +2245,24 @@ public interface ToolPackage extends EPackage {
     int DIAGRAM_NAVIGATION_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DIAGRAM_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Browse Expression</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2203,6 +2401,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int CONTAINER_DROP_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--

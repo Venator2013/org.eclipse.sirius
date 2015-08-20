@@ -72,8 +72,10 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), getString("_UI_DocumentedElement_documentation_description"), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION,
-                true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,10 +85,20 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_AbstractNodeMapping_domainClass_feature"),
                         getString("_UI_AbstractNodeMapping_domainClass_description"), org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS, true,
                         false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_AbstractNodeMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractNodeMapping_domainClass_description"), //$NON-NLS-1$
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__DOMAIN_CLASS, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
+>>>>>>> pcdavid/master
     }
 
     /**
@@ -96,11 +108,13 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      * @generated
      */
     protected void addReusedBorderedNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature", "_UI_AbstractNodeMapping_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractNodeMapping_reusedBorderedNodeMappings_feature", "_UI_AbstractNodeMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS, true, false, true, null,
-                getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -145,7 +159,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((AbstractNodeMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_AbstractNodeMapping_type") : getString("_UI_AbstractNodeMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_AbstractNodeMapping_type") : getString("_UI_AbstractNodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -184,7 +198,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         NodeMapping createNodeMapping = DescriptionFactory.eINSTANCE.createNodeMapping();
-        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, createNodeMapping));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
@@ -206,7 +220,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         boolean qualify = childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }
@@ -222,11 +236,11 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         String featureKey;
         if (feature instanceof EStructuralFeature) {
             EStructuralFeature eFeature = (EStructuralFeature) feature;
-            featureKey = eFeature.getEContainingClass().getName() + "_" + eFeature.getName();
+            featureKey = eFeature.getEContainingClass().getName() + "_" + eFeature.getName(); //$NON-NLS-1$
         } else {
             featureKey = "Unknown";
         }
-        return getResourceLocator().getString("_UI_" + featureKey + "_feature_prefix");
+        return getResourceLocator().getString("_UI_" + featureKey + "_feature_prefix"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
 }

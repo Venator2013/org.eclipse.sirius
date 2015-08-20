@@ -33,6 +33,7 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
@@ -74,6 +75,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
@@ -168,11 +170,15 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (ownedStyle.getBorderSize() != null) {
                     borderSize = ownedStyle.getBorderSize().intValue();
                 }
+<<<<<<< HEAD
                 if (borderSize == 0) {
                     borderSize = 1;
                 }
                 
                 
+=======
+
+>>>>>>> pcdavid/master
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
                     configureBorder(rcf);
@@ -180,7 +186,11 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                         Border border;
                         if (isRegionContainerCompartment()) {
                             // scroll pane / layout compensation
-                            border = new MarginBorder(0, 0, -1, -1);
+                            if (borderSize == 0) {
+                                border = new MarginBorder(0, 0, 0, 0);
+                            } else {
+                                border = new MarginBorder(0, 0, -1, -1);
+                            }
                         } else {
                             // We should not have to report the border size
                             // here, but the content pane of the figure will be
@@ -552,4 +562,12 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             return bounds;
         }
     };
+
+    @Override
+    public Object getAdapter(Class key) {
+        if (key == SnapToHelper.class) {
+            return SiriusSnapToHelperUtil.getSnapHelper(this);
+        }
+        return super.getAdapter(key);
+    }
 }

@@ -73,7 +73,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -94,7 +94,7 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * @generated
      * @ordered
      */
-    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -110,7 +110,11 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * The default value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -121,7 +125,11 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * The cached value of the '{@link #getBorderLineStyle()
      * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @see #getBorderLineStyle()
      * @generated
      * @ordered
@@ -250,6 +258,30 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
      * @generated
      */
     @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? BorderedStyleImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE:
@@ -345,13 +377,17 @@ public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
-        result.append(", borderSizeComputationExpression: ");
+        result.append(", borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderColor: ");
+        result.append(", borderColor: "); //$NON-NLS-1$
         result.append(borderColor);
+<<<<<<< HEAD
         result.append(", borderLineStyle: ");
+=======
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
+>>>>>>> pcdavid/master
         result.append(borderLineStyle);
         result.append(')');
         return result.toString();

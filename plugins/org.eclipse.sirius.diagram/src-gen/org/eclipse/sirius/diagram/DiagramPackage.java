@@ -39,21 +39,21 @@ public interface DiagramPackage extends EPackage {
      *
      * @generated
      */
-    String eNAME = "diagram";
+    String eNAME = "diagram"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_PREFIX = "diagram";
+    String eNS_PREFIX = "diagram"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
@@ -127,6 +127,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DDIAGRAM__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
+
+    /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
@@ -364,6 +373,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES = DiagramPackage.DDIAGRAM__OWNED_ANNOTATION_ENTRIES;
+
+    /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__UI_STATE = DiagramPackage.DDIAGRAM__UI_STATE;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
@@ -2358,7 +2376,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -2505,7 +2527,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -2756,7 +2782,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -2895,7 +2925,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3061,7 +3095,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3217,7 +3255,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3391,7 +3433,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3565,7 +3611,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3740,7 +3790,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -3906,7 +3960,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -4062,6 +4120,18 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+<<<<<<< HEAD
+=======
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
+
+    /**
+     * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
+>>>>>>> pcdavid/master
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -4396,7 +4466,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -4508,7 +4582,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -4637,7 +4715,11 @@ public interface DiagramPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> pcdavid/master
      * @generated
      * @ordered
      */
@@ -8920,7 +9002,11 @@ public interface DiagramPackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Border Line Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+<<<<<<< HEAD
          *
+=======
+         * 
+>>>>>>> pcdavid/master
          * @generated
          */
         EAttribute BORDERED_STYLE__BORDER_LINE_STYLE = DiagramPackage.eINSTANCE.getBorderedStyle_BorderLineStyle();

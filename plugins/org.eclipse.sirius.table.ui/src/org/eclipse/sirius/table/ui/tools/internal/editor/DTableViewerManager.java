@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,6 +71,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
@@ -100,42 +101,42 @@ import com.google.common.collect.Maps;
 public class DTableViewerManager extends AbstractDTableViewerManager {
 
     /** The key for the image which represents an export action. */
-    public static final String EXPORT_IMG = "table/export";
+    public static final String EXPORT_IMG = "table/export"; //$NON-NLS-1$
 
     /** The key for the image which represents a hide action. */
-    public static final String HIDE_IMG = "table/hide";
+    public static final String HIDE_IMG = "table/hide"; //$NON-NLS-1$
 
     /** The key for the image which represents a reveal action. */
-    public static final String REVEAL_IMG = "table/reveal";
+    public static final String REVEAL_IMG = "table/reveal"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String DELETE_IMG = "table/delete";
+    public static final String DELETE_IMG = "table/delete"; //$NON-NLS-1$
 
     /** The key for the image which represents a createLine action. */
-    public static final String CREATE_LINE = "table/newLine";
+    public static final String CREATE_LINE = "table/newLine"; //$NON-NLS-1$
 
     /** The key for the image which represents a createColumn action. */
-    public static final String CREATE_COLUMN = "table/newColumn";
+    public static final String CREATE_COLUMN = "table/newColumn"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String REFRESH_IMG = "table/refresh";
+    public static final String REFRESH_IMG = "table/refresh"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String SHOW_PROPERTIES_VIEW = "table/prop_ps";
+    public static final String SHOW_PROPERTIES_VIEW = "table/prop_ps"; //$NON-NLS-1$
 
     /** The key for the image which represents a sortByLine action. */
-    public static final String SORT_BY_LINE = "table/sortByLine";
+    public static final String SORT_BY_LINE = "table/sortByLine"; //$NON-NLS-1$
 
     /** The key for the image which represents a sortByColumn action. */
-    public static final String SORT_BY_COLUMN = "table/sortByColumn";
+    public static final String SORT_BY_COLUMN = "table/sortByColumn"; //$NON-NLS-1$
 
     /** The key for the image which represents a hide/reveal action. */
-    public static final String HIDE_REVEAL_IMG = "table/hideReveal";
+    public static final String HIDE_REVEAL_IMG = "table/hideReveal"; //$NON-NLS-1$
 
     /**
      * Use to store the semantic column in SWT column.
      */
-    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn";
+    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn"; //$NON-NLS-1$
 
     // The imageRegistry for the action images
     private static ImageRegistry imageRegistry = new ImageRegistry();
@@ -154,6 +155,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         imageRegistry.put(EXPORT_IMG, ImageDescriptor.createFromURL((URL) TableUIPlugin.INSTANCE.getImage(EXPORT_IMG)));
     }
 
+    /**
+     * the current active column.
+     */
+    private int activeColumn = -1;
+
     private DTableViewerListener tableViewerListener;
 
     private ITableCommandFactory tableCommandFactory;
@@ -169,6 +175,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     private DTableContentProvider dTableContentProvider;
 
     private DTableMenuListener actualMenuListener;
+
+    private SelectDRepresentationElementsListener selectTableElementsListener;
 
     /**
      * The constructor.
@@ -220,14 +228,62 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.MULTI;
         treeViewer = new DTableTreeViewer(composite, style, this);
         // Add a focus listener to deactivate the EMF actions on the Tree
-        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
+        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
         initializeDragSupport();
         sortListener = new DLinesSorter(getEditingDomain(), getEditor().getTableModel());
         // 1st column with line labels
+        TreeViewerColumn headerTreeColumn = addFirstColumn(treeLayout);
+
+        // Next columns
+        int index = 1;
+        for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
+            addNewColumn(column, index++);
+        }
+        treeViewer.setUseHashlookup(true);
+        tableUIUpdater = new TableUIUpdater(this, dRepresentation);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
+        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
+        dTableContentProvider = new DTableContentProvider();
+        treeViewer.setContentProvider(dTableContentProvider);
+        // The input for the table viewer is the instance of DTable
+        treeViewer.setInput(dRepresentation);
+
+        treeViewer.getTree().setLinesVisible(true);
+        treeViewer.getTree().setHeaderVisible(true);
+        fillMenu();
+        triggerColumnSelectedColumn();
+
+        // Expands the line according to the model
+        treeViewer.setExpandedElements(TableHelper.getExpandedLines((DTable) dRepresentation).toArray());
+
+        // Pack after expand for resize column on all subLines
+        for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
+            // Do the pack only if the ColumnData is a ColumnWeightData
+            final Object data = treeViewer.getTree().getColumn(i).getData(AbstractDTableViewerManager.LAYOUT_DATA);
+            if (data instanceof ColumnWeightData) {
+                treeViewer.getTree().getColumn(i).pack();
+            }
+        }
+        treeViewer.addTreeListener(tableViewerListener);
+        // Manage height of the lines, selected colors,
+        triggerCustomDrawingTreeItems();
+
+        // Create a new CellFocusManager
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        // Create a TreeViewerEditor with focusable cell
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
+                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        // Set after the setInput to avoid layout call it several time for
+        // nothing at opening
+        headerTreeColumn.getColumn().addControlListener(tableViewerListener);
+        initializeKeyBindingSupport();
+    }
+
+    private TreeViewerColumn addFirstColumn(TreeColumnLayout treeLayout) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
-        headerTreeColumn.getColumn().setText("");
+        headerTreeColumn.getColumn().setText(""); //$NON-NLS-1$
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
 
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
@@ -267,52 +323,12 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         headerTreeColumn.getColumn().addListener(SWT.Selection, sortListener);
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
 
-        // Next columns
-        int index = 1;
-        for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
-            addNewColumn(column, index++);
-        }
-        treeViewer.setUseHashlookup(true);
-        tableUIUpdater = new TableUIUpdater(this, dRepresentation);
-        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
-        dTableContentProvider = new DTableContentProvider();
-        treeViewer.setContentProvider(dTableContentProvider);
-        // The input for the table viewer is the instance of DTable
-        treeViewer.setInput(dRepresentation);
-
-        treeViewer.getTree().setLinesVisible(true);
-        treeViewer.getTree().setHeaderVisible(true);
-        fillMenu();
-        triggerColumnSelectedColumn();
-
-        // Expands the line according to the model
-        treeViewer.setExpandedElements(TableHelper.getExpandedLines((DTable) dRepresentation).toArray());
-
-        // Pack after expand for resize column on all subLines
-        for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-            // Do the pack only if the ColumnData is a ColumnWeightData
-            final Object data = treeViewer.getTree().getColumn(i).getData(AbstractDTableViewerManager.LAYOUT_DATA);
-            if (data instanceof ColumnWeightData) {
-                treeViewer.getTree().getColumn(i).pack();
-            }
-        }
-        treeViewer.addTreeListener(tableViewerListener);
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
-
-        // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
-        // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
-                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
-        // Set after the setInput to avoid layout call it several time for
-        // nothing at opening
-        headerTreeColumn.getColumn().addControlListener(tableViewerListener);
-        initializeKeyBindingSupport();
+        return headerTreeColumn;
     }
 
     private void initializeKeyBindingSupport() {
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
                 if (e.keyCode == SWT.DEL) {
                     DeleteLinesAction deleteLinesAction = new DeleteLinesAction(getEditingDomain(), getTableCommandFactory());
@@ -323,6 +339,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
@@ -366,7 +383,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 final Menu menu = mgr.createContextMenu(treeViewer.getControl());
                 treeViewer.getControl().setMenu(menu);
                 // Add this line to have others contextual menus
-                tableEditor.getSite().registerContextMenu(mgr, treeViewer);
+                treeEditor.getSite().registerContextMenu(mgr, treeViewer);
             }
             getCreateLineMenu().update(createActionsForTable);
             getCreateTargetColumnMenu().update(createActionsForTable);
@@ -487,10 +504,18 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Add a listener on the tree to listen the mouseDouwn or the key left-right
-     * arrows and store the activeColumn
+     * Manage height of the lines, selected colors.
      */
-    private void triggerColumnSelectedColumn() {
+    protected void triggerCustomDrawingTreeItems() {
+        // Manage selected colors for cells
+        treeViewer.getTree().addListener(SWT.EraseItem, new DTableEraseItemListener(this, treeViewer));
+    }
+
+    /**
+     * Add a listener on the tree to listen the mouseDouwn or the key left-right
+     * arrows and store the activeColumn.
+     */
+    protected void triggerColumnSelectedColumn() {
         treeViewer.getTree().addMouseListener(new MouseAdapter() {
 
             @Override
@@ -507,20 +532,32 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         });
         treeViewer.getTree().addKeyListener(new KeyListener() {
+            @Override
             public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn != 0) {
+                if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
                     activeColumn--;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn != treeViewer.getTree().getColumnCount() - 1) {
+                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
                     activeColumn++;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
                 }
             }
 
+            @Override
             public void keyReleased(final KeyEvent e) {
             };
         });
 
+    }
+
+    /**
+     * Return the index of the active column.<BR>
+     * Warning : The column 0 represents the line header.
+     * 
+     * @return the activeColumn
+     */
+    public int getActiveColumn() {
+        return activeColumn;
     }
 
     /**
@@ -631,10 +668,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         if (newColumn instanceof DFeatureColumn) {
             treeViewerColumn.setEditingSupport(new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(),
-                    (AbstractDTableEditor) tableEditor));
+                    (AbstractDTableEditor) treeEditor));
         } else if (newColumn instanceof DTargetColumn) {
             treeViewerColumn.setEditingSupport(new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory,
-                    (AbstractDTableEditor) tableEditor));
+                    (AbstractDTableEditor) treeEditor));
         }
         treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
         treeViewerColumn.getColumn().addControlListener(tableViewerListener);
@@ -666,7 +703,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      */
     @Override
     public AbstractDTableEditor getEditor() {
-        return (AbstractDTableEditor) tableEditor;
+        return (AbstractDTableEditor) treeEditor;
     }
 
     /**
@@ -698,6 +735,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         descriptionFileChangedNotifier = null;
         tableUIUpdater.dispose();
         tableUIUpdater = null;
+        selectTableElementsListener.dispose();
+        selectTableElementsListener = null;
         dTableContentProvider.dispose();
         dTableContentProvider = null;
         super.dispose();

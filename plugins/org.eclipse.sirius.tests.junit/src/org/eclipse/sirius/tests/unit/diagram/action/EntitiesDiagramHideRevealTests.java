@@ -39,7 +39,6 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
@@ -224,7 +223,6 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
         assertEquals("[HIDE] Bad number of diagram elements.", NB_ELTS, newDiagram.getOwnedDiagramElements().size());
         assertEquals("[HIDE] Bad number of visible diagram elements.", NB_VISIBLE_ELTS + 2, getNbVisibleDiagramElements(newDiagram));
         assertEquals("[HIDE] Bad number of visible diagram elements.", NB_VISIBLE_ELTS + 2, getNbVisibleGMFDiagramElements(newDiagram));
-
     }
 
     private DDiagram copyDiagram(final String name, final DDiagram diagramToCopy) {
@@ -425,7 +423,7 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
      *            the new visibility for this element
      */
     protected void changeDiagramElementVisiblity(final DDiagramElement element, final boolean newVisibility) {
-        session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 if (newVisibility) {
@@ -435,6 +433,7 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
                 }
             }
         });
+        TestsUtil.synchronizationWithUIThread();
     }
 
     private int getNbVisibleDiagramElements(final DDiagram diagram) {
@@ -471,6 +470,8 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
         hideAction = null;
         revealAction = null;
         diagramEditPart = null;
+        session.close(new NullProgressMonitor());
+        session = null;
         super.tearDown();
     }
 }

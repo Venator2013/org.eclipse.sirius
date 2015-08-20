@@ -68,7 +68,7 @@ public class HideLabelFilterItemProvider extends ItemProviderAdapter
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/HideLabelFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HideLabelFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -79,7 +79,7 @@ public class HideLabelFilterItemProvider extends ItemProviderAdapter
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_HideLabelFilter_type");
+        return getString("_UI_HideLabelFilter_type"); //$NON-NLS-1$
     }
 
     /**

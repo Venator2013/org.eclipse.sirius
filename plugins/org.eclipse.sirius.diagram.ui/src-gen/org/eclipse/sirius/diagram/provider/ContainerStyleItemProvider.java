@@ -57,7 +57,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
             super.getPropertyDescriptors(object);
 
             addDescriptionPropertyDescriptor(object);
-            addBorderSizeComputationExpressionPropertyDescriptor(object);
+            addBorderSizePropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
             addBorderLineStylePropertyDescriptor(object);
             addHideLabelByDefaultPropertyDescriptor(object);
@@ -72,21 +72,28 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
      * @generated
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
+<<<<<<< HEAD
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Style_description_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"), ViewpointPackage.Literals.STYLE__DESCRIPTION, true, false, true, null, null, null));
+=======
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_Style_description_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.STYLE__DESCRIPTION, true, false, true, null, null, null));
+>>>>>>> pcdavid/master
     }
 
     /**
-     * This adds a property descriptor for the Border Size Computation
-     * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Border Size feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
+    protected void addBorderSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderSizeComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSizeComputationExpression_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"),
+                getString("_UI_BorderedStyle_borderSize_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSize_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -98,8 +105,24 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+                getString("_UI_BorderedStyle_borderColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
+                null));
+    }
+
+    /**
+     * This adds a property descriptor for the Border Line Style feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBorderLineStylePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BorderedStyle_borderLineStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderLineStyle_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -122,8 +145,8 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"),
+                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -136,7 +159,7 @@ public class ContainerStyleItemProvider extends LabelStyleItemProvider {
     @Override
     public String getText(Object object) {
         ContainerStyle containerStyle = (ContainerStyle) object;
-        return getString("_UI_ContainerStyle_type") + " " + containerStyle.getLabelSize();
+        return getString("_UI_ContainerStyle_type") + " " + containerStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
